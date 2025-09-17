@@ -1,1 +1,1 @@
-print("queda poco")
+print("queda poc")
