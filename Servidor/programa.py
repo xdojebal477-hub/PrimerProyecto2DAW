@@ -1,1 +1,0 @@
-print("queda poc")
