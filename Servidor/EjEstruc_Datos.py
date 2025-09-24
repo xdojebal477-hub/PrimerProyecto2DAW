@@ -44,3 +44,61 @@ if lista1==lista2:
     print("Esta ordenada")
 else:
     print("Lista no ordenada")
+
+#--------------------------------------------------------------------------
+# Ejercicios de cadenas y codificación
+#--------------------------------------------------------------------------
+
+
+    """
+    Crear un programa que lea por teclado una cadena y un carácter, e 
+    inserte el carácter entre cada letra de la cadena. Ej: separar y , 
+    debería devolver s,e,p,a,r,a,r
+    """
+
+cadena=input(print("Introduce una cadena de caracteres: "))
+caracter=input(print("Introduce un caracter: "))
+print(cadena.join(caracter))
+
+
+"""
+    Crear un programa que lea por teclado una cadena y un carácter, y 
+    reemplace todos los dígitos en la cadena por el carácter. 
+    Ej: su clave es: 1540 y X debería devolver su clave es: XXXX
+"""
+
+contraseña=input("Introduzca su contraseña: ")
+caracter=input("Introduzca un caracter: ")
+for i in contraseña:
+	contraseña=contraseña.replace(str(i),caracter)
+
+print("Su contraseña: ",contraseña)
+
+
+"""
+Crea un programa python que lea una cadena de caracteres y muestre la siguiente información:
+
+La primera letra de cada palabra. Por ejemplo, si recibe Universal Serial Bus debe devolver USB.
+Dicha cadena con la primera letra de cada palabra en mayúsculas. Por ejemplo, si recibe república argentina debe 
+devolver República Argentina.Las palabras que comiencen con la letra A. Por ejemplo, si recibe Antes de ayer debe 
+devolver Antes ayer.
+"""
+#Parte1
+cad=input("Cadena: ")
+lista=cad.split(" ")
+for palabra in lista:
+    print (palabra[0],end="")
+print()
+#Parte2
+cad2=cad.title()
+print(cad2)
+
+for i in lista:
+    print(i.capitalize(),end="")
+print()
+
+#Parte3
+for palabra in lista:
+    if(palabra.casefold()=="a"):
+        print(palabra,end=",")
+print()
