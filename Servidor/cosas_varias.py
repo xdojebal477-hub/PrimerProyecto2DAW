@@ -1,4 +1,4 @@
-#listas cambias su valor
+4#listas cambias su valor
 l=[1,'hola',5.9]
 print(l)
 # Una tupla es una estructura de datos en Python que permite almacenar varios elementos.
