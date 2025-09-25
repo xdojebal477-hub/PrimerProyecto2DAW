@@ -1,3 +1,4 @@
+#Ejercicios de estructuras de datos
 """
     Lee por teclado números y guardalo en una lista, el proceso finaliza cuando metamos un número negativo. 
     Muestra el máximo de los números guardado en la lista, muestra los números pares.
@@ -102,3 +103,76 @@ for palabra in lista:
     if(palabra.casefold()=="a"):
         print(palabra,end=",")
 print()
+
+#Ejercicios de estructuras de  control
+numero = int(input("Número:"))
+cont = 1
+
+
+"""
+	while (cont<11):
+	print ("%d * %d = %d" % (cont, numero, cont * numero))
+	cont += 1
+"""
+for cont in range(1,11):
+	print ("%2d * %d = %2d" % (cont, numero, cont * numero))
+ 
+#---------------------------------------------------------------------------
+# Apuntes de Estructuras de Datos
+#---------------------------------------------------------------------------
+lista=[1,2,3,4,5]
+print(lista)
+print(type(lista))
+print(len(lista)) # longitud de la lista
+lista.sort(reverse=True) # ordena la lista en reversa (modifica la original)
+print(lista)
+#----------------------------------------------------
+seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print(list(enumerate(seasons)))
+
+print(list(enumerate(seasons, start=1)))
+#----------------------------------------------------
+# Pide palabras hasta que el usuario escriba "fin"
+lista_cadenas = []
+cadena = input("Introduce una palabra (escribe 'fin' para terminar): ")
+while cadena != "fin":
+    lista_cadenas.append(cadena)
+    cadena = input("Introduce una palabra (escribe 'fin' para terminar): ")
+print(lista_cadenas)
+
+#---------------------------------------------------------------------------
+# Apuntes de Secuencias y Cadenas
+#---------------------------------------------------------------------------
+
+#Funcion map(), aplica una funcion a cada unos de los elemetos de una secuencia
+lista=[1,2,3,4]
+def cube(x):
+    return x**3
+print(list(map(cube,lista))," cubo de los numeros")
+#Funcion filter(), filtra segun la funcio que se le pase como parametro a una secuencia
+lista2=[0,1,2,3,4]
+def par(x):
+    return x%2==0
+print(list(filter(par,lista2))," los pares de una lista de numero")
+
+#Funcion reduce(), aplica una funcion a los elementos de una secuencia y devuelve un unico valor
+from functools import reduce
+lista=[1,2,3,4,5]
+def add(x,y):
+    return x+y
+print(reduce(add,lista))
+
+#Tuplas
+my_tuple = 1, 2, 3
+tuple2 = tuple([1,"a",True])
+print(tuple2,"  tupla aleatoria | tupla con contenido ",my_tuple)
+
+
+
+#Rangos
+lista=list(range(1,10,2))
+print(lista)
+
+
+for i in range(5):
+    print(i)
