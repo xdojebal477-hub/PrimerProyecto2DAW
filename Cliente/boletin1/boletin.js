@@ -92,18 +92,26 @@ else
 //ej47
 //TENER EN CUENTA SI ES NEGATIVO O SON IGUALES
 
-let h1=parseInt(prompt("Introduce h1: "));
-let m1=parseInt(prompt("Introduce m1: "));
-let h2=parseInt(prompt("Introduce h2: "));
-let m2=parseInt(prompt("Introduce m2: "));
-console.log("Horas sin convertir: "+h1+":"+m1+"||"+h2+":"+m2)
-h1Final=h1*60+m1;
-h2Final=h2*60+m2;
-let difHor=(h1Final-h2Final)/60
-let difMin=(h1Final-h2Final)%60
-console.log("Horas convertidas: "+h1Final+"||"+h2Final)
-
-;
-if (h1Final>h2Final){
-    document.getElementById("ej47").innerHTML="La primera hora introducida es mayor que la segunda."
+function diferenciaHoras(){
+    const h1 = Number(frmHoras.h1.value);
+const m1 = Number(frmHoras.m1.value);
+const h2 = Number(frmHoras.h2.value);
+const m2 = Number(frmHoras.m2.value);
+let totalDiferenciaMinutos = h1 * 60 + m1 - (h2 * 60 + m2);
+let salida = "";
+let difMin, difHor;
+if (totalDiferenciaMinutos < 0) {
+    salida = "H1 es anterior a H2. La diferencia de tiempo es ";
+    totalDiferenciaMinutos = totalDiferenciaMinutos * -1; //Pasarla a positivo
+} else if (totalDiferenciaMinutos > 0) {
+    salida = "H1 es posterior a H2. La diferencia de tiempo es ";
+}
+if (totalDiferenciaMinutos == 0) {
+    salida = "Son la misma hora";
+} else {
+    difHor = Math.floor(totalDiferenciaMinutos / 60); //Parte entera
+    difMin = totalDiferenciaMinutos % 60;
+    salida += String(difHor) + " horas y " + String(difMin) + " minutos";
+}
+document.getElementById("salida").innerHTML = salida;
 }

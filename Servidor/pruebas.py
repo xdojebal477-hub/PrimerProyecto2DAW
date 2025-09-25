@@ -32,9 +32,9 @@ if numB in lista:
 else:
     print("No esta")
 
-lista2=lista.sort()
-print("Lista ordenada: ",lista2)
-print("Lista desordenad",lista)
+lista.sort()
+print("Lista ordenada: ", lista)
+print("Lista desordenad", lista)
 
 nuevaLista=[]
 for i in range(cont):
