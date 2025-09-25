@@ -72,19 +72,38 @@ else
     document.getElementById("ej38").innerHTML="El numero es impar";*/
 
 //ejercicio39
-let contador = 0;
-let numero = 2;
-while (contador < 100) {
-    let esPrimo = true;
-    for (let j = 2; j <= Math.sqrt(numero); j++) {
-        if (numero % j === 0) {
-            esPrimo = false;
-            break;
-        }
-    }
-    if (esPrimo) {
-        document.getElementById("ej39").innerHTML += numero + " ";
-        contador++;
-    }
-    numero++;
+// let contador = 0;
+// let numero = 2;
+// while (contador < 100) {
+//     let esPrimo = true;
+//     for (let j = 2; j <= Math.sqrt(numero); j++) {
+//         if (numero % j === 0) {
+//             esPrimo = false;
+//             break;
+//         }
+//     }
+//     if (esPrimo) {
+//         document.getElementById("ej39").innerHTML += numero + " ";
+//         contador++;
+//     }
+//     numero++;
+// }
+
+//ej47
+//TENER EN CUENTA SI ES NEGATIVO O SON IGUALES
+
+let h1=parseInt(prompt("Introduce h1: "));
+let m1=parseInt(prompt("Introduce m1: "));
+let h2=parseInt(prompt("Introduce h2: "));
+let m2=parseInt(prompt("Introduce m2: "));
+console.log("Horas sin convertir: "+h1+":"+m1+"||"+h2+":"+m2)
+h1Final=h1*60+m1;
+h2Final=h2*60+m2;
+let difHor=(h1Final-h2Final)/60
+let difMin=(h1Final-h2Final)%60
+console.log("Horas convertidas: "+h1Final+"||"+h2Final)
+
+;
+if (h1Final>h2Final){
+    document.getElementById("ej47").innerHTML="La primera hora introducida es mayor que la segunda."
 }
