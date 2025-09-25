@@ -56,6 +56,12 @@ print('hemos terminado')
 #funcion zip
 for x,y in zip(range(1,4),["ana","juan","pepe"]):
     print(x,y)
+    
+
+"""
+
+Clase de 25-09-2025
+"""
 # n1=int(input("Introduzca numero 1: "))
 # n2=int(input("Introduzca numero 2: "))
 
