@@ -11,12 +11,10 @@ try:
                 valoraciones.append(valoracion)
                 break
             valoracion = int(input(f"Introduce tu valoracion para {juego} (1-10): "))                  
-
     for i in range(len(videojuegos)):
         print("Videojuego : ",videojuegos[i],"|| Valoracion : ",valoraciones[i])
         if valoraciones[i]>=8:
             contador=contador+1
-
     print(f"La media de las valoraciones es: {sum(valoraciones)/len(valoraciones)}")
     print(f"Hay un total de {contador} videojuego/s con una valoracion mayor o igual a 8.")
     print(f"El videojuego mejor valorado es {videojuegos[valoraciones.index(max(valoraciones))]}")

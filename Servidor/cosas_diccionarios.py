@@ -12,11 +12,5 @@ for i in range(0,num_juegos):
 
 print(videojuegos)
 
-for dic in videojuegos:
-    print(dic["nombre"])
 
-    total+=videojuego["valoracion"]
-
-print(f"La media de las valoraciones es {total/len(videojuegos)}")
-
-# en una sola lista con todos los nombres de los juego y otra lista con todas las valoraciones
+#-----------------------------------------------------------------------------------
