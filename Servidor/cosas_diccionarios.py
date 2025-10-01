@@ -61,40 +61,44 @@ alumnos=[]
 alumnos.append(persona)
 print(alumnos[0]["asignaturas"])#para ver una asignatura concreta [1]["horas"])
 #-----------------------------------------------------------------------------------
-
 # print(persona.pop("nombre"))
 contador=0
 for nota in alumnos[0]["notas"].values():
     contador+=nota
-print(f"La media de las notas de {alumnos[0]["nombre"]} es: {contador/len(notas)}")   
-
-
-
-
-
-
-
-
+print(f"La media de las notas de {alumnos[0]['nombre']} es: {contador/len(notas)}")
 
 suspensos={nombre_asig:notas_asig for nombre_asig,notas_asig in ["notas"].items if notas_asig<5}
 
 
 
 
-
-
-
-
-
-numAlum=int(input("Cuantos alumnos vas a meter: "))
+alumnos = []
+numAlum = int(input("Cuantos alumnos vas a meter: "))
 
 for i in range(numAlum):
-    nomAlum=input("Nombre alumno: ")
+    nomAlum = input("Nombre alumno: ")
+    alumno = {"nombre": nomAlum, "asignaturas": []}  # nuevo diccionario alumno
     
-    numAsignaturas=int(input("Num"))
+    numAsignaturas = int(input("Número de asignaturas: "))
     for j in range(numAsignaturas):
-        nomAsig=input("Nombre de la asignatura: ")
-        numHoras=int(input("Nombre de horas: "))
-        asignaturas["nombreAsig"]=nomAsig
-        asignaturas["horasAsig"]=numHoras
+        nomAsig = input("Nombre de la asignatura: ")
+        numHoras = int(input("Número de horas: "))
+        notaAsig = float(input("Nota de la asignatura: "))
+        
+        asignatura = {  # nuevo diccionario asignatura
+            "nombreAsig": nomAsig,
+            "horasAsig": numHoras,
+            "nota": notaAsig
+        }
+        alumno["asignaturas"].append(asignatura)  # dentro del bucle
+    
+    alumnos.append(alumno)
+
+print(alumnos)
+
+for alum in alumnos:
+    for asig in alum["asignaturas"]:
+        if asig["nota"] < 5 :
+            print(f"El alumno {alum['nombre']} tiene la asignatura {asig['nombreAsig']} con una nota de {asig['nota']} suspensa")
+#-----------------------------------------------------------------------------------
 
