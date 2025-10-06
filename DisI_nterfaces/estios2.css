@@ -1,0 +1,48 @@
+body{
+    border: 1px solid;
+    height: 100%;
+}
+
+header{
+    display: block;
+    background-color:greenyellow;
+    text-align: center;
+
+}
+div#contenedor{
+    float:left;
+    width: 90%;
+}
+nav{
+    float: left;
+    background-color: pink;
+    margin-right:5px;
+    /*border: 1px solid red;*/
+    height: 10vh;
+    width: 15vw;
+    text-align: center;
+
+}
+
+main{
+    float:right;
+    display: inline-block;
+    background-color: rgb(255, 173, 80);
+    /*border: solid 2px red;*/
+    width: 70.1vw;
+    text-align: center;
+    
+
+}
+
+article{
+    background-color: rgb(56, 211, 231);
+    margin: 3px;
+
+}
+
+footer{
+    clear: both;
+    background-color: silver;
+    text-align: center;
+}
