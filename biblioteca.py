@@ -1,7 +1,7 @@
 # -----------------------------
 # Gestión de Biblioteca Digital
 # -----------------------------
-
+import json
 # Funciones
 
 def mostrar_libros(biblioteca):
@@ -72,45 +72,47 @@ def estadisticas_usuarios(biblioteca):
 
 # Programa principal
 def main():
+    with open("prestamos.json","r") as archivo:
+        biblioteca=json.load(archivo)
     # 1. Crear biblioteca con al menos 5 libros
-    biblioteca = [
-        {
-            "titulo": "Cien años de soledad",
-            "autor": "Gabriel García Márquez",
-            "anio": 1967,
-            "genero": "Novela",
-            "prestamos": {"Ana": 2, "Luis": 1}
-        },
-        {
-            "titulo": "El Quijote",
-            "autor": "Miguel de Cervantes",
-            "anio": 1605,
-            "genero": "Novela",
-            "prestamos": {"Miguel":3,"Daniel":1}
-        },
-        {
-            "titulo": "Padre Rico, Padre Pobre",
-            "autor": "Rober Kiyosaki",
-            "anio": 1996,
-            "genero": "Negocios",
-            "prestamos": {"Daniel":3,"Carlos":2}
-        },
-        {
-            "titulo": "La casa de Bernarda Alba",
-            "autor": "Pepito grillo",
-            "anio": 1921,
-            "genero": "Teatro",
-            "prestamos": {"Sofia":4,"Carla":2}
-        },
-        {
-            "titulo": "El cuarto de atras",
-            "autor": "Pepito grillo",
-            "anio": 1965,
-            "genero": "Historia",
-            "prestamos": {"Sofia":3,"Daniel":1}
-        }
-        # Añadir más libros aquí...
-    ]
+    # biblioteca = [
+    #     {
+    #         "titulo": "Cien años de soledad",
+    #         "autor": "Gabriel García Márquez",
+    #         "anio": 1967,
+    #         "genero": "Novela",
+    #         "prestamos": {"Ana": 2, "Luis": 1}
+    #     },
+    #     {
+    #         "titulo": "El Quijote",
+    #         "autor": "Miguel de Cervantes",
+    #         "anio": 1605,
+    #         "genero": "Novela",
+    #         "prestamos": {"Miguel":3,"Daniel":1}
+    #     },
+    #     {
+    #         "titulo": "Padre Rico, Padre Pobre",
+    #         "autor": "Rober Kiyosaki",
+    #         "anio": 1996,
+    #         "genero": "Negocios",
+    #         "prestamos": {"Daniel":3,"Carlos":2}
+    #     },
+    #     {
+    #         "titulo": "La casa de Bernarda Alba",
+    #         "autor": "Pepito grillo",
+    #         "anio": 1921,
+    #         "genero": "Teatro",
+    #         "prestamos": {"Sofia":4,"Carla":2}
+    #     },
+    #     {
+    #         "titulo": "El cuarto de atras",
+    #         "autor": "Pepito grillo",
+    #         "anio": 1965,
+    #         "genero": "Historia",
+    #         "prestamos": {"Sofia":3,"Daniel":1}
+    #     }
+    #     # Añadir más libros aquí...
+    # ]
 
     # 2. Mostrar todos los libros 
     mostrar_libros(biblioteca)
@@ -127,7 +129,11 @@ def main():
     print(f"El libro mas popular es: {libro_mas_popular(biblioteca)}")
     # 6. Mostrar estadísticas de usuarios
     print(f"Las estadisticas de usuarios son: {estadisticas_usuarios(biblioteca)}")
+    with open("prestamos.json","w") as archivo:
+        json.dump(biblioteca,archivo,indent=4)
+
 
 # Ejecutar programa
 if __name__ == "__main__":
     main()
+ 
