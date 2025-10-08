@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+body {
+    background-color: #000;
+    color: #ffeb3b;
+  }
+header {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  header h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 50px;
+  }
+  
+  header nav {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0vw;
+  }
+  
+  header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  #evento {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #evento .info,
+  #evento .comprar {
+    width: 50%;
+  }
+  
+  .event-info {
+    margin-top: 20px;
+  }
+
+
+
+
+  
+
+  @media (width <= 600px) {
+    header h1, header nav {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  
+    #evento .info, #evento .comprar {
+      display: block;
+      width: 100%;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #ffeb3b;
+      color: #000;
+    }
+  }
+  
