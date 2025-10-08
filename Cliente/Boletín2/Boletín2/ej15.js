@@ -1,0 +1,4 @@
+function generarLetraDNI(){
+    let dnis=[]
+    
+}
