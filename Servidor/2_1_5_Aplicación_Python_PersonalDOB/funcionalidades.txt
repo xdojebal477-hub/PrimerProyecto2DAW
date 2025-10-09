@@ -1,0 +1,3 @@
+1. consultar datos de la api
+2. generar un json donde recoja todos los datos  de los jugadores consultados y luego sacar alguna estadistica
+3.yagmail
