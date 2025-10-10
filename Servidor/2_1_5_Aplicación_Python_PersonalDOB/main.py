@@ -1,9 +1,7 @@
 import os,sys,json,requests,pandas# yagmail
 from time import sleep
 from colorama import Fore,Style
-
-
-API_TOKEN ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU3NDQ1YWMyLWVkMTktNDkzNS05N2RjLTkwNjM4ZjgxMWI3YyIsImlhdCI6MTc2MDA4MjYyMywic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0Ni42LjE3My4xOTIiXSwidHlwZSI6ImNsaWVudCJ9XX0.yMUyyQ1RKwYpCc4kNjryUdDzsurmdDaTX1GvBiDVbvcE4X0EA-quGqjzAcqMaKZsM86sqc-AC8BgAq2zUwz77w"
+API_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjY5MGI3ZmE4LTgwOWItNDAzZi05MDZlLTFmNjdhMmQyMTE0ZSIsImlhdCI6MTc2MDExNDgwNSwic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI3OS4xMTcuMTYyLjIyNSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.9OunLcsyqkySbnvnRMenQqkWnZpp7minD5fKhWRoZKFNIfEqkVf8htNauSEKEp3O49XED3dmTjLzDfBvdVo38A"
 
 
 def mostrar_jugador(tag):
@@ -16,10 +14,12 @@ def mostrar_jugador(tag):
         "Accept": "application/json",
         "Authorization": f"Bearer {API_TOKEN}"
         }
-    response = requests.get(url, headers=headers,params=params)#mirar los params
-        
+    response = requests.get(url, headers=headers)#consultar params
+
     if response.status_code == 200:
+        print(response)
         data = response.json()
+        print(data)
         print("✅ Conexión exitosa.")
         print("Cargando datos del jugador...")
         sleep(1)
@@ -28,13 +28,29 @@ def mostrar_jugador(tag):
         if data["trophies"]>=9000:
             print(Fore.GREEN+"Copas:", data["trophies"],Style.RESET_ALL)
         else:
-                print(Fore.RED+"Copas:", data["trophies"],Style.RESET_ALL)
-            
+            print(Fore.RED+"Copas:", data["trophies"],Style.RESET_ALL)
+        guardar_jugador(data)
+        
+        
     else:
         print("❌ Error al conectar:", response.status_code, response.text)
-         # sys.exit(1)
-   
+        # sys.exit(1)
+
+def cargar_jugadores(nombre_fichero):
+    if not os.path.exists(nombre_fichero):
+        return []
+    try:
+        with open(nombre_fichero, "r", encoding="utf-8") as f:
+            return json.load(f)
+        print(f"Datos de jugadores cargados correctamente desde {nombre_fichero}.")
+    except Exception as e:
+        print(f" Error al cargar los datos de jugadores: {e}")
+        return []
+def guardar_jugador(jugador_data):
+    try:
+        with open(nombre)
 def main():
+    jugadores=cargar_jugadores("jugadores.json")#cargar datos de jugadores
     print("Iniciando aplicación...")
     sleep(3)
     while True:
@@ -48,7 +64,10 @@ def main():
                 player_tag = input("Introduce el tag del jugador (ej. #ABCD1234): ")
                 mostrar_jugador(player_tag)
             case "2":
+                print("hola")
+            case "3":
                 print("Saliendo...")
+                sleep(1)
                 break
             case _:
                 print("Opción no válida, intenta de nuevo.")

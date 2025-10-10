@@ -1,3 +1,4 @@
 1. consultar datos de la api
 2. generar un json donde recoja todos los datos  de los jugadores consultados y luego sacar alguna estadistica
 3.yagmail
+4.antes de hacer el guardado de datos y procesamiento manipulacion y filtrado , quiero añadir mas funcionalidades de busqueda, mazos cartas etc
