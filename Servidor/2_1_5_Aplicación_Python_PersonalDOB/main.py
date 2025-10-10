@@ -1,7 +1,11 @@
 import os,sys,json,requests,pandas# yagmail
 from time import sleep
 from colorama import Fore,Style
+
+
 API_TOKEN ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjU3NDQ1YWMyLWVkMTktNDkzNS05N2RjLTkwNjM4ZjgxMWI3YyIsImlhdCI6MTc2MDA4MjYyMywic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0Ni42LjE3My4xOTIiXSwidHlwZSI6ImNsaWVudCJ9XX0.yMUyyQ1RKwYpCc4kNjryUdDzsurmdDaTX1GvBiDVbvcE4X0EA-quGqjzAcqMaKZsM86sqc-AC8BgAq2zUwz77w"
+
+
 def mostrar_jugador(tag):
     
     if not tag.startswith("#"):
@@ -12,7 +16,7 @@ def mostrar_jugador(tag):
         "Accept": "application/json",
         "Authorization": f"Bearer {API_TOKEN}"
         }
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers,params=params)#mirar los params
         
     if response.status_code == 200:
         data = response.json()
