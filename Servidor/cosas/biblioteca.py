@@ -78,6 +78,9 @@ def guardar_biblioteca(biblioteca, nombre_fichero):
     except Exception as e:
         print(f" Error al guardar la biblioteca: {e}")
 
+
+
+
 def cargar_biblioteca(nombre_fichero):
     if not os.path.exists(nombre_fichero):
         print(" No se encontró el archivo. Se creara una nueva biblioteca vacia.")
