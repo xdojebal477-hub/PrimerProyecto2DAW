@@ -2,7 +2,7 @@ import os,json,requests
 #yagmail,pandas,sys
 from time import sleep
 from colorama import Fore,Style
-API_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjY5MGI3ZmE4LTgwOWItNDAzZi05MDZlLTFmNjdhMmQyMTE0ZSIsImlhdCI6MTc2MDExNDgwNSwic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI3OS4xMTcuMTYyLjIyNSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.9OunLcsyqkySbnvnRMenQqkWnZpp7minD5fKhWRoZKFNIfEqkVf8htNauSEKEp3O49XED3dmTjLzDfBvdVo38A"
+API_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6Ijg4MGUxMzY0LTgwMWUtNDUzMS04OTZhLWJjZjQ1MTM2Yzc3MyIsImlhdCI6MTc2MDQzOTAwNCwic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0Ni42LjE4Mi43NiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.rQnkO1PHfFFk3i8QBgnyKxshjIOKgfX8XKjH0iq5eCp92LnTqfGNRGbe68kvcHC4o1lvwTNv3Pc6jr2AVZJ2mQ"
 
 
 def mostrar_jugador(tag,jugadores):
@@ -200,6 +200,18 @@ def comparar_jugadores(jugadores,criterio,tag1,tag2):
         case _:
             return "Criterio invalido"
 
+def  buscar_mazo(jugadores,player_tag):
+    mazo=[]
+    if not player_tag.startswith('#'):
+        player_tag = '#' + player_tag.upper()
+    else:
+        player_tag = player_tag.upper()
+    
+    for jug in jugadores:
+        if jug["tag"]==player_tag:
+            mazo=jug["currentDeck"]
+            break
+    return mazo            
 def main():
     
     jugadores=cargar_jugadores("jugadores.json")#cargar datos de jugadores
@@ -213,26 +225,30 @@ def main():
     while True:
         print("\n--- Menú Clash Royale ---")
         print("1. Mostrar datos de un jugador")
-        print("2. Ranking de jugadores por longevidad")
-        print("3. Ranking de jugadores por winrate")
-        print("4. Comparar dos jugadores")#intentar hacer con **kwargs
-        print("5. Salir")
+        print("2. Mostrar el mazo de un jugador")
+        print("3. Ranking de jugadores por longevidad")
+        print("4. Ranking de jugadores por winrate")
+        print("5. Comparar dos jugadores")#intentar hacer con **kwargs
+        print("6. Salir")
         opcion = input("Selecciona una opción: ").strip()
         
         match opcion:
             case "1":
                 player_tag = input("Introduce el tag del jugador (ej. #ABCD1234): ")
                 mostrar_jugador(player_tag,jugadores)
-            case "2":
-                print(ranking_jugadores_por_longevidad(jugadores))
+            case"2":
+                player_tag=input("Introduzca el tag: ")
+                print(buscar_mazo(jugadores,player_tag))
             case "3":
-                print(ranking_jugadores_por_winrate(jugadores))
+                print(ranking_jugadores_por_longevidad(jugadores))
             case "4":
+                print(ranking_jugadores_por_winrate(jugadores))
+            case "5":
                 tag1 = input("Introduce el tag del primer jugador (ej. #ABCD1234): ")
                 tag2 = input("Introduce el tag de uno o varios jugadores (ej. #ABCD1235): ")
                 criterio = input("Introduce el criterio de comparación (ej. 'trophies', ','battleCount' ,'warDayWins'): ")
                 print(comparar_jugadores(jugadores, criterio, tag1, tag2))
-            case "5":
+            case "6":
                 print("Saliendo...")
                 sleep(1)
                 break
