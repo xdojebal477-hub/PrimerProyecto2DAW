@@ -83,8 +83,8 @@ def guardar_biblioteca(biblioteca, nombre_fichero):
 
 def cargar_biblioteca(nombre_fichero):
     if not os.path.exists(nombre_fichero):
-        print(" No se encontró el archivo. Se creara una nueva biblioteca vacia.")
-        return []
+                                            print(" No se encontró el archivo. Se creara una nueva biblioteca vacia.")
+                                            return []
     try:
         with open(nombre_fichero, "r", encoding="utf-8") as f:
             biblioteca = json.load(f)

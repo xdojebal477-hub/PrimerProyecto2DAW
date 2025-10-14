@@ -16,7 +16,7 @@ def mostrar_jugador(tag,jugadores):
         "Authorization": f"Bearer {API_TOKEN}"
         }
     response = requests.get(url, headers=headers)#consultar params
-
+ 
     if response.status_code == 200:
         
         data = response.json()
