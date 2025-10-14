@@ -34,7 +34,8 @@ def mostrar_jugador(tag,jugadores):
         respuesta=input("Quieres guardar los datos del jugador? (s/n): ").strip().lower()
         if respuesta == "s":
             guardar_jugador(data,"jugadores.json")
-        print("Jugador no guardado")
+        else:
+            print("Jugador no guardado")
     else:
         print("❌ Error al conectar:", response.status_code, response.text)
         # sys.exit(1)
