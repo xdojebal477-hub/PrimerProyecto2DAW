@@ -4,7 +4,7 @@ import requests
 #yagmail,pandas,sys
 from time import sleep
 from colorama import Fore,Style
-API_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6Ijg4MGUxMzY0LTgwMWUtNDUzMS04OTZhLWJjZjQ1MTM2Yzc3MyIsImlhdCI6MTc2MDQzOTAwNCwic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0Ni42LjE4Mi43NiJdLCJ0eXBlIjoiY2xpZW50In1dfQ.rQnkO1PHfFFk3i8QBgnyKxshjIOKgfX8XKjH0iq5eCp92LnTqfGNRGbe68kvcHC4o1lvwTNv3Pc6jr2AVZJ2mQ"
+API_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImQ2MTVjNjA3LWYzNDgtNGUwMS04MDQwLTA3NDUyZjc5ZDE4YiIsImlhdCI6MTc2MDQ1NzE2NCwic3ViIjoiZGV2ZWxvcGVyLzhjNTJiN2Q2LTkyZWItZGZkOC1mOTk3LWE0N2FmMjM5NmE5MCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI3OS4xMTcuMTYyLjIyNSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.QX-8DCDmYuH3WcfU-ol2-_2a-VegwrOOt9KVYf-b2-NHBkZEGeBkAL2XtNINAK2mGtPv_iL8oolYUDe9xa3R1w"
 
 
 def mostrar_jugador(tag,jugadores):
@@ -18,7 +18,7 @@ def mostrar_jugador(tag,jugadores):
         "Authorization": f"Bearer {API_TOKEN}"
         }
     response = requests.get(url, headers=headers)#consultar params
- 
+
     if response.status_code == 200:
         
         data = response.json()
@@ -203,18 +203,48 @@ def comparar_jugadores(jugadores,criterio,tag1,tag2):
         case _:
             return "Criterio invalido"
 
-def  buscar_mazo(jugadores,player_tag):
-    mazo=[]
-    if not player_tag.startswith('#'):
-        player_tag = '#' + player_tag.upper()
-    else:
-        player_tag = player_tag.upper()
-    
-    for jug in jugadores:
-        if jug["tag"]==player_tag:
-            mazo=jug["currentDeck"]
-            break
-    return mazo            
+def buscar_mazo(jugadores):
+    op=input("Quieres buscar un jugador guardado o de la API? (g/a): ").strip().lower()
+    player_tag=input("Introduzca el tag: ").strip()
+    match op:
+        case "a":
+            if not player_tag.startswith('#'):
+                player_tag = '#' + player_tag.upper()
+            else:
+                player_tag = player_tag.upper()
+            
+            url = f"https://api.clashroyale.com/v1/players/{player_tag.replace('#', '%23')}"
+            headers = {
+                "Accept": "application/json",
+                "Authorization": f"Bearer {API_TOKEN}"
+                }
+            response = requests.get(url, headers=headers)#consultar params
+
+            if response.status_code == 200:
+                
+                data = response.json()
+                data=limpiar_jugador(data)
+                print("✅ Conexión exitosa.")
+                print("Cargando datos del jugador...")
+                sleep(1)
+                return data["currentDeck"]
+            else:
+                print("❌ Error al conectar:", response.status_code, response.text)
+                return []
+        case "g":
+            mazo=[]
+            if not player_tag.startswith('#'):
+                player_tag = '#' + player_tag.upper()
+            else:
+                player_tag = player_tag.upper()
+            
+            for jug in jugadores:
+                if jug["tag"] == player_tag:
+                    mazo = jug["currentDeck"]
+                    break
+            return mazo
+
+
 def main():
     
     jugadores=cargar_jugadores("jugadores.json")#cargar datos de jugadores
@@ -239,9 +269,8 @@ def main():
             case "1":
                 player_tag = input("Introduce el tag del jugador (ej. #ABCD1234): ")
                 mostrar_jugador(player_tag,jugadores)
-            case"2":
-                player_tag=input("Introduzca el tag: ")
-                print(buscar_mazo(jugadores,player_tag))
+            case "2":
+                print(buscar_mazo(jugadores))
             case "3":
                 print(ranking_jugadores_por_longevidad(jugadores))
             case "4":
