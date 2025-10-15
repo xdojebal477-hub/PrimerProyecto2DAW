@@ -10,12 +10,14 @@ def mostrar_canciones(canciones):
         print(f"Genero cancion: {can["genero"]}")
 
 def añadir_cancion(canciones,titulo_cancion,artista_cancion,anio_cancion,genero_cancion):
-    ult_id=0
-    for can in canciones:
-        if can["id"]>ult_id:
-            ult_id=can["id"]
+    # ult_id=0
+    # for can in canciones:
+    #     if can["id"]>ult_id:
+    #         ult_id=can["id"]
+
+    list_id=[can["id"] for can in canciones]
     nueva_cancion={
-            "id": ult_id+1,
+            "id":  max(list_id)+1,
             "titulo": titulo_cancion,
             "artista": artista_cancion,
             "anio": anio_cancion,
@@ -35,7 +37,7 @@ def añadir_usuario(usuarios,nombre_usuario,edad,pais):
     usuarios.append(nuevo_usuario)
     print("Usuario guardado")
 
-               
+
 def  añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion):
     for usu in usuarios:
         if usu["nombre_usuario"].lower()==nom_usuario.lower():

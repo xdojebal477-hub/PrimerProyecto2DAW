@@ -40,24 +40,52 @@ header {
     color: inherit;
   }
   main{
-    border: 1px solid red;
+    
   }
-  main section image{
-    border: 1px solid red;
-    width: 50vw;
+  #principal{
+    padding: 20px;
+    margin: auto;
+    /*border: 1px solid red;*/  
+    
   }
   
+  .imagen{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30%;
+    /*border:1px solid #000;*/  
+    width: 10%;
+    /*width: 40%;
+    height: ;
+    margin-left: ;
+    margin: auto;*/
+
+  }
+  .imagen img{
+    margin: auto;
+  }
+  .descripcion{
+    margin-left: 35%;
+  }
   #evento {
     display: inline-block;
-    justify-content: space-between;
+    border-right: 1px solid rgb(21, 107, 86);
+    width: 100%;
+    /*justify-content: space-between;*/
   }
   .info{
+    display: inline-block;
     border-right: 1px solid black;
-    margin-right: 50vw;
+    
+    width: 30%;
+    margin-left: 25%;
   }
  
 .comprar{
-  border: 1px solid red;
+  border: 1px solid rgb(25, 0, 255);
+  display: inline-block;
+  margin-left: 20%;
+  
 }
 
 
