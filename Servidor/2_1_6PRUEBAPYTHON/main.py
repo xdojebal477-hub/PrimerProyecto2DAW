@@ -1,6 +1,5 @@
 import json,os
 
-
 def mostrar_canciones(canciones):
     for can in canciones:
         print("==================================")
@@ -9,13 +8,21 @@ def mostrar_canciones(canciones):
         print(f"Anio cancion: {can["anio"]}")
         print(f"Genero cancion: {can["genero"]}")
 
+def mostrar_favoritos_usuario(usuarios,nom_usuario):
+    usuario=buscar_usuario(usuarios,nom_usuario)
+    if not usuario:
+        print("Usuario no existe")
+    print(f"Las canciones favoritas de {usuario} son {usuario.get("favoritos")}")
+
 def añadir_cancion(canciones,titulo_cancion,artista_cancion,anio_cancion,genero_cancion):
-    ult_id=0
-    for can in canciones:
-        if can["id"]>ult_id:
-            ult_id=can["id"]
+    # ult_id=0
+    # for can in canciones:
+    #     if can["id"]>ult_id:
+    #         ult_id=can["id"]
+
+    list_id=[can["id"] for can in canciones]
     nueva_cancion={
-            "id": ult_id+1,
+            "id":  max(list_id)+1,
             "titulo": titulo_cancion,
             "artista": artista_cancion,
             "anio": anio_cancion,
@@ -35,17 +42,50 @@ def añadir_usuario(usuarios,nombre_usuario,edad,pais):
     usuarios.append(nuevo_usuario)
     print("Usuario guardado")
 
-               
-def  añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion):
+def buscar_usuario(usuarios,nom_usuario):
+    
     for usu in usuarios:
-        if usu["nombre_usuario"].lower()==nom_usuario.lower():
-            for id,val in usu["favoritos"].items():
-                if id in usu["favoritos"]:
-                    print("Cancion ya en favoritos se acutulizara la valoracion")
-                    usu["favoritos"][id]=valoracion
-                else:
-                    usu["favoritos"][id_cancion]=valoracion
-                    print("Cancion añadido a favoritos")
+        print(usu['nombre_usuario'])
+        if usu['nombre_usuario'].lower()==nom_usuario.lower():
+            return usu
+    return None
+
+
+def  añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion,canciones):
+    # for usu in usuarios:
+    #     if usu["nombre_usuario"].lower()==nom_usuario.lower():
+    #         for id,val in usu["favoritos"].items():
+    #             if id in usu["favoritos"]:
+    #                 print("Cancion ya en favoritos se acutulizara la valoracion")
+    #                 usu["favoritos"][id]=valoracion
+    #             else:
+    #                 usu["favoritos"][id_cancion]=valoracion
+    #                 print("Cancion añadido a favoritos")
+    usuario=buscar_usuario(usuarios,nom_usuario)
+    if not usuario:
+        print("El usuario no existe")
+        return
+    
+    mostrar_canciones(canciones)
+    cancion=buscar_cancion_id(canciones,id_cancion)
+    if not cancion:
+        print("Cancion no  encontrada")
+        return
+    
+    if valoracion<0 or valoracion>10:
+        print("Valoracion indebida")
+        return
+    
+    usuario["favoritos"][str(id_cancion)]=valoracion
+    print(f"Cancion {id_cancion} con valoracion {valoracion} en el usuario {nom_usuario}")
+
+
+
+def buscar_cancion_id(canciones,id_cancion):
+    for cancion in canciones:
+        if cancion["id"]==id_cancion:
+            return cancion
+    return None
 
 def buscar_cancion(canciones,titulo_cancion):
     resultado={}
@@ -209,9 +249,10 @@ def main():
                 añadir_usuario(usuarios,nombre_usuario,edad,pais)
             case "5":
                 nom_usuario=input("Nombre del usuario")
-                id_cancion=input("Id de la cancion")
+                id_cancion=int(input("Id de la cancion"))
                 valoracion=float(input("Valoracion de la cancion: "))
-                añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion)
+                añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion,canciones)
+                
             case "9":
                 guardar_canciones(canciones,"canciones.json")
                 guardar_usuarios(usuarios,"usuarios.json")
