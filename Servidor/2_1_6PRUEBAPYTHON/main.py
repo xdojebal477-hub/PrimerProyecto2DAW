@@ -3,16 +3,16 @@ import json,os
 def mostrar_canciones(canciones):
     for can in canciones:
         print("==================================")
-        print(f"Id cancion: {can["id"]}")
-        print(f"Titulo cancion: {can["titulo"]}")
-        print(f"Anio cancion: {can["anio"]}")
-        print(f"Genero cancion: {can["genero"]}")
+        print(f"Id cancion: {can['id']}")
+        print(f"Titulo cancion: {can['titulo']}")
+        print(f"Anio cancion: {can['anio']}")
+        print(f"Genero cancion: {can['genero']}")
 
 def mostrar_favoritos_usuario(usuarios,nom_usuario):
     usuario=buscar_usuario(usuarios,nom_usuario)
     if not usuario:
         print("Usuario no existe")
-    print(f"Las canciones favoritas de {usuario} son {usuario.get("favoritos")}")
+    print(f"Las canciones favoritas de {usuario} son {usuario.get('favoritos')}")
 
 def añadir_cancion(canciones,titulo_cancion,artista_cancion,anio_cancion,genero_cancion):
     # ult_id=0

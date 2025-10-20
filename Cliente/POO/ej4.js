@@ -16,7 +16,6 @@ class Figura{
     
 }
 
-
 class Rectangulo extends Figura{
     _base;
     
@@ -49,7 +48,6 @@ class Rectangulo extends Figura{
         return"Soy un rectangulo de  "+this.color+ " de "+ this.calcularArea()+" de cm2"
     }
 }
-
 class Circulo extends Figura{
     _radio;
 
@@ -86,4 +84,4 @@ console.log(f);
 console.log(r);
 console.log(c);
 
-document.getElementById("salida").innerHTML=f.imprimir+"</br>"r.imprimir+"</br>"c.imprimir;
+document.getElementById("salida").innerHTML=f.imprimir+"</br>+"+r.imprimir+"</br>"+c.imprimir;

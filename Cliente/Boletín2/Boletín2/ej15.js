@@ -1,18 +1,47 @@
+let intervalo = setInterval(pedirNumeroMostrarTabla, 5000);
+let tabla = [];
 
-let intervalo=setInterval(oerdirNumeros)
-function generarLetraDNI(){
-    let dnis=[];
-    let intervalo=setInterval(()=>creaDni(dnis),20000);
+// Calcular letraDNI
+function letraDNI(numeroDni) {
+    let letras = [
+    "T",
+    "R",
+    "W",
+    "A",
+    "G",
+    "M",
+    "Y",
+    "F",
+    "P",
+    "D",
+    "X",
+    "B",
+    "N",
+    "J",
+    "Z",
+    "S",
+    "Q",
+    "V",
+    "H",
+    "L",
+    "C",
+    "K",
+    "E",
+    "T",
+    ];
+    return letras[numeroDni % 23];
 }
-function creaDni(arr){
-    let dni=input("Introduce un DNI (sin letra, -1 para terminiar): ");
-    if(dni==="-1"){
-        clearInterval(intervalo)
-        for(let dni of arr){
 
-        }
+function pedirNumeroMostrarTabla() {
+    let letra;
+    let cad = prompt("Dime el DNI o -1 para parar", "12345678");
+    if (cad === "-1") {
+        // Usando la variable global intervalo, paramos el setInterval
+        clearInterval(intervalo);
+        // Mostramos el array
+        alert(tabla.join(" - "));
+    } else {
+        letra = letraDNI(cad);
+        tabla.push(letra);
     }
-    else{
-        dnis.push(dni)
-    };
 }
