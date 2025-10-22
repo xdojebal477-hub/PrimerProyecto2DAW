@@ -1,0 +1,24 @@
+body{
+    display:flex;
+    flex-direction: row;
+}
+.header{
+    border-radius: 1PX red;
+}
+.nav{
+    border-radius: 1PX red;
+
+}
+.hero{
+    border-radius: 1PX red;
+
+}
+.main{
+    border-radius: 1PX red;
+}
+.imagen-extra{
+    border-radius: 1PX red;
+}
+.banner{
+    border-radius: 1PX red;
+}
