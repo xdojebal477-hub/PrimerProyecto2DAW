@@ -1,18 +1,46 @@
 "use strict";
 
-let a=new Arbol();
-console.log(a)
-console.log(a.toHTMLRow())
-console.log(Object.entries(a))
-console.log(Object.keys(a))
-console.log(Object.values(a))
 
-for(let value of Object.values(a)){
-  console.log(value)
-}
-let p=new Perenne(2,4.5,"Manzano",false);
-console.log(a)
-console.log(a.toHTMLRow())
+
+
+
+
+let a1=new Caduco(1,1.23,"Pinsapo","Febrero");
+let a2=new Perenne(2,2.34,"Manzano",true);
+let a3=new Caduco(3,4.12,"Pino carrasco","marzo");
+let a4=new Perenne(4,4.5,"Manzano",true);
+let a5=new Perenne(4,4.5,"Manzano",true);
+
+
+
+let vivero= new Vivero();
+vivero.altaArbol(a1);
+vivero.altaArbol(a2);
+vivero.altaArbol(a3);
+vivero.altaArbol(a4);
+vivero.altaArbol(a5);
+
+
+
+
+
+
+
+
+
+// let a=new Arbol();
+// console.log(a)
+// console.log(a.toHTMLRow())
+// console.log(Object.entries(a))
+// console.log(Object.keys(a))
+// console.log(Object.values(a))
+
+// for(let value of Object.values(a)){
+//   console.log(value)
+// }
+// let p=new Perenne(2,4.5,"Manzano",false);
+// console.log(a)
+// console.log(a.toHTMLRow())
 
 
 // Variables globales
