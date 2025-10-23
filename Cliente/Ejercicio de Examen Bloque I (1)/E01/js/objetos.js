@@ -20,7 +20,16 @@ class Vivero{
         return seRealizaInclusion;
     }
     tallajeArbol(iCodigo,iTallaje){
+        let arbol=this.arboles.find(arb=>arb.codigo==iCodigo);
         
+        if(!arbol){
+            return "Arbol no encontrado";
+        }
+        if(arbol._tallaje>=iTallaje){
+            return "Tallaje inferior/igual al registrado";
+        }
+        arbol.tallaje=iTallaje;
+        //terminar ejercicio
     }
 
 }
