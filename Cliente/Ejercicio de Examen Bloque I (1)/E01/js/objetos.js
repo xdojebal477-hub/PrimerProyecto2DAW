@@ -29,7 +29,29 @@ class Vivero{
             return "Tallaje inferior/igual al registrado";
         }
         arbol.tallaje=iTallaje;
-        //terminar ejercicio
+        if(arbol instanceof Caduco){
+            return "Correcto, tallaje actualizado  Caduco";
+        }
+        else if(arbol instanceof Caduco){
+            return "Correcto, tallaje actualizado  Caduco";
+        }
+        return "Tipo de arbol desconocido";
+    }
+    listadoArbolesPerennes(iMinAltura){
+        let salida="<table><thead><th>Codigo</th><th>Tallaje</th><th>Especie</th>Frutal</th></thead><tbody>";
+        let arbolListado=this.arboles.filter((elem)=> elem instanceof Perenne && elem.tallaje>=iMinAltura);
+        arbolListado.sort((a1,a2) => a2.tallaje-a1.tallaje);
+        for(let arbol of arbolListado){
+            salida+=arbol.toHTMLRow();
+        }
+        salida+="</tbody></table>";
+    }
+
+    listadoArbolesCaducos(){}
+    totalArbolesVenta(){
+        let resultado=this.arboles.filter((elem)=> (elem instanceof Caduco && elem.tallaje>100) || (elem instanceof Perenne && elem.frutal && elem.tallaje>80) || (elem instanceof Perenne && !elem.frutal && elem.tallaje>120 ));
+        let total=resultado.length;
+        return total;
     }
 
 }
