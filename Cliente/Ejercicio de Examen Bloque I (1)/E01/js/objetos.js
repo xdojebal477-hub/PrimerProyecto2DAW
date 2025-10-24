@@ -47,7 +47,10 @@ class Vivero{
         salida+="</tbody></table>";
     }
 
-    listadoArbolesCaducos(){}
+    listadoArbolesCaducos(){
+        let salida="<table><thead><th>Codigo</th><th>Tallaje</th><th>Especie</th>Mes Floracion</th></thead><tbody>";
+        let arbolListado=this.arboles.filter((elem) elem instanceof Caduco)
+    }
     totalArbolesVenta(){
         let resultado=this.arboles.filter((elem)=> (elem instanceof Caduco && elem.tallaje>100) || (elem instanceof Perenne && elem.frutal && elem.tallaje>80) || (elem instanceof Perenne && !elem.frutal && elem.tallaje>120 ));
         let total=resultado.length;
