@@ -100,15 +100,38 @@ function aceptarAltaArbol() {
 }
 
 function aceptarTallaje() {
-    let sRespuesta =
-    /*Llamada a tallajeArbol*/
+    let iTallaje = parseInt(frmAltaArbol.txtTallaje.value.trim());
+    let sEspecie = frmAltaArbol.txtEspecie.value.trim();
+    let sMesFloracion = frmAltaArbol.txtMesFloracion.value.trim();
+    let sFrutal = frmAltaArbol.rbtFrutal.value;
+    let bFrutal = sFrutal == "S" ? true : false;
+    let oArbol;
 
-    alert(sRespuesta);
-
-    if (sRespuesta.includes("Correcto") > 0) {
-    frmTallaje.reset();
-    frmTallaje.style.display = "none";
+    if (
+    isNaN(iTallaje) ||
+    sEspecie.length == 0 ||
+    (frmAltaArbol.rbtTipoArbol.value == "caduco" && sMesFloracion.length == 0)
+    ) {
+    alert("Faltan datos por rellenar");
+    } else {
+    // Continuo con el alta del árbol
+    let iCodigo = oVivero.siguienteCodigoArbol();
+    if (frmAltaArbol.rbtTipoArbol.value == "caduco") {
+        oArbol = new Caduco(iCodigo, iTallaje, sEspecie, sMesFloracion);
+    } else {
+        oArbol = new Perenne(iCodigo, iTallaje, sEspecie, bFrutal);
     }
+
+    // Insertar el nuevo árbol
+    if (oVivero.altaArbol(oArbol)) {
+        alert("Arbol registrado OK");
+        frmAltaArbol.reset(); // Vaciamos los campos del formulario
+        frmAltaArbol.style.display = "none";
+    } else {
+        alert("Arbol registrado previamente");
+    }
+    }
+
 }
 
 function aceptarListadoPerennes() {
@@ -119,9 +142,9 @@ function aceptarListadoPerennes() {
     oVentana.document.write(
         "<h1>Listado de árboles perennes de altura mínima: " + iAlturaMinima + " cm</h1>"
     );
-    oVentana.document.write(/*Listado a mostrar*/);
+    oVentana.document.lista(/*Listado a mostrar*/);
     oVentana.document.close();
-    oVentana.document.title = "Listado perennes";   
+    oVentana.document.title = "Listado perennes"; 
     // Reseteamos y ocultamos el formulario
     frmListadoPerennes.reset();
     frmListadoPerennes.style.display = "none";
