@@ -1,0 +1,123 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* co te ne dor */
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 100px;
+    background-color: #fff;
+    gap: 40px;
+}
+
+/* items-cards */
+.item1, .item2, .item3 {
+    width: 280px;
+    height: 420px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: white;
+    color: black;
+    
+}
+
+/* --- ICONOS --- */
+i {
+    font-size: 50px;
+    
+}
+
+/* --- TEXTO --- */
+.texto h2 {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.texto p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+/* readmore */
+.boton {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    
+}
+
+/*           HOVERS              */
+
+
+/* TWITTER */
+.item1:hover {
+    background-color: #e91e63;
+    color: white;
+}
+.item1:hover .boton {
+    background-color: white;
+    color: #e91e63;
+}
+.item1:hover i {
+    color: white;
+}
+/*.contenedor:hover{
+    transform: rotateZ(600deg);
+    transition: transform    1s;
+}*/0
+/* INSTAGRAM */
+.item2:hover {
+    background-color: #e91e63;
+    color: white;
+}
+.item2:hover .boton {
+    background-color: white;
+    color: #e91e63;
+}
+.item2:hover i {
+    color: white;
+}
+
+/* YOUTUBE */
+.item3:hover {
+    background-color: #e91e63;
+    color: white;
+}
+.item3:hover .boton {
+    background-color: white;
+    color: #e91e63;
+}
+.item3:hover i {
+    color: white;
+}
+
+
+/* movil */
+@media screen and (max-width: 768px) {
+    .contenedor {
+        flex-direction: column;
+        gap: 30px;
+        padding: 50px;
+    }
+}
