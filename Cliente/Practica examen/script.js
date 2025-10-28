@@ -55,13 +55,21 @@ class Cliente{
     _nombre;//String
     _apellidos;//String
     _usuario;//String
-    constructor(dniCLiente,nombre,apellidos,usuario){
+    constructor(dniCLiente,nombre,apellidos){
         this._dniCliente=dniCLiente;
         this._nombre=nombre;
         this._apellidos=apellidos;
-        this._usuario=usuario;
+        this._usuario=this.generateUser(nombre,apellidos,dniCLiente);
     }
+    generateUser(nombre,apellidos,dniCLiente){
+        let nom=nombre[0].toLowerCase();
+        let partes = apellidos.trim().split(" ");
+        let primApellido=partes[0]??'';
+        let segApellido=partes[1]??'';
 
+        let user=nom+primApellido.slice(0,3)+segApellido.slice(0,3)+dniCLiente.slice(-3);
+        return user.toLowerCase();
+    }
     get dniCLiente() {
         return this._dniCliente;
     }
@@ -191,9 +199,46 @@ class Agencia{
         this._reservas=[]
         this._alojamientos=[]
     }
-    altaCliente(oCliente){}//String
-    altaAlojamiento(oAlojamiento){}//String
-    altaReserva(oReserva){}//String
+    altaCliente(oCliente){
+        let alreadyUserRegister=this.clientes.some((elem)=>elem.dniCLiente==oCliente.dniCLiente);
+        if(alreadyUserRegister){
+            return "Cliente ya registrado"
+        }
+        else{
+            this.clientes.push(oCliente);
+            return"Cliente registrado correctamente.";
+        }
+    }//String
+    altaAlojamiento(oAlojamiento){
+        
+
+    }//String
+    altaReserva(oReserva){
+        let alreadyReservRegistered=this.reservas.some((elem)=>elem.idReserva==oReserva.idReserva);
+        if(alreadyReservRegistered)return" Ya hay una reserva con el mismo id.";
+        
+        
+        const hoy=new Date();
+        if(oReserva.fechaInicio < hoy) return "Fecha de inicio anterior a hoy";
+        if(oReserva.fechaFin < hoy) return "Fecha de fin anterior a hoy";
+        if(oReserva.fechaFin < oReserva.fechaInicio) return "La reserva no puede terminar antes de que empiece";
+
+        for(let alojamiento of oReserva.alojamientos){
+            for(let reserva of this.reservas){
+                if(reserva.alojamientos.includes(alojamiento)){
+                    let ini1 = reserva.fechaInicio;
+                    let fin1 = reserva.fechaFin;
+                    let ini2 = oReserva.fechaInicio;
+                    let fin2 = oReserva.fechaFin;
+            
+                if(!(fin2 < ini1 || ini2 > fin1))return `Alojamiento ${alojamiento.idAlojamiento} no disponible en esas fechas`;
+                }
+            }
+        }
+        this.reservas.push(oReserva);
+        return"Reserva registrada correctamente.";
+        
+    }//String
     bajaReserva(idReserva){}//String
     listadoClientes(){}//HTMLTable
     listadoAlojamientos(){}//HTMLTable
