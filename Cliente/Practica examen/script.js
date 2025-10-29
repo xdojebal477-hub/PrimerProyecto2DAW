@@ -210,7 +210,20 @@ class Agencia{
         }
     }//String
     altaAlojamiento(oAlojamiento){
+        let alreadyRegistered=this.alojamientos.some((elem)=> elem.idAlojamiento==oAlojamiento.idAlojamiento);
+        if(alreadyRegistered)return "Ya existe un alojamiento con ese id";
         
+        if(oAlojamiento instanceof Habitacion){
+            let hab=new Habitacion(oAlojamiento.idAlojamiento,oAlojamiento.numPersonas,oAlojamiento.desayuno);
+            this.alojamientos.push(hab);
+            return `Habitacion con id ${oAlojamiento.idAlojamiento} añadido a lista de alojamientos`;
+        }
+        if(oAlojamiento instanceof Apartamento){
+            let apart=new Apartamento(oAlojamiento.idAlojamiento,oAlojamiento.numPersonas,oAlojamiento.parking,oAlojamiento.dormitorios);
+            this.alojamientos.push(apart);
+            return `Apartamento con id ${oAlojamiento.idAlojamiento} añadido a lista de alojamientos`;
+        }
+
 
     }//String
     altaReserva(oReserva){
@@ -224,6 +237,7 @@ class Agencia{
         if(oReserva.fechaFin < oReserva.fechaInicio) return "La reserva no puede terminar antes de que empiece";
 
         for(let alojamiento of oReserva.alojamientos){
+            if(!this.alojamientos.includes(alojamiento))return `El alojamiento ${alojamiento.idAlojamiento} no está registrado en la agencia.`;
             for(let reserva of this.reservas){
                 if(reserva.alojamientos.includes(alojamiento)){
                     let ini1 = reserva.fechaInicio;
@@ -239,7 +253,11 @@ class Agencia{
         return"Reserva registrada correctamente.";
         
     }//String
-    bajaReserva(idReserva){}//String
+    
+    bajaReserva(idReserva){
+        let index=this.reservas.findIndex((elem)=>elem.idReserva==idReserva);
+    }//String
+
     listadoClientes(){}//HTMLTable
     listadoAlojamientos(){}//HTMLTable
     listadoReservas(fechaIniicio,fechaFin){}//HTMLTable
