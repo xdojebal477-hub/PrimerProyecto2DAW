@@ -43,36 +43,64 @@ function ocultarTodosLosFormularios() {
 
 function aceptarAltaCatalogo() {
   // Añadir código
-  let nombre=document.getElementById("txtNombre").value.trim();
-
   
+    let nombre = frmAltaCatalogo.txtNombre.value.trim();
+    let precio = parseFloat(frmAltaCatalogo.txtPrecio.value);
+    let tipo = document.querySelector("input[name='rbtElectrodomestico']:checked").value;
+    let producto;
+    if (tipo === "TV") {
+        let pulgadas = parseFloat(frmAltaCatalogo.txtPulgadas.value);
+        let fullHD = document.querySelector("input[name='rbtFullHD']:checked").value === "S";
+        producto = new Televisor(nombre, precio, pulgadas, fullHD);
+    } else {
+        let carga = parseFloat(frmAltaCatalogo.txtCarga.value);
+        producto = new Lavadora(nombre, precio, carga);
+    }
+
+    let ok = oAlmacen.altaCatalogo(producto);
+    alert(ok ? "Producto añadido al catálogo" : "Ese producto ya existe");
+    ocultarTodosLosFormularios();
 }
+
+
 
 function aceptarEntradaStock() {
   // Añadir código
+  
+    let nombre = frmEntradaStock.txtNombre.value.trim();
+    let unidades = parseInt(frmEntradaStock.txtUnidades.value);
+    alert(oAlmacen.entradaStock(nombre, unidades));
+    ocultarTodosLosFormularios();
 }
+
+
 
 function aceptarSalidaStock() {
   // Añadir código
+
+    let nombre = frmSalidaStock.txtNombre.value.trim();
+    let unidades = parseInt(frmSalidaStock.txtUnidades.value);
+    alert(oAlmacen.salidaStock(nombre, unidades));
+    ocultarTodosLosFormularios();
 }
 
 function mostrarListadoCatalogo() {
   // Añadir código
-  
-  document.getElementById("salidaCatalogo").innerHTML = listadoCatalogo();
+
+  document.getElementById("salidaCatalogo").innerHTML = oAlmacen.listadoCatalogo();
 
 
 }
 
 function mostrarListadoStock() {
   // Añadir código
-  document.getElementById("salidaStock").innerHTML = listadoStock();
+  document.getElementById("salidaStock").innerHTML = oAlmacen.listadoStock();
 }
 
 function mostrarTotales() {
-  document.getElementById("numTelevisores").innerHTML = lnumTelevisoresStock();
-  document.getElementById("numLavadoras").innerHTML = numLavadorasStock();;
-  document.getElementById("total").innerHTML = importeTotalStock();;
+  document.getElementById("numTelevisores").innerHTML = oAlmacen.numTelevisoresStock();
+  document.getElementById("numLavadoras").innerHTML = oAlmacen.numLavadorasStock();
+  document.getElementById("total").innerHTML = oAlmacen.importeTotalStock();
 
   
   

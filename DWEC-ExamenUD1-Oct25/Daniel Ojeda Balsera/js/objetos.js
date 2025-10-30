@@ -32,14 +32,14 @@ class Almacen{
         let productoIndex=this.catalogo.findIndex((prod)=>prod.nombre==nombre);
         if(productoIndex<0)salida+="El producto no esta  en la base de datos";
         else{
-            this.stock[productoIndex]=unidades;
+            this.stock[productoIndex]+=unidades;
             salida=this.stock[productoIndex]+" totalStock";
         }
     }
     salidaEstock(nombre,unidades){//String
         let salida=" ";
         let productoIndex=this.catalogo.findIndex((prod)=>prod.nombre==nombre);
-        if(producto<0)salida+="El producto no esta  en la base de datos";
+        if(productoIndex<0)salida+="El producto no esta  en la base de datos";
         else{
             this.stock[productoIndex]-=unidades;
             salida=this.stock[productoIndex]+" totalStock";
@@ -48,37 +48,82 @@ class Almacen{
     
     
     listadoCatalogo(){//htmlTable
-        let salida="<table><thead><th>Tipo</th><th>Nombre</th><th>Precio</th><th>Pulgadas</th><th>Full HD</th><th>Carga</th></thead><tbody>";
-        for(let prod of this.catalogo){
-            salida+=prod.toHTMLRow();
+    
+        let salida = `
+        <table>
+            <thead>
+            <tr>
+                <th>Tipo</th><th>Nombre</th><th>Precio</th>
+                <th>Pulgadas</th><th>Full HD</th><th>Carga</th>
+            </tr>
+            </thead>
+            <tbody>
+        `;
+
+        for (let prod of this.catalogo) {
+        salida += `<tr><td>${prod.constructor.name}</td>` + prod.toHTMLRow().replace("<tr>", "").replace("</tr>", "");
         }
-        return salida+="</tbody></table>";
+
+        salida += "</tbody></table>";
+        return salida;
     }
-    listadoStock(){//htmlTable
-        let salida="<table><thead><th>Tipo</th><th>Nombre</th><th>Precio</th><th>Pulgadas</th><th>Full HD</th><th>Carga</th></thead><tbody>";
-        for(let prod of this.stock){
-            salida+=prod.toHTMLRow();
+    listadoStock() {
+        let salida = `
+            <table>
+            <thead>
+                <tr>
+                <th>Tipo</th><th>Nombre</th><th>Precio</th>
+                <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
+
+        for (let i = 0; i < this.catalogo.length; i++) {
+            const prod = this.catalogo[i];
+            const unidades = this.stock[i] ?? 0; // Si no hay stock, 0 por defecto
+            salida += `<tr>
+            <td>${prod.constructor.name}</td>
+            <td>${prod.nombre}</td>
+            <td>${prod.precio}</td>
+            <td>${unidades}</td>
+            </tr>`;
         }
-        return salida+="</tbody></table>";
+
+        salida += "</tbody></table>";
+        return salida;
+}
+
+    
+    
+    
+    numTelevisoresStock(){
+    let total = 0;
+    for(let i=0; i<this.catalogo.length; i++){
+        if(this.catalogo[i] instanceof Televisor){
+            total += this.stock[i]; // sumas las unidades en stock
+        }
     }
-    
-    
-    
-    numTelevisoresStock(){//int
-        let total=0;
-        return total=this.catalogo.filter((elem)=> elem instanceof Televisor).length;
-    }
+    return total;
+}
+
     numLavadorasStock(){//int
         let total=0;
-        return total=this.catalogo.filter((elem)=> elem instanceof Lavadora).length;
-    }
-    importeTotalStock(){//int
-        let total=0;
-        for(let prod of this.catalogo){
-            total+=prod.precio*this.stock[this.catalogo.findIndex((prod1)=>prod1.nombre==prod.nombre)];
+        for(let i=0; i<this.catalogo.length; i++){
+            if(this.catalogo[i] instanceof Lavadora){
+                total += this.stock[i]; // sumas las unidades en stock
+            }
         }
         return total;
     }
+    importeTotalStock(){
+        let total = 0;
+        for(let i=0; i<this.catalogo.length; i++){
+            total += this.catalogo[i].precio * this.stock[i];
+        }
+        return total;
+}
+
 }
 
 class StockProducto{
