@@ -1,0 +1,49 @@
+Chuleta de Métodos de Array Adicionales (útiles para el examen)
+
+1. map()
+   Descripción: Crea un nuevo array con los resultados de aplicar una función a cada elemento.
+   Uso: Transformar elementos.
+   Ejemplo: let cuadrados = [1,2,3].map(x => x*x); // [1,4,9]
+
+2. reduce()
+   Descripción: Reduce el array a un solo valor aplicando una función acumuladora.
+   Uso: Sumar, contar, etc.
+   Ejemplo: let suma = [1,2,3].reduce((acc, val) => acc + val, 0); // 6
+
+3. some()
+   Descripción: Verifica si al menos un elemento cumple la condición.
+   Uso: Comprobar existencia.
+   Ejemplo: let hayMayor = [1,2,3].some(x => x > 2); // true
+
+4. every()
+   Descripción: Verifica si todos los elementos cumplen la condición.
+   Uso: Validar todos.
+   Ejemplo: let todosPositivos = [1,2,3].every(x => x > 0); // true
+
+5. find()
+   Descripción: Devuelve el primer elemento que cumple la condición.
+   Uso: Buscar uno específico.
+   Ejemplo: let encontrado = [1,2,3].find(x => x > 1); // 2
+
+6. splice()
+   Descripción: Cambia el contenido del array eliminando o reemplazando elementos.
+   Uso: Modificar array in situ.
+   Ejemplo: let arr = [1,2,3]; arr.splice(1,1); // arr = [1,3]
+
+7. join()
+   Descripción: Une todos los elementos en una cadena.
+   Uso: Crear strings de arrays.
+   Ejemplo: let str = [1,2,3].join('-'); // "1-2-3"
+
+8. Array.isArray()
+   Descripción: Verifica si el valor es un array.
+   Uso: Comprobar tipo.
+   Ejemplo: Array.isArray([1,2]); // true
+
+9. flat()
+   Descripción: Aplana arrays anidados.
+   Uso: Simplificar estructuras.
+   Ejemplo: [1,[2,3]].flat(); // [1,2,3]
+
+10. includes() (ya en tu chuleta, pero recordar: busca valor exacto)
+    Ejemplo: [1,2,3].includes(2); // true

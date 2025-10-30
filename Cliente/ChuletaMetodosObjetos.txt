@@ -1,0 +1,314 @@
+Chuleta del Objeto Boolean
+==========================
+
+1. toString()
+   - Descripción: Método que devuelve una cadena que representa el valor booleano del objeto.
+   - Uso: Se utiliza para convertir el objeto Boolean a una representación de cadena.
+   - Ejemplo: Si tienes un objeto Boolean llamado "booleano" que fue creado con false, al llamar "booleano.toString()", obtendrás la cadena "false".
+
+Chuleta del Objeto String
+=========================
+
+1. length
+   - Descripción: Propiedad que devuelve la longitud de la cadena.
+   - Uso: Se utiliza para obtener el número de caracteres en una cadena.
+   - Ejemplo:
+     let cadena = "Hola Mundo"; console.log(cadena.length); // Devuelve 10
+
+2. charAt()
+   - Descripción: Método que devuelve el carácter en una posición específica de la cadena.
+   - Uso: Se utiliza para acceder a un carácter en una posición determinada.
+   - Ejemplo:
+     let cadena = "Hola"; console.log(cadena.charAt(1)); // Devuelve "o"
+
+3. indexOf()
+   - Descripción: Método que devuelve la posición de la primera aparición de un valor en la cadena.
+   - Uso: Se utiliza para buscar un carácter o subcadena dentro de la cadena.
+   - Ejemplo:
+     let cadena = "Hola Mundo"; console.log(cadena.indexOf("Mundo")); // Devuelve 5
+
+4. toUpperCase() y toLowerCase()
+   - Descripción: Métodos que devuelven la cadena en mayúsculas o minúsculas, respectivamente.
+   - Uso: Se utilizan para cambiar el caso de la cadena.
+   - Ejemplo:
+     let cadena = "Hola Mundo"; console.log(cadena.toUpperCase()); // Devuelve "HOLA MUNDO"
+     console.log(cadena.toLowerCase()); // Devuelve "hola mundo"
+
+5. substring()
+   - Descripción: Método que devuelve una parte de la cadena entre dos índices.
+   - Uso: Se utiliza para extraer una subcadena de la cadena.
+   - Ejemplo:
+     let cadena = "Hola Mundo"; console.log(cadena.substring(0, 4)); // Devuelve "Hola"
+
+Chuleta del Objeto Date
+=======================
+
+1. new Date()
+   - Descripción: Constructor que crea un nuevo objeto Date. Puede recibir diferentes tipos de argumentos para establecer la fecha.
+   - Uso: Se utiliza para crear un objeto Date con la fecha y hora actuales o con una fecha específica.
+   - Ejemplo:
+     let fechaActual = new Date(); console.log(fechaActual); // Devuelve la fecha y hora actuales
+     let fechaEspecifica = new Date("2023-10-27"); console.log(fechaEspecifica); // Devuelve la fecha específica
+
+2. now()
+   - Descripción: Método estático que devuelve el número de milisegundos desde el 1 de enero de 1970 hasta la fecha actual.
+   - Uso: Se utiliza para obtener la representación en milisegundos de la fecha y hora actuales.
+   - Ejemplo:
+     let milisegundosActuales = Date.now(); console.log(milisegundosActuales); // Devuelve el número de milisegundos desde 1970
+
+3. getFullYear()
+   - Descripción: Método que devuelve el año de la fecha como un número de cuatro cifras.
+   - Uso: Se utiliza para obtener el año de un objeto Date.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.getFullYear()); // Devuelve 2023
+
+4. getMonth()
+   - Descripción: Método que devuelve el mes de la fecha (0-11).
+   - Uso: Se utiliza para obtener el mes de un objeto Date. Ten en cuenta que enero es 0 y diciembre es 11.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.getMonth()); // Devuelve 9 (octubre)
+
+5. getDate()
+   - Descripción: Método que devuelve el día del mes (1-31).
+   - Uso: Se utiliza para obtener el día del mes de un objeto Date.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.getDate()); // Devuelve 27
+
+6. getDay()
+   - Descripción: Método que devuelve el día de la semana (0-6), donde 0 es domingo y 6 es sábado.
+   - Uso: Se utiliza para obtener el día de la semana de un objeto Date.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.getDay()); // Devuelve 5 (viernes)
+
+7. getTime()
+   - Descripción: Método que devuelve el valor en milisegundos desde el 1 de enero de 1970 hasta la fecha especificada.
+   - Uso: Se utiliza para obtener la representación en milisegundos de un objeto Date.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.getTime()); // Devuelve el número de milisegundos desde 1970
+
+8. toISOString()
+   - Descripción: Método que devuelve una cadena en formato ISO 8601.
+   - Uso: Se utiliza para representar la fecha en un formato estándar.
+   - Ejemplo:
+     let fecha = new Date("2023-10-27"); console.log(fecha.toISOString()); // Devuelve "2023-10-27T00:00:00.000Z"
+
+Chuleta del Objeto Math
+=======================
+
+1. Math.abs()
+   - Descripción: Método que devuelve el valor absoluto de un número.
+   - Uso: Se utiliza para obtener la magnitud de un número sin su signo.
+   - Ejemplo:
+     console.log(Math.abs(-5)); // Devuelve 5
+
+2. Math.ceil()
+   - Descripción: Método que redondea un número hacia arriba al entero más cercano.
+   - Uso: Se utiliza para redondear un número hacia el entero superior.
+   - Ejemplo:
+     console.log(Math.ceil(4.2)); // Devuelve 5
+
+3. Math.floor()
+   - Descripción: Método que redondea un número hacia abajo al entero más cercano.
+   - Uso: Se utiliza para redondear un número hacia el entero inferior.
+   - Ejemplo:
+     console.log(Math.floor(4.8)); // Devuelve 4
+
+4. Math.round()
+   - Descripción: Método que redondea un número al entero más cercano.
+   - Uso: Se utiliza para redondear un número según las reglas de redondeo.
+   - Ejemplo:
+     console.log(Math.round(4.5)); // Devuelve 5
+
+5. Math.max()
+   - Descripción: Método que devuelve el valor más grande de una lista de números.
+   - Uso: Se utiliza para encontrar el número máximo entre varios valores.
+   - Ejemplo:
+     console.log(Math.max(1, 3, 2)); // Devuelve 3
+
+6. Math.min()
+   - Descripción: Método que devuelve el valor más pequeño de una lista de números.
+   - Uso: Se utiliza para encontrar el número mínimo entre varios valores.
+   - Ejemplo:
+     console.log(Math.min(1, 3, 2)); // Devuelve 1
+
+7. Math.pow()
+   - Descripción: Método que devuelve la base elevada a la potencia del exponente.
+   - Uso: Se utiliza para realizar operaciones de potenciación.
+   - Ejemplo:
+     console.log(Math.pow(2, 3)); // Devuelve 8 (2^3)
+
+8. Math.sqrt()
+   - Descripción: Método que devuelve la raíz cuadrada de un número.
+   - Uso: Se utiliza para calcular la raíz cuadrada.
+   - Ejemplo:
+     console.log(Math.sqrt(16)); // Devuelve 4
+
+9. Math.random()
+   - Descripción: Método que devuelve un número pseudoaleatorio entre 0 (inclusive) y 1 (exclusive).
+   - Uso: Se utiliza para generar un número aleatorio.
+   - Ejemplo:
+     console.log(Math.random()); // Devuelve un número aleatorio entre 0 y 1
+
+Chuleta del Objeto Number
+=========================
+
+1. Number.isNaN()
+   - Descripción: Método que determina si el valor es NaN (Not-a-Number).
+   - Uso: Se utiliza para verificar si un valor no es un número.
+   - Ejemplo:
+     console.log(Number.isNaN(NaN)); // Devuelve true
+     console.log(Number.isNaN("texto")); // Devuelve false
+
+2. Number.isInteger()
+   - Descripción: Método que determina si el valor es un número entero.
+   - Uso: Se utiliza para comprobar si un número es un entero.
+   - Ejemplo:
+     console.log(Number.isInteger(4)); // Devuelve true
+     console.log(Number.isInteger(4.5)); // Devuelve false
+
+3. Number.parseFloat()
+   - Descripción: Método que analiza una cadena y devuelve un número de punto flotante.
+   - Uso: Se utiliza para convertir una cadena en un número decimal.
+   - Ejemplo:
+     console.log(Number.parseFloat("3.14")); // Devuelve 3.14
+     console.log(Number.parseFloat("10")); // Devuelve 10
+
+4. Number.parseInt()
+   - Descripción: Método que analiza una cadena y devuelve un número entero.
+   - Uso: Se utiliza para convertir una cadena en un número entero.
+   - Ejemplo:
+     console.log(Number.parseInt("10.5")); // Devuelve 10
+     console.log(Number.parseInt("100px")); // Devuelve 100
+
+5. Number.isSafeInteger()
+   - Descripción: Método que determina si el valor es un número entero seguro.
+   - Uso: Se utiliza para verificar si un número entero está dentro del rango seguro de JavaScript.
+   - Ejemplo:
+     console.log(Number.isSafeInteger(9007199254740991)); // Devuelve false
+     console.log(Number.isSafeInteger(9007199254740990)); // Devuelve true
+
+6. Number.MAX_VALUE
+   - Descripción: Propiedad que devuelve el valor numérico más grande que se puede representar en JavaScript.
+   - Uso: Se utiliza para obtener el máximo valor numérico posible.
+   - Ejemplo:
+     console.log(Number.MAX_VALUE); // Devuelve 1.7976931348623157e+308
+
+7. Number.MIN_VALUE
+   - Descripción: Propiedad que devuelve el valor numérico más pequeño que se puede representar en JavaScript (el valor más cercano a 0).
+   - Uso: Se utiliza para obtener el mínimo valor positivo representable.
+   - Ejemplo:
+     console.log(Number.MIN_VALUE); // Devuelve 5e-324
+
+8. Number.prototype.toFixed()
+   - Descripción: Método que formatea un número utilizando notación de punto fijo.
+   - Uso: Se utiliza para redondear un número a un número específico de decimales.
+   - Ejemplo:
+     let num = 2.34567; console.log(num.toFixed(2)); // Devuelve "2.35"
+
+Chuleta del Objeto Array
+========================
+
+1. Array.from()
+   - Descripción: Método que crea una nueva instancia de Array a partir de un objeto iterable o similar a un array.
+   - Uso: Se utiliza para convertir objetos iterables en arrays.
+   - Ejemplo:
+     let str = "hola"; let arr = Array.from(str); console.log(arr); // Devuelve ['h', 'o', 'l', 'a']
+
+2. push()
+   - Descripción: Método que agrega uno o más elementos al final de un array y devuelve la nueva longitud del array.
+   - Uso: Se utiliza para añadir elementos al final de un array.
+   - Ejemplo:
+     let arr = [1, 2]; arr.push(3); console.log(arr); // Devuelve [1, 2, 3]
+
+3. pop()
+   - Descripción: Método que elimina el último elemento de un array y lo devuelve.
+   - Uso: Se utiliza para quitar el último elemento de un array.
+   - Ejemplo:
+     let arr = [1, 2, 3]; let last = arr.pop(); console.log(last); // Devuelve 3 y arr es [1, 2]
+
+4. shift()
+   - Descripción: Método que elimina el primer elemento de un array y lo devuelve.
+   - Uso: Se utiliza para quitar el primer elemento de un array.
+   - Ejemplo:
+     let arr = [1, 2, 3]; let first = arr.shift(); console.log(first); // Devuelve 1 y arr es [2, 3]
+
+5. unshift()
+   - Descripción: Método que agrega uno o más elementos al inicio de un array y devuelve la nueva longitud del array.
+   - Uso: Se utiliza para añadir elementos al principio de un array.
+   - Ejemplo:
+     let arr = [2, 3]; arr.unshift(1); console.log(arr); // Devuelve [1, 2, 3]
+
+6. slice()
+   - Descripción: Método que devuelve una copia superficial de una porción de un array en un nuevo array.
+   - Uso: Se utiliza para obtener una sección de un array sin modificar el original.
+   - Ejemplo:
+     let arr = [1, 2, 3, 4]; let newArr = arr.slice(1, 3); console.log(newArr); // Devuelve [2, 3]
+
+7. forEach()
+   - Descripción: Método que ejecuta una función proporcionada una vez por cada elemento del array.
+   - Uso: Se utiliza para iterar sobre los elementos de un array.
+   - Ejemplo:
+     let arr = [1, 2, 3]; arr.forEach(num => console.log(num)); // Imprime 1, 2, 3
+
+8. filter()
+   - Descripción: Método que crea un nuevo array con todos los elementos que pasen la prueba implementada por la función proporcionada.
+   - Uso: Se utiliza para filtrar elementos de un array.
+   - Ejemplo:
+     let arr = [1, 2, 3, 4]; let filtered = arr.filter(num => num > 2); console.log(filtered); // Devuelve [3, 4]
+
+9. find()
+   - Descripción: Método que devuelve el primer elemento del array que cumple con la función de prueba proporcionada.
+   - Uso: Se utiliza para encontrar un elemento en un array.
+   - Ejemplo:
+     let arr = [1, 2, 3, 4]; let found = arr.find(num => num > 2); console.log(found); // Devuelve 3
+
+10. findIndex()
+    - Descripción: Método que devuelve el índice del primer elemento del array que cumple con la función de prueba proporcionada.
+    - Uso: Se utiliza para encontrar el índice de un elemento en un array.
+    - Ejemplo:
+      let arr = [1, 2, 3, 4]; let index = arr.findIndex(num => num > 2); console.log(index); // Devuelve 2
+
+11. includes()
+    - Descripción: Método que determina si un array incluye un determinado elemento, devolviendo true o false según corresponda.
+    - Uso: Se utiliza para verificar la existencia de un elemento en un array.
+    - Ejemplo:
+      let arr = [1, 2, 3]; console.log(arr.includes(2)); // Devuelve true
+
+12. indexOf()
+    - Descripción: Método que devuelve el primer índice en el que se encuentra un elemento dado en el array, o -1 si no está presente.
+    - Uso: Se utiliza para encontrar la posición de un elemento en un array.
+    - Ejemplo:
+      let arr = [1, 2, 3]; console.log(arr.indexOf(2)); // Devuelve 1
+
+13. length
+    - Descripción: Propiedad que devuelve la cantidad de elementos en un array.
+    - Uso: Se utiliza para obtener el tamaño de un array.
+    - Ejemplo:
+      let arr = [1, 2, 3]; console.log(arr.length); // Devuelve 3
+
+14. sort()
+    - Descripción: Método que ordena los elementos de un array in situ y devuelve el array.
+    - Uso: Se utiliza para ordenar los elementos de un array.
+    - Ejemplo:
+      let arr = [3, 1, 2]; arr.sort(); console.log(arr); // Devuelve [1, 2, 3]
+
+15. reverse()
+    - Descripción: Método que invierte el orden de los elementos de un array in situ.
+    - Uso: Se utiliza para invertir los elementos de un array.
+    - Ejemplo:
+      let arr = [1, 2, 3]; arr.reverse(); console.log(arr); // Devuelve [3, 2, 1]
+
+16. concat()
+    - Descripción: Método que se utiliza para unir dos o más arrays y devuelve un nuevo array.
+    - Uso: Se utiliza para combinar arrays.
+    - Ejemplo:
+      let arr1 = [1, 2]; let arr2 = [3, 4]; let combined = arr1.concat(arr2); console.log(combined); // Devuelve [1, 2, 3, 4]
+
+Chuleta del Objeto Window
+=========================
+
+1. window.setInterval()
+   - Descripción: Método que llama a una función o ejecuta un código específico repetidamente, con un intervalo de tiempo fijo entre cada llamada.
+   - Uso: Se utiliza para ejecutar código en intervalos de tiempo determinados.
+   - Ejemplo:
+     let intervalId = window.setInterval(() => { console.log("Este mensaje se muestra cada 1 segundo."); }, 1000);

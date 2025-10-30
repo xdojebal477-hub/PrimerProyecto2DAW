@@ -1,0 +1,79 @@
+Chuleta de Sintaxis Básica de JavaScript
+=========================================
+
+Variables
+---------
+- let: Variable local, se puede reasignar.
+  Ejemplo: let x = 5; x = 10;
+- const: Constante, no se puede reasignar.
+  Ejemplo: const PI = 3.14;
+- var: Obsoleto, evita usarlo (scope global).
+
+Tipos de Datos Básicos
+----------------------
+- String: "texto" o 'texto'
+- Number: 5, 3.14
+- Boolean: true, false
+- Undefined: Variable sin valor
+- Null: Valor vacío intencional
+- Object: {clave: valor}
+- Array: [1, 2, 3]
+
+Condicionales
+-------------
+- if (condición) { ... } else { ... }
+  Ejemplo: if (x > 0) { console.log("Positivo"); } else { console.log("Negativo"); }
+- switch (variable) { case valor: ... break; default: ... }
+  Ejemplo: switch (dia) { case 1: console.log("Lunes"); break; default: console.log("Otro"); }
+
+Bucles
+------
+- for (inicialización; condición; incremento) { ... }
+  Ejemplo: for (let i = 0; i < 5; i++) { console.log(i); }
+- for...in: Itera sobre claves/propiedades de objetos o índices de arrays.
+  Ejemplo: for (let key in objeto) { console.log(key); } // Claves
+- for...of: Itera sobre valores de arrays u objetos iterables.
+  Ejemplo: for (let valor of array) { console.log(valor); } // Valores
+- while (condición) { ... }
+  Ejemplo: while (x < 10) { x++; }
+- do { ... } while (condición);
+  Ejemplo: do { x++; } while (x < 10);
+
+Funciones
+---------
+- Declaración: function nombre(parametros) { return valor; }
+  Ejemplo: function suma(a, b) { return a + b; }
+- Expresión: const nombre = function(parametros) { ... };
+  Ejemplo: const resta = function(a, b) { return a - b; };
+- Arrow: const nombre = (parametros) => { ... };
+  Ejemplo: const multiplica = (a, b) => a * b;
+
+Arrays Básicos
+--------------
+- Crear: let arr = [1, 2, 3];
+- Acceder: arr[0] // 1
+- Longitud: arr.length // 3
+- Agregar: arr.push(4); // [1,2,3,4]
+- Iterar: for (let item of arr) { ... }
+
+Objetos Básicos
+---------------
+- Crear: let obj = { nombre: "Juan", edad: 25 };
+- Acceder: obj.nombre // "Juan"
+- Agregar: obj.ciudad = "Madrid";
+- Iterar claves: for (let key in obj) { console.log(key); }
+- Iterar valores: for (let value of Object.values(obj)) { console.log(value); }
+
+Operadores Comunes
+------------------
+- Aritméticos: +, -, *, /, %, **
+- Comparación: == (igualdad laxa), === (estricta), !=, !==, <, >, <=, >=
+- Lógicos: && (and), || (or), ! (not)
+- Asignación: =, +=, -=, *=, /=
+
+Notas Importantes
+-----------------
+- Usa === en lugar de == para evitar conversiones automáticas.
+- for...of para valores (arrays), for...in para claves (objetos).
+- Siempre declara variables con let o const.
+- Funciones arrow son concisas, pero no tienen this propio.
