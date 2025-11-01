@@ -192,7 +192,6 @@ def main():
                 "anio": 1987,
                 "genero": "Pop"
             },
-            
         ]
     usuarios=cargar_Usuarios("usuarios.json")
     if not usuarios:
@@ -252,7 +251,7 @@ def main():
                 id_cancion=int(input("Id de la cancion"))
                 valoracion=float(input("Valoracion de la cancion: "))
                 añadir_favorito(usuarios,nom_usuario,id_cancion,valoracion,canciones)
-                
+
             case "9":
                 guardar_canciones(canciones,"canciones.json")
                 guardar_usuarios(usuarios,"usuarios.json")
