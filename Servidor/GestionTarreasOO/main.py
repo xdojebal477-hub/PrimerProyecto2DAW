@@ -80,7 +80,7 @@ class TaskManager():
         pending_tasks = [task for task in self.tasks if not task.completed]
         return self.list_tasks_priority(pending_tasks)
 
-    def completed_tasks(self) -> list[Task]:
+    def     completed_tasks(self) -> list[Task]:
         """Devuelve las tareas completadas ordenadas por prioridad."""
         completed = [task for task in self.tasks if task.completed]
         return self.list_tasks_priority(completed)
