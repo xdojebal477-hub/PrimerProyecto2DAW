@@ -1,0 +1,8 @@
+{% extends 'blog/base.html' %}
+{% block titulo %}{{post.titulo}}  || por  {{post.autor}} :{% endblock %}
+    {% block contenido %}
+    <p>{{post.cuerpo}}</p>
+    <br>
+    <br>
+    <strong><a href="{% url 'principal' %}">Volver</a></strong>
+    {% endblock %}
