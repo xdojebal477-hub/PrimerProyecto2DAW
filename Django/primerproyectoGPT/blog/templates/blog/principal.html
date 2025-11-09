@@ -1,6 +1,13 @@
-{% extends 'blog/base.html' %}
-{% block titulo %}Entradas del blog{% endblock %}
-{% block contenido %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Prueba</title>
+</head>
+<body>
+    <h1>Mi primera pagina estatica de la app blog en Django</h1>
+    <br>
     <ul>
     {% for post in posts %}
         <li>
@@ -11,5 +18,8 @@
     {% empty %}
         <li>No hay publicaciones todavía.</li>
     {% endfor %}
-    </ul>
-{% endblock %}
+</ul>
+
+
+</body>
+</html>
