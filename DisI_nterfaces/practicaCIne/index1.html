@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Cine</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Cartelera</a></li>
+                <li><a href="#map" id="map-link">¿Dónde estamos?</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="Hero">
+            <div class="hero">
+                
+            </div>
+        </section>
+        <section class="cartelera">
+            <h2>Ahora en tu cine</h2>
+            <div id="cards" >
+                <div class="cartel">
+                    <p>The Mysteri</p>
+                </div>
+                <div class="cartel">
+                    <p>Galaxy Battle</p>
+                </div>
+                <div class="cartel">
+                    <p>Into the Jungle</p>
+                </div>
+                <div class="cartel">
+                    <p>The Final Relev</p>
+                </div>
+                <div class="cartel">
+                    <p>Maverick</p>
+                </div>
+            </div>     
+        </section>
+        <section id="map" class="hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194154846815!3d37.77492977975954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085818c5f0f9b1b%3A0x4c7c9e8d7b8b8b8b!2sSan%20Francisco!5e0!3m2!1sen!2sus!4v1697051234567" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    </main>
+    <script>
+        document.getElementById('map-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('map').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

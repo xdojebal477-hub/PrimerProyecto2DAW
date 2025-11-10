@@ -1,0 +1,116 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #F5F5F5;
+    color: #333333;
+}
+
+header {
+    background-color: #E50914;
+    color: #FFFFFF;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+header h1 {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.main-banner {
+    text-align: center;
+    padding: 2rem;
+    background-color: #FFFFFF;
+}
+
+.main-banner h2 {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin: 1rem 0;
+}
+
+.main-banner p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.main-banner .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.main-banner .buttons button {
+    background-color: #E50914;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.main-banner .buttons button:hover {
+    background-color: #B20710;
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.movie-card {
+    background-color: #1E1E1E;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.movie-card h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+footer {
+    background-color: #E50914;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+.social-icons img {
+    width: 24px;
+    margin: 0 0.5rem;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,65 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #F5F5F5;
+    color: #acacac;
+}
+header {
+    background-color: #141414; /* Cambiado a un tono más oscuro */
+    color: #FFFFFF;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+header h1 {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    font-size: 2.5rem; /* Ajustado para mayor impacto */
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #FFD700; /* Cambiado a un tono dorado */
+    text-decoration: none;
+    font-weight: bold;
+}
+#cards {
+    
+    display: flex; /* Alinea los carteles en fila */
+    flex-direction: row ;
+    gap: 1rem; /* Espaciado entre los carteles */
+    justify-content: center; /* Centra los carteles horizontalmente */
+    padding: 1rem; /* Espaciado interno */
+}
+
+#cards .cartel {
+    display: flex;
+    flex-direction: column; /* Coloca el texto debajo del rectángulo */
+    align-items: center; /* Centra el contenido horizontalmente */
+    background-color: #919191; /* Fondo blanco para los rectángulos */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 7px; /* Bordes redondeados */
+    padding: 1rem; /* Espaciado interno */
+    width: 150px; /* Ancho fijo para los rectángulos */
+    height: 200px; /* Alto fijo para los rectángulos */
+    
+}
+
+#cards .cartel p {
+    margin-top: auto; /* Empuja el texto hacia abajo */
+    font-size: 1rem; /* Tamaño del texto */
+    color: #141414; /* Color del texto */
+    text-align: center; /* Centra el texto */
+}
+
+.hidden {
+    display: none; /* Asegúrate de que esta regla esté presente */
+}
