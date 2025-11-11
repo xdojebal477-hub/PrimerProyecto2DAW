@@ -4,6 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autores</title>
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #12121f;
+        color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /* === Título principal === */
+    h1 {
+        margin-top: 40px;
+        color: #00bcd4;
+        font-size: 2rem;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+    /* === Lista de autores === */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+        width: 90%;
+        max-width: 600px;
+    }
+    li {
+        background-color: #1e1e2f;
+        margin-bottom: 12px;
+        padding: 15px 20px;
+        border-radius: 10px;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    /* Hover con sutil animación */
+    li:hover {
+        background-color: #2a2a40;
+        transform: scale(1.02);
+    }
+    /* === Texto dentro de la lista === */
+    li strong {
+        color: #ffffff;
+        font-weight: 600;
+    }
+    li span, li {
+        color: #cccccc;
+    }
+    /* === Enlace de volver al blog === */
+    a {
+        display: inline-block;
+        background-color: #00bcd4;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    a:hover {
+        background-color: #009bb0;
+        transform: scale(1.05);
+    }
+    /* === Responsive === */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+        li {
+            padding: 12px 15px;
+        }
+        a {
+            width: 80%;
+            text-align: center;
+        }
+    }
+
 </head>
 <body>
     <h1>Lista de autores</h1>

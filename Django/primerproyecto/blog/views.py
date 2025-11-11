@@ -14,16 +14,17 @@ def lista_autores(request):
 
 def principal(request):
     
-    """
-    #seccion=Post.objects.all()
-    context={
-        'lo que sea ': seccion
-    }
-    """
-    context=Post.objects.all()
-    
-    return render(request,'blog/principal.html',{'posts':context})
+    entrada=Post.objects.all()
+    contexto={'entradas':entrada,'autores':Autor.objects.all()}
+    return render(request,'blog/principal.html',contexto)
 
 def detalle_post(request,pk):
     context=get_object_or_404(Post, pk=pk)
     return render(request,'blog/detalle_post.html',{'post':context})
+
+def autor_post(request,autor_pk):
+    # context=get_object_or_404(Autor,pk=pk)
+    entrada=Post.objects.filter(autor=autor_pk)
+    autor=get_object_or_404(Autor,pk=autor_pk)
+    contexto={'entradas':entrada,'autor':autor}
+    return render(request,'blog/autor_post.html',contexto)

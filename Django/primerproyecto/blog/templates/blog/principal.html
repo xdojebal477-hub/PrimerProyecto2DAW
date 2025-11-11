@@ -1,13 +1,19 @@
 {% extends 'blog/base.html' %}
+{% block estilo%}
+    <style>
+        
+    </style>
+{% block estilo%} 
 {% block titulo %}Entradas del blog{% endblock %}
 {% block contenido %}
     <ul>
-    {% for post in posts %}
+    {% for entrada in entradas %}
         <li>
             {# Si en el modelo tuvieras resumen usar: {{ post.resumen }} #}
-            <a href="{% url 'detalle_post' pk=post.pk %}"><strong>{{ post.titulo }}</strong> — {{ post.autor }}</a>
+            <a href="{% url 'detalle_post' pk=entrada.pk %}"><strong>{{ entrada.titulo }}</strong> — {{ entrada.autor }}</a>
         </li>
 
+        
     {% empty %}
         <li>No hay publicaciones todavía.</li>
     {% endfor %}

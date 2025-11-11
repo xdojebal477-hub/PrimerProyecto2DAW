@@ -4,6 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Blog</title>
+    <style>
+        /* Estilos para la barra de navegación */
+    nav {
+        background-color: #157e81;  /* Color de fondo oscuro elegante */
+        padding: 15px 20px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Enlaces del nav */
+    nav a {
+        color: #ffffff;             /* Texto blanco */
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'Poppins', sans-serif;
+        margin: 0 12px;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Efecto al pasar el ratón */
+    nav a:hover {
+        color: #00bcd4;             /* Azul claro moderno */
+        transform: scale(1.1);
+    }
+
+    /* Separador visual */
+    nav a:not(:last-child)::after {
+        content: "|";
+        color: #888;
+        margin-left: 12px;
+    }
+    {% block estilo %}{% endblock estilo%}
+    </style>
+    
 </head>
 <body>
     <nav>
