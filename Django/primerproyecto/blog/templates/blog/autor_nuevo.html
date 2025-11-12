@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block titulo %}Nuevo Autor{% endblock %}
+{% block contenido %}
+<h1>Crear un nuevo autor</h1>
+<form method="POST" action="">
+    {% csrf_token %}   
+    {{form.as_p}}
+    <input type="submit" value="Enviar">
+    
+</form>
+{% endblock %}

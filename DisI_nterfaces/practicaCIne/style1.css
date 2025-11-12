@@ -12,6 +12,9 @@ header {
     justify-content: space-between;
     align-items: center;
     font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 header h1 {
     font-family: 'Oswald', sans-serif;
@@ -27,7 +30,7 @@ nav ul {
 }
 
 nav a {
-    color: #FFD700; /* Cambiado a un tono dorado */
+    color: #ffffff; /* Cambiado a un tono dorado */
     text-decoration: none;
     font-weight: bold;
 }
@@ -94,16 +97,14 @@ nav a {
     /*object-fit: fill;*/ /* Ajusta y recorta la imagen para llenar el área */
 }
 
-
-.hidden {
-    display: none !important; /* Forzamos ocultación por defecto */
-}
+/* Elimina o comenta esta regla para que el mapa no esté oculto */
+/*.hidden {
+    display: none !important;  Forzamos ocultación por defecto 
+}*/
 
 /* Refuerzo: asegurar que #map esté oculto hasta que se quite la clase 'hidden' */
 
-#map:not(.hidden) {
-    display: block;
-}
+
 #map {
     display: flex;
     justify-content: center;
@@ -113,6 +114,50 @@ nav a {
 #map iframe {
     display: block;
     border: none;
-    width: 25%;
-    height:500px;
+    width: 50%;
+    height:100vh;
+}
+footer {
+    background: #0f2027;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer::before {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 2px;
+    background-color: #ffd166;
+    opacity: 0.6;
+}
+
+footer .social-icons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+footer .social-icons a {
+    color: #ffd166;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }

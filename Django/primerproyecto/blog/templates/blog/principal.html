@@ -1,11 +1,21 @@
 {% extends 'blog/base.html' %}
-{% block estilo%}
+
+    {% block estilo%}
     <style>
         
     </style>
 {% endblock %}
 {% block titulo %}Entradas del blog{% endblock %}
 {% block contenido %}
+<form method="POST" action="">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+        
+        <button type="submit">Enviar</button>
+    </form>
     <ul>
     {% for entrada in entradas %}
         <li>
@@ -18,4 +28,5 @@
         <li>No hay publicaciones todavía.</li>
     {% endfor %}
     </ul>
+    
 {% endblock %}

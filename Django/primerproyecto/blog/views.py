@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect,render, get_object_or_404
 from .models import Post,Autor
 from django.db.models import Count
-
+from .forms import Autorform
 # Create your views here.
 
 
@@ -28,3 +28,19 @@ def autor_post(request,autor_pk):
     autor=get_object_or_404(Autor,pk=autor_pk)
     contexto={'entradas':entrada,'autor':autor}
     return render(request,'blog/autor_post.html',contexto)
+
+def autor_nuevo(request):
+    if request.method =='POST':
+        form=Autorform(request.POST)
+        if form.is_valid():
+            #alamceno en BD
+            nombre=form.cleaned_data['nombre']
+            email=form.cleaned_data['email']
+            
+            Autor.objects.create(nombre=nombre,email=email)
+            return redirect('lista_autores')
+
+    else:
+        form=Autorform()
+    
+    return render (request,'blog/autor_nuevo.html',{'form':form})
