@@ -1,6 +1,10 @@
-formulario.consultar.addEventListener("click",mostrarDatos);
+document.getElementById('formulario').value.addEventListener("click",mostrarDatos);
+
+
+
+
 function mostrarDatos(){
     let texto=;
     let value=;
-    console.log(`Provincia: ${texto} || Valor: ${value}`)
+    return `<p> Provincia: ${texto} || Valor: ${value} </p>`;
 }
