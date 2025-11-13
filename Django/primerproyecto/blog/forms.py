@@ -1,6 +1,10 @@
 from django import forms
-
-class Autorform(forms.Form):
-    nombre = forms.CharField(max_length=60, label="Nombre autor:")
+from .models import Autor
+class Autorform(forms.ModelForm):
+    nombre=forms.CharField(max_length=100)
+    email=forms.EmailField()
     
-    email = forms.EmailField()
+class AutorModelform(forms.ModelForm):
+    class Meta:
+        model = Autor
+        fields = ['nombre', 'email']

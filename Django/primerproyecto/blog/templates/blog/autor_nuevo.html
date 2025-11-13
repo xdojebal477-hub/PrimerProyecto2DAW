@@ -2,7 +2,7 @@
 
 {% block titulo %}Nuevo Autor{% endblock %}
 {% block contenido %}
-<h1>Crear un nuevo autor</h1>
+<h1>{% if estado == 'editar'%}Crear un nuevo autor{% else %} Editar {% endif %}</h1>
 <form method="POST" action="">
     {% csrf_token %}   
     {{form.as_p}}
