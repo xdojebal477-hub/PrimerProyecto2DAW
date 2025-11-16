@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}PCs de {{ cliente.nombre }}{% endblock %}
+
+{% block content %}
+    <h1>PCs de {{ cliente.nombre }}</h1>
+    <p>Contacto: {{ cliente.email }}</p>
+
+    <ul>
+    {% for pc in pcs %}
+        <li>
+          <a href="{% url 'especificaciones_pc' pc_pk=pc.pk %}"><strong>{{ pc.nombre }}</strong></a>
+        </li>
+    {% empty %}
+        <li>Este cliente no tiene PCs registrados.</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'ver_clientes' %}">Volver a clientes</a>
+{% endblock %}

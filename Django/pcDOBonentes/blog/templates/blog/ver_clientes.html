@@ -1,0 +1,24 @@
+{# 1. Extiende la plantilla base #}
+{% extends 'blog/base.html' %}
+
+{# 2. (Opcional) Cambia el título de la pestaña del navegador #}
+{% block title %}
+    Blog - Mi Proyecto Django
+{% endblock title %}
+
+{# 3. (Opcional) Añade CSS solo para esta página #}
+{% block styles %}
+    {#<link rel="stylesheet" href="{% static 'css/pagina_blog.css' %}">#}
+{% endblock styles %}
+
+{# 4. Inserta el contenido principal de esta página #}
+{% block content %}
+    <h1>Clientes:</h1>
+    {% for cliente in clientes %}
+    <li>
+        <a href="{% url 'ver_pcs_cliente' cliente_pk=cliente.pk %}">{{ cliente.nombre }}</a><br>
+        <strong>Contacto:</strong> {{ cliente.email }}
+    </li>
+    {% endfor %}
+
+{% endblock content %}

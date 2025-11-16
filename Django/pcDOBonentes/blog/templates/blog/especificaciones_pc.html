@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}PC {{ pc.nombre }}{% endblock %}
+
+{% block content %}
+<h1>{{ pc.nombre }}</h1>
+<p><strong>Cliente:</strong> {{ pc.cliente.nombre }}</p>
+
+<ul>
+    <li><strong>CPU:</strong> {{ especificaciones.cpu.nombre }}
+    <p>{{ especificaciones.cpu.especificacion }}</p>
+    </li>
+    <li><strong>RAM:</strong> {{ especificaciones.ram.nombre }}
+    <p>{{ especificaciones.ram.especificacion }}</p>
+    </li>
+    <li><strong>SSD:</strong> {{ especificaciones.ssd.nombre }}
+    <p>{{ especificaciones.ssd.especificacion }}</p>
+    </li>
+    <li><strong>GPU:</strong> {{ especificaciones.gpu.nombre }}
+    <p>{{ especificaciones.gpu.especificacion }}</p>
+    </li>
+</ul>
+
+<p><a href="{% url 'ver_pcs_cliente' cliente_pk=pc.cliente.pk %}">Volver a PCs del cliente</a></p>
+<p><a href="{% url 'ver_clientes' %}">Volver a clientes</a></p>
+{% endblock %}

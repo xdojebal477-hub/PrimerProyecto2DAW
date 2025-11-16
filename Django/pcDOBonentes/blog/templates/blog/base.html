@@ -1,0 +1,52 @@
+{# Carga la librería de 'static' para usarla en el template #}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {# --- TÍTULO DE LA PÁGINA --- #}
+    {# 'block title' permite a las plantillas hijas cambiar el título #}
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+
+    {# --- CSS GLOBAL --- #}
+    {# Enlaza tu archivo CSS principal que se usará en todo el sitio #}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {# 'block styles' permite a las plantillas hijas añadir CSS extra #}
+    {% block styles %}
+    {% endblock styles %}
+</head>
+<body>
+
+    {# --- ENCABEZADO / NAVEGACIÓN --- #}
+    
+
+    {# --- CONTENIDO PRINCIPAL --- #}
+    <main class="container">
+        {# Este es el bloque MÁS IMPORTANTE. #}
+        {# Aquí es donde se inyectará el contenido de las plantillas hijas. #}
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    {# --- PIE DE PÁGINA --- #}
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; {% now "Y" %} Mi Proyecto. Todos los derechos reservados.</p>
+            {# 'now "Y"' es un tag de Django que inserta el año actual #}
+        </div>
+    </footer>
+
+    {# --- SCRIPTS GLOBALES --- #}
+    {# (Opcional) Tu JS principal que se usa en todo el sitio #}
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {# 'block scripts' permite a las plantillas hijas añadir JS extra #}
+    {% block scripts %}
+    {% endblock scripts %}
+
+</body>
+</html>
