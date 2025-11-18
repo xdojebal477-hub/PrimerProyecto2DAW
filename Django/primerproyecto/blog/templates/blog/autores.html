@@ -87,6 +87,10 @@
 <body>
     <h1>Lista de autores</h1>
     <ul>
+        <form action="">
+            {% csrf_token %}
+            {#filtra}
+        </form>
         {% for autor in autores %}
             <li>
                 <strong>{{ autor.nombre }}</strong> — {{ autor.num_posts }} entradas || 
