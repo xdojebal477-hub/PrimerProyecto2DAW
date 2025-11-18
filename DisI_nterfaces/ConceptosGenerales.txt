@@ -1,0 +1,85 @@
+CONCEPTOS GENERALES DE DISEÑO DE INTERFACES WEB
+
+1. Principios de Diseño:
+   - Jerarquía Visual: Usar tamaño, color, posición para guiar la atención.
+   - Consistencia: Mantener estilos similares en toda la interfaz.
+   - Simplicidad: Evitar clutter, foco en lo esencial.
+   - Accesibilidad: Diseño usable por todos, incluyendo personas con discapacidades.
+
+2. UX (User Experience):
+   - Usabilidad: Facilidad de uso.
+   - Navegación intuitiva.
+   - Feedback claro (hover, mensajes de error).
+   - Performance: Carga rápida, responsive.
+
+3. UI (User Interface):
+   - Elementos visuales: botones, formularios, navegación.
+   - Paleta de colores coherente.
+   - Tipografía legible.
+   - Espaciado consistente.
+
+4. Arquitectura de Información:
+   - Organización lógica del contenido.
+   - Navegación clara y consistente.
+   - Búsqueda efectiva si aplica.
+
+5. Responsive Web Design:
+   - Adaptación a diferentes dispositivos.
+   - Mobile-first approach.
+   - Breakpoints estratégicos.
+
+6. Performance:
+   - Optimización de imágenes.
+   - Minificación de CSS/JS.
+   - Lazy loading.
+   - CDN para recursos.
+
+7. Accesibilidad (WCAG):
+   - Contraste de color adecuado.
+   - Texto alternativo para imágenes.
+   - Navegación por teclado.
+   - Lectores de pantalla compatibles.
+
+8. SEO Básico:
+   - Títulos descriptivos.
+   - Meta descriptions.
+   - URLs amigables.
+   - Estructura semántica HTML.
+
+9. Herramientas y Tecnologías:
+   - HTML5: Estructura semántica.
+   - CSS3: Layouts, animaciones, responsive.
+   - Frameworks: Bootstrap, Tailwind (no visto en ejercicios).
+   - Preprocesadores: Sass/SCSS (no usado).
+   - JavaScript: Interactividad (no cubierto en unidad).
+
+10. Flujo de Trabajo:
+    - Wireframing: Bocetos básicos.
+    - Prototipado: Versiones interactivas.
+    - Desarrollo: HTML primero, luego CSS.
+    - Testing: Diferentes navegadores/dispositivos.
+    - Iteración basada en feedback.
+
+11. Tendencias Actuales:
+    - Dark mode.
+    - Microinteracciones.
+    - Diseño minimalista.
+    - Componentes reutilizables.
+
+12. Errores Comunes a Evitar:
+    - Sobrecarga visual.
+    - Navegación confusa.
+    - Textos pequeños.
+    - Falta de feedback.
+    - Ignorar mobile.
+
+13. Evaluación:
+    - Pruebas de usuario.
+    - Análisis de métricas (tiempo en página, conversión).
+    - Herramientas: Google Analytics, Hotjar.
+
+14. Ética en Diseño Web:
+    - Privacidad de datos.
+    - Diseño inclusivo.
+    - Sostenibilidad (optimización performance).
+    - Transparencia en términos de uso.

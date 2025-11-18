@@ -1,0 +1,91 @@
+LAYOUTS CON CSS PARA INTERFACES WEB
+
+1. Modelo de Caja (Box Model):
+   - Content: Contenido del elemento.
+   - Padding: Espacio interno.
+   - Border: Borde.
+   - Margin: Espacio externo.
+   - Propiedad: box-sizing: border-box; (incluye padding y border en width/height).
+
+2. Posicionamiento:
+   - static: Posición normal (default).
+   - relative: Relativo a su posición normal.
+   - absolute: Relativo al ancestro posicionado más cercano.
+   - fixed: Relativo a la ventana del navegador.
+   - sticky: Se comporta como relative hasta llegar a un punto, luego fixed.
+
+3. Display:
+   - block: Ocupa todo el ancho, nueva línea.
+   - inline: Solo ocupa el espacio necesario, en línea.
+   - inline-block: Como inline pero permite width/height.
+   - none: Oculta el elemento.
+   - flex: Activa Flexbox.
+   - grid: Activa CSS Grid.
+
+4. Float:
+   - float: left/right; Hace que el elemento flote a un lado.
+   - clear: both; Limpia floats.
+   - Usado para layouts antiguos, ahora preferir Flexbox/Grid.
+
+Ejemplo Float Layout:
+#contenedor { float: left; width: 100%; }
+nav { float: left; width: 20%; }
+main { float: left; width: 75%; }
+footer { clear: both; }
+
+5. Flexbox:
+   - display: flex; en contenedor.
+   - flex-direction: row/column; Dirección principal.
+   - justify-content: flex-start/center/space-between/space-around; Alineación horizontal.
+   - align-items: stretch/flex-start/center; Alineación vertical.
+   - flex-wrap: wrap; Permite múltiples líneas.
+   - flex: 1; Hace que el elemento crezca.
+
+Ejemplo Flexbox:
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.header { flex: 1; }
+.main { flex: 3; }
+.footer { flex: 1; }
+
+6. CSS Grid:
+   - display: grid; en contenedor.
+   - grid-template-columns: 1fr 2fr; Define columnas.
+   - grid-template-rows: auto 1fr; Define filas.
+   - grid-template-areas: "header header" "nav main"; Nombra áreas.
+   - grid-area: header; Asigna elemento a área.
+
+Ejemplo Grid:
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+    grid-template-columns: 200px 1fr;
+}
+.header { grid-area: header; }
+.nav { grid-area: nav; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+
+7. Media Queries (Responsive Design):
+   - @media (max-width: 768px) { ... }
+   - Cambiar layout según tamaño de pantalla.
+   - Ejemplo: Cambiar flex-direction a column en móviles.
+
+8. Unidades:
+   - px: Píxeles fijos.
+   - %: Porcentaje del contenedor.
+   - vw/vh: Porcentaje de viewport width/height.
+   - em/rem: Relativo al tamaño de fuente.
+
+9. Técnicas Avanzadas:
+   - CSS Variables: --color: #fff; usar con var(--color).
+   - Transiciones: transition: all 0.3s ease;
+   - Animaciones: @keyframes nombre { ... } animation: nombre 2s;
+   - Box-shadow: Para sombras.
+   - Border-radius: Para esquinas redondeadas.

@@ -1,0 +1,91 @@
+ESTRUCTURA BÁSICA HTML PARA INTERFACES WEB
+
+1. Estructura General de una Página HTML:
+   - <!DOCTYPE html>: Declara el tipo de documento.
+   - <html lang="es">: Elemento raíz, especifica el idioma.
+   - <head>: Contiene metadatos, título, enlaces a CSS/JS.
+     - <meta charset="UTF-8">: Codificación de caracteres.
+     - <meta name="viewport" content="width=device-width, initial-scale=1.0">: Para responsive design.
+     - <title>: Título de la página.
+     - <link rel="stylesheet" href="archivo.css">: Enlace a CSS.
+   - <body>: Contenido visible de la página.
+
+2. Elementos Semánticos Principales:
+   - <header>: Cabecera de la página o sección.
+   - <nav>: Navegación, menú.
+     - <ul> y <li> para listas de navegación.
+     - <a href="#">: Enlaces.
+   - <main>: Contenido principal.
+   - <section>: Secciones del contenido.
+   - <article>: Artículos independientes.
+   - <aside>: Contenido lateral, información adicional.
+   - <footer>: Pie de página.
+
+3. Elementos de Contenido:
+   - <h1> a <h6>: Encabezados jerárquicos.
+   - <p>: Párrafos.
+   - <div>: Contenedor genérico.
+   - <img src="imagen.jpg" alt="Descripción">: Imágenes.
+   - <button>: Botones.
+
+4. Atributos Importantes:
+   - id: Identificador único.
+   - class: Clase para estilos CSS.
+   - href: Para enlaces.
+   - src: Para imágenes y recursos externos.
+   - alt: Texto alternativo para imágenes.
+
+5. Formularios:
+   - <form>: Contenedor del formulario.
+     - action: URL donde enviar datos.
+     - method: GET o POST.
+   - Elementos de entrada:
+     - <input type="text">: Texto simple.
+     - <input type="email">: Correo electrónico.
+     - <input type="password">: Contraseña.
+     - <input type="date">: Fecha.
+     - <input type="file">: Subir archivo (accept="image/*").
+     - <input type="tel">: Teléfono.
+     - <input type="checkbox">: Casilla de verificación.
+     - <input type="radio">: Botón de opción (mismo name para grupo).
+   - <select>: Lista desplegable.
+     - <option value="valor">: Opciones.
+   - <textarea>: Área de texto multilínea (rows, cols).
+   - <label for="id">: Etiqueta asociada a input.
+   - <button type="submit">: Botón de envío.
+   - Atributos comunes: name, id, required, placeholder.
+
+Ejemplo Básico:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de la Página</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Encabezado Principal</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Acerca de</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Sección Principal</h2>
+            <p>Contenido aquí.</p>
+        </section>
+        <aside>
+            <h3>Información Adicional</h3>
+            <p>Más info.</p>
+        </aside>
+    </main>
+    <footer>
+        <p>© 2023 Empresa</p>
+    </footer>
+</body>
+</html>
