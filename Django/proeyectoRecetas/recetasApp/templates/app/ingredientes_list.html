@@ -1,0 +1,14 @@
+{% extends 'app/base.html'%}
+
+{% block content %}
+    <h1>Bienvenido a la página de inicio de RecetasApp</h1>
+    <ul>
+        {% for ingrediente in ingredientes %}
+            <li>
+                <strong>{{ ingrediente}}</strong>
+            </li>
+        {% empty %}
+            <li>No hay ingredientes registrados.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
