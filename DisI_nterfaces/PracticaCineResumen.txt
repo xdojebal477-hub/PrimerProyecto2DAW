@@ -1,0 +1,69 @@
+RESUMEN DE LA PRÁCTICA CINE - LAYOUT AVANZADO
+
+1. Estructura General:
+   - Header con título y navegación.
+   - Main con secciones: hero, películas, footer.
+   - Navegación consistente en todas las páginas.
+
+2. Navegación:
+   - <nav> con <ul> y <li>.
+   - Enlaces a páginas: cine.html, cartelera.html, mapa.html.
+   - Estilos: inline display, hover effects.
+
+3. Sección Hero:
+   - Imagen grande de película destacada.
+   - Título y botón "Ver trailer" con enlace a YouTube.
+   - Diseño atractivo con gradientes y animaciones.
+
+4. Sección de Películas:
+   - Grid layout con CSS Grid.
+   - grid-template-areas para posicionamiento específico.
+   - Cards con imagen, título.
+   - Hover effects: scale transform.
+
+5. Footer:
+   - Información de contacto y redes sociales.
+   - Iconos de Font Awesome.
+   - Layout flexbox para distribución.
+
+6. CSS Grid en Cartelera:
+   - .peliculas con grid-template-areas.
+   - Áreas nombradas: Pelicula1, Pelicula2, etc.
+   - Posicionamiento no uniforme para diseño creativo.
+
+7. Estilos Avanzados:
+   - Reset CSS con * selector.
+   - Box-sizing: border-box.
+   - Fuentes: Roboto de Google Fonts.
+   - Colores: Azules (#1E90FF) para header/footer.
+   - Sombras: box-shadow para cards.
+   - Transiciones: transition para efectos hover.
+
+8. Responsive Design:
+   - Aunque no visto en CSS, estructura preparada para media queries.
+   - Uso de unidades relativas (%, vw).
+
+9. Iconos y Multimedia:
+   - Font Awesome para redes sociales.
+   - Imágenes con alt texts.
+   - Enlaces externos (YouTube).
+
+10. Mejores Prácticas Aplicadas:
+    - Estructura semántica HTML5.
+    - CSS organizado por secciones.
+    - Nombres de clases descriptivos.
+    - Separación de concerns: HTML estructura, CSS presentación.
+
+11. Técnicas CSS Destacadas:
+    - CSS Grid para layouts complejos.
+    - Flexbox en footer.
+    - Animaciones con transform y transition.
+    - Variables implícitas (aunque no usadas explícitamente).
+
+12. Consideraciones de UX:
+    - Navegación clara.
+    - Visual hierarchy con tamaños y colores.
+    - Interacciones hover para feedback.
+    - Información de contacto accesible.
+
+Esta práctica demuestra integración de múltiples técnicas CSS para crear una interfaz web atractiva y funcional para un sitio de cine.

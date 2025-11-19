@@ -1,0 +1,65 @@
+ICONOS Y FUENTES EN INTERFACES WEB
+
+1. Iconos:
+   - Font Awesome: Librería de iconos vectoriales.
+     - Incluir: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+     - Usar: <i class="fas fa-home"></i> (solid), <i class="far fa-home"></i> (regular), <i class="fab fa-facebook"></i> (brands).
+   - Google Material Icons: <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     - Usar: <i class="material-icons">home</i>
+   - SVG inline: <svg>...</svg> para iconos personalizados.
+   - Ventajas: Escalables, ligeros, accesibles.
+
+2. Fuentes (Fonts):
+   - Google Fonts: Fuente gratuita de Google.
+     - Incluir: <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+     - Usar: font-family: 'Roboto', sans-serif;
+   - Fuentes del sistema: Arial, Helvetica, sans-serif.
+   - @font-face: Para fuentes personalizadas.
+     - @font-face { font-family: 'MiFuente'; src: url('fuente.woff2') format('woff2'); }
+
+3. Propiedades CSS de Texto:
+   - font-family: 'Roboto', sans-serif;
+   - font-size: 16px; (usar rem/em para responsive).
+   - font-weight: 400 (normal), 700 (bold).
+   - text-align: center/left/right/justify.
+   - text-decoration: none/underline.
+   - letter-spacing: 1px; (espaciado entre letras).
+   - line-height: 1.5; (altura de línea).
+
+4. Mejores Prácticas:
+   - Limitar a 2-3 fuentes por sitio.
+   - Considerar legibilidad y accesibilidad.
+   - Usar fuentes sans-serif para pantallas.
+   - Optimizar carga: usar font-display: swap;
+   - Fallback fonts: serif, sans-serif, monospace.
+
+5. Ejemplo de Uso:
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-weight: 700;
+    text-align: center;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.social-media i {
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+6. Accesibilidad:
+   - Iconos con texto alternativo o aria-label.
+   - Contraste adecuado entre texto y fondo.
+   - Tamaño mínimo de fuente: 14px para body text.
+
+7. Optimización:
+   - Subset fonts para reducir tamaño.
+   - Usar WOFF2 format.
+   - Preload fonts críticas: <link rel="preload" href="font.woff2" as="font">

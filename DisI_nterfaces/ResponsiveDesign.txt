@@ -1,0 +1,68 @@
+DISEÑO RESPONSIVE CON MEDIA QUERIES
+
+1. Conceptos Básicos:
+   - Diseño que se adapta a diferentes tamaños de pantalla.
+   - Usa media queries para aplicar estilos condicionales.
+   - Breakpoints comunes: 480px (móviles), 768px (tablets), 1024px (desktops).
+
+2. Sintaxis de Media Queries:
+   - @media (max-width: 768px) { ... }: Para pantallas menores a 768px.
+   - @media (min-width: 769px) and (max-width: 1024px) { ... }: Rango.
+   - @media (orientation: landscape) { ... }: Orientación.
+
+3. Viewport Meta Tag:
+   - <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   - Esencial para responsive design.
+
+4. Unidades Relativas:
+   - %: Porcentaje del contenedor padre.
+   - vw/vh: Porcentaje del viewport (100vw = ancho completo).
+   - em/rem: Relativo al tamaño de fuente.
+
+5. Técnicas de Layout Responsive:
+   - Flexbox: flex-direction: column en móviles.
+   - Grid: grid-template-columns: 1fr en móviles, repeat(3, 1fr) en desktop.
+   - Float: Cambiar a no float en móviles.
+
+6. Imágenes Responsive:
+   - max-width: 100%; height: auto; Para que se escalen.
+   - <picture> con <source media="(max-width: 768px)" srcset="mobile.jpg">
+   - Atributo srcset en <img> para diferentes resoluciones.
+
+7. Navegación Responsive:
+   - Menú hamburguesa para móviles.
+   - Ocultar/mostrar elementos con display: none/block.
+
+8. Ejemplo Media Query:
+@media only screen and (max-width: 480px) {
+    .header-menu {
+        flex-direction: column;
+    }
+    .main-image {
+        flex-direction: column;
+    }
+    nav ul li {
+        display: block;
+        text-align: center;
+    }
+}
+
+9. Mobile-First Approach:
+   - Diseñar primero para móviles, luego agregar estilos para pantallas más grandes.
+   - @media (min-width: 768px) { ... } para tablets y arriba.
+
+10. Testing:
+    - Usar herramientas de desarrollo del navegador.
+    - Probar en diferentes dispositivos.
+    - Considerar touch interfaces vs mouse.
+
+11. Frameworks CSS:
+    - Bootstrap: Sistema de grid responsive.
+    - Foundation: Similar a Bootstrap.
+    - CSS Grid y Flexbox nativos son poderosos.
+
+12. Mejores Prácticas:
+    - Evitar anchos fijos (px), usar relativos.
+    - Optimizar imágenes para web.
+    - Considerar performance en móviles.
+    - Usar progressive enhancement.
