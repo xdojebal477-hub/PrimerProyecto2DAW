@@ -10,6 +10,22 @@ class CategoriaIngrediente(models.Model):
     def __str__(self):
         return f"{self.nombre} "
 
+class Lactosa (models.Model):
+    lactosa=models.BooleanField()
+
+    def __str__(self):
+        return f"{self.lactosa}"    
+
+class Cantidad(models.Model):
+    cantidad=models.IntegerField()
+    def __str__(self):
+        return f"{self.cantidad}" 
+
 class Ingrediente(models.Model):
     nombre=models.CharField(max_length=100)
-    categoria=models(CategoriaIngrediente, on_delete=models.CASCADE)
+    categoria=models.ForeignKey(CategoriaIngrediente, on_delete=models.CASCADE)
+    lactosa=models.ForeignKey(Lactosa, on_delete=models.CASCADE,default=False)
+    cantidad=models.ForeignKey(Cantidad, on_delete=models.CASCADE)
+
+
+
