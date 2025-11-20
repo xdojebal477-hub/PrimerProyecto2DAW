@@ -1,4 +1,4 @@
-{% extends 'app/base.html'%}
+{% extends 'recetasApp/base.html'%}
 
 {% block content %}
     <h1>Bienvenido a la página de inicio de RecetasApp</h1>
@@ -11,11 +11,17 @@
             {% endfor %}
         </select>
         <label for="lactosa">Lactosa:</label>
-        <input type="checkbox" name="lactosa" id="lactosa">
+        <input type="checkbox" name="lactosa" id="lactosa" {% if lactosa_filtro %}checked{% endif %}>
         <label for="cantidad">Cantidad:</label>
-        <input type="number" name="cantidad" id="cantidad">
+        <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro }}">
         <input type="submit" value="Filtrar">
+        <a href="{% url 'ingredientes_list' %}">
+            <button type="button">Borrar filtros</button>
+        </a>
     </form>
+    <!-- <form action="" method="get">
+        {{ formulario_filtro }} creamos un formulario 
+    </form> -->
     <ul>
         {% for ingrediente in ingredientes %}
             <li>

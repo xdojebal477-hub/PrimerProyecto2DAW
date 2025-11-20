@@ -27,5 +27,8 @@ class Ingrediente(models.Model):
     lactosa=models.ForeignKey(Lactosa, on_delete=models.CASCADE,default=False)
     cantidad=models.ForeignKey(Cantidad, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.nombre} - {self.categoria} - {self.lactosa} - {self.cantidad}"
+
 
 

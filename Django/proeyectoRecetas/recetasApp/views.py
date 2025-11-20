@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 
-from Django.proeyectoRecetas.recetasApp.forms import FiltroIngredienteForm
+from .forms import FiltroIngredienteForm
 from .models import Ingrediente,CategoriaIngrediente
 # Create your views here.
 
@@ -19,9 +19,18 @@ def ingredientes_list(request):
     if  categoria_filtro:
         ingredientes=ingredientes.filter(categoria__pk=categoria_filtro)
     if  lactosa_filtro:
-        ingredientes=ingredientes.filter(lactosa=True)
+        ingredientes=ingredientes.filter(lactosa__lactosa=True)
     if cantidad_filtro:
         ingredientes=ingredientes.filter(cantidad__cantidad=cantidad_filtro)
     
     formulario_filtro=FiltroIngredienteForm()
     return render(request, 'recetasApp/ingredientes_list.html',{'ingredientes':ingredientes, 'categorias': categorias,'lactosa_filtro': lactosa_filtro, 'cantidad_filtro': cantidad_filtro, 'formulario_filtro': formulario_filtro}) 
+
+def ingrediente_detalle(request, pk):
+    pass
+
+def ingrediente_detalle(request, pk):
+    pass
+
+def ingrediente_detalle(request, pk):
+    pass
