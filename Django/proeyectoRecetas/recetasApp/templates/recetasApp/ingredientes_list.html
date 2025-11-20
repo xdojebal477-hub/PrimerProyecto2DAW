@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {% extends 'recetasApp/base.html' %}
 
@@ -84,3 +85,39 @@
     <!-- <form action="" method="get">
         {{ formulario_filtro }} creamos un formulario
     </form> -->
+=======
+{% extends 'recetasApp/base.html'%}
+
+{% block content %}
+    <h1>Bienvenido a la página de inicio de RecetasApp</h1>
+    <form action="" method="get">
+        <label for="categoria">
+        </label>
+        <select name="categoria" id="categoria" >
+            {% for categoria in categorias %}
+            <option value="{{ categoria.pk }}" {% if request.GET.categoria|stringformat:'s' == categoria.pk|stringformat:'s' %}selected{% endif %}>{{ categoria.nombre }}</option>
+            {% endfor %}
+        </select>
+        <label for="lactosa">Lactosa:</label>
+        <input type="checkbox" name="lactosa" id="lactosa" {% if lactosa_filtro %}checked{% endif %}>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro }}">
+        <input type="submit" value="Filtrar">
+        <a href="{% url 'ingredientes_list' %}">
+            <button type="button">Borrar filtros</button>
+        </a>
+    </form>
+    <!-- <form action="" method="get">
+        {{ formulario_filtro }} creamos un formulario 
+    </form> -->
+    <ul>
+        {% for ingrediente in ingredientes %}
+            <li>
+                <strong>{{ ingrediente}}</strong>
+            </li>
+        {% empty %}
+            <li>No hay ingredientes registrados.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+>>>>>>> c68e800c8e45e04cc7c5f6f8b07c32eb7162ced9

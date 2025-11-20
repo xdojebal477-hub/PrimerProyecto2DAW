@@ -26,6 +26,7 @@ def ingredientes_list(request):
     formulario_filtro=FiltroIngredienteForm()
     return render(request, 'recetasApp/ingredientes_list.html',{'ingredientes':ingredientes, 'categorias': categorias,'lactosa_filtro': lactosa_filtro, 'cantidad_filtro': cantidad_filtro, 'formulario_filtro': formulario_filtro}) 
 
+<<<<<<< HEAD
 
 def crear_ingrediente(request):
     if request.method == 'POST':
@@ -67,3 +68,13 @@ def ingrediente_eliminar(request, pk):
         return redirect('ingredientes_list')
     else:
         return render(request,'recetasApp/ingrediente_eliminar.html',{'ingrediente':ingrediente})
+=======
+def ingrediente_detalle(request, pk):
+    pass
+
+def ingrediente_detalle(request, pk):
+    pass
+
+def ingrediente_detalle(request, pk):
+    pass
+>>>>>>> c68e800c8e45e04cc7c5f6f8b07c32eb7162ced9
