@@ -1,0 +1,266 @@
+
+/* --- VARIABLES (Paleta de colores moderna) --- */
+:root {
+    --primary-color: #4a90e2;       /* Azul moderno */
+    --secondary-color: #f5f6fa;     /* Fondo gris muy claro */
+    --text-color: #2f3640;          /* Gris oscuro para texto */
+    --accent-color: #2ecc71;        /* Verde para acciones positivas */
+    --danger-color: #e74c3c;        /* Rojo para borrar/peligro */
+    --warning-color: #f1c40f;       /* Amarillo para editar */
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTILOS GENERALES --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor principal (centrado y tipo tarjeta) */
+body > div, main { /* Asumiendo que envolverás el contenido en base.html */
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #dfe6e9;
+    margin: 30px 0;
+}
+
+/* --- FORMULARIOS Y FILTROS --- */
+.filtros-container {
+    background-color: #eaf2f8;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary-color);
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #57606f;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 8px 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: var(--primary-color);
+}
+
+/* --- TABLAS (.tabla-ingredientes) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95rem;
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+thead tr {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px 15px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+tbody tr:hover {
+    background-color: #e1f5fe; /* Efecto hover suave */
+}
+
+/* --- BOTONES --- */
+button, input[type="submit"] {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.1s, filter 0.2s;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Botón por defecto (Filtrar) */
+button, input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Botones específicos (Acciones) */
+/* Editar */
+a[href*="editar"] button {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+/* Borrar */
+a[href*="borrar"] button, 
+a[href*="eliminar"] button {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Ver detalle */
+a[href*="detalle"] button {
+    background-color: #95a5a6; /* Gris azulado */
+    color: white;
+}
+
+/* Crear Nuevo (El verde grande) */
+a[href*="crear"] button {
+    background-color: var(--accent-color) !important;
+    padding: 12px 25px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.3);
+}
+
+/* Borrar filtros (Gris claro) */
+button[type="button"] {
+    background-color: #7f8c8d;
+    color: white;
+}
+
+/* --- LISTAS DE DETALLES (ingrediente_detalle.html) --- */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: white;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul li strong {
+    color: var(--primary-color);
+}
+
+/* --- ALERTAS (Para eliminar.html) --- */
+.alert-danger {
+    border: 1px solid #ffcccb;
+    background-color: #fff0f0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 5px solid var(--danger-color);
+}
+
+.alert-danger h2 {
+    color: var(--danger-color);
+    margin-top: 0;
+}
+/* =========================================
+--- RESPONSIVE (Móvil y Tablets) ---
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Ajustar padding del cuerpo y contenedor */
+    body { padding: 10px; }
+    .main-wrapper { padding: 20px; }
+
+    /* 2. Filtros en columna (uno debajo de otro) */
+    .filtros-container form {
+        flex-direction: column;
+        align-items: stretch; /* Que ocupen todo el ancho */
+    }
+    
+    .filtros-container label {
+        margin-top: 10px;
+    }
+    
+    /* 3. Tabla Deslizable (Horizontal Scroll) */
+    /* Esto evita que la tabla rompa el diseño en pantallas pequeñas */
+    .tabla-ingredientes {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Evita que el texto se corte en varias líneas */
+    }
+
+    /* 4. Botones más grandes para dedos */
+    button, input[type="submit"] {
+        width: 100%; /* Ocupan todo el ancho */
+        margin-bottom: 10px; /* Espacio entre botones verticales */
+        padding: 12px;
+    }
+
+    /* Ajuste específico para los botones dentro de la tabla */
+    .tabla-ingredientes td button {
+        width: auto; /* En la tabla los dejamos normales o un poco más pequeños */
+        margin-bottom: 0;
+        padding: 6px 10px;
+    }
+
+    /* 5. Ajustes de lista de detalles */
+    ul li {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

@@ -1,0 +1,10 @@
+{% extends 'recetasApp/base.html' %}
+{% block content %}
+    <h2>Editar Ingrediente</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'ingredientes_list' %}">Cancelar</a>
+{% endblock %}
