@@ -1,0 +1,15 @@
+{% extends 'recetasApp/base.html' %}
+
+{% block content %}
+    <h1>Detalle del Ingrediente: {{ ingrediente.nombre }}</h1>
+
+    <ul>
+        <li><strong>Categoría:</strong> {{ ingrediente.categoria.nombre }}</li>
+        <li><strong>¿Tiene Lactosa?:</strong> {% if ingrediente.lactosa.lactosa %} Sí ✅🥛 {% else %} No 🚫 {% endif %}</li>
+        <li><strong>Cantidad:</strong> {{ ingrediente.cantidad.cantidad }} gr</li>
+    </ul>
+
+    <hr>
+    <a href="{% url 'ingredientes_list' %}">⬅ Volver a la lista</a>
+    <a href="{% url 'ingrediente_editar' pk=ingrediente.pk %}">✏️ Editar</a>
+{% endblock %}

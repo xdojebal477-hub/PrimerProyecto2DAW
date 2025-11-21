@@ -1,34 +1,81 @@
-{% extends 'recetasApp/base.html'%}
+{% extends 'recetasApp/base.html' %}
 
 {% block content %}
     <h1>Bienvenido a la página de inicio de RecetasApp</h1>
-    <form action="" method="get">
-        <label for="categoria">
-        </label>
-        <select name="categoria" id="categoria" >
-            {% for categoria in categorias %}
-            <option value="{{ categoria.pk }}" {% if request.GET.categoria|stringformat:'s' == categoria.pk|stringformat:'s' %}selected{% endif %}>{{ categoria.nombre }}</option>
+    
+    <div class="filtros-container">
+        <form action="" method="get">
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" id="categoria">
+                <option value="">--- Todas ---</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.pk }}" {% if request.GET.categoria|stringformat:'s' == categoria.pk|stringformat:'s' %}selected{% endif %}>
+                    {{ categoria.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label for="lactosa">Lactosa:</label>
+            <input type="checkbox" name="lactosa" id="lactosa" {% if lactosa_filtro %}checked{% endif %}>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro|default:'' }}">
+
+            <input type="submit" value="Filtrar">
+            
+            <a href="{% url 'ingredientes_list' %}">
+                <button type="button">Borrar filtros</button>
+            </a>
+        </form>
+    </div>
+
+    <hr>
+
+    <table class="tabla-ingredientes" >
+        <thead>
+            <tr>
+                <th>Ingrediente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for ingrediente in ingredientes %}
+                <tr>
+                    <td>
+                        <strong>{{ ingrediente.nombre }}</strong>
+                        <small>({{ ingrediente.categoria.nombre }})</small>
+                    </td>
+                    
+                    <td>
+                        <a href="{% url 'ingrediente_detalle' pk=ingrediente.pk %}">
+                            <button>Ver</button>
+                        </a>
+                        
+                        <a href="{% url 'ingrediente_editar' pk=ingrediente.pk %}">
+                            <button>Editar</button>
+                        </a>
+                        
+                        <a href="{% url 'ingrediente_eliminar' pk=ingrediente.pk %}">
+                            <button>Borrar</button>
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">
+                        No se encontraron ingredientes con esos filtros.
+                    </td>
+                </tr>
             {% endfor %}
-        </select>
-        <label for="lactosa">Lactosa:</label>
-        <input type="checkbox" name="lactosa" id="lactosa" {% if lactosa_filtro %}checked{% endif %}>
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro }}">
-        <input type="submit" value="Filtrar">
-        <a href="{% url 'ingredientes_list' %}">
-            <button type="button">Borrar filtros</button>
+        </tbody>
+    </table>
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{% url 'crear_ingrediente' %}" style="text-decoration: none;">
+            <button >
+                ➕ Crear Nuevo Ingrediente
+            </button>
         </a>
-    </form>
-    <!-- <form action="" method="get">
-        {{ formulario_filtro }} creamos un formulario 
-    </form> -->
-    <ul>
-        {% for ingrediente in ingredientes %}
-            <li>
-                <strong>{{ ingrediente}}</strong>
-            </li>
-        {% empty %}
-            <li>No hay ingredientes registrados.</li>
-        {% endfor %}
-    </ul>
+    </div>
+
 {% endblock %}
