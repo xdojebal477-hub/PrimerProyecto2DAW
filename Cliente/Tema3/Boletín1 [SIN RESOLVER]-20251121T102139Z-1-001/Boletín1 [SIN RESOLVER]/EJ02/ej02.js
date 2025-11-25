@@ -1,60 +1,45 @@
-// 1. Función para crear una línea de texto de forma segura (Sin innerHTML)
-function crearLineaInfo(etiqueta, valor) {
-    const parrafo = document.createElement('div'); // O 'p'
-    // TRUCO SENIOR: Usamos textContent para que si el valor es HTML, 
-    // se vea como texto y no se renderice.
-    parrafo.textContent = etiqueta + " = " + valor;
-    return parrafo;
-}
+const oCapa = document.querySelector("#capa");
+recorrerArbol(oCapa);
 
-// 2. Función principal que procesa cada nodo
-function procesarElemento(nodo) {
-    // FILTRO IMPORTANTE: El ejercicio y el ejemplo (NodeType=1) sugieren 
-    // que solo quieren ELEMENTOS, no textos vacíos ni comentarios.
-    // [cite: 31]
-    if (nodo.nodeType !== 1) { 
-        return; 
+function recorrerArbol(oNodo) {
+    procesarNodo(oNodo);
+    for (let i = 0; i < oNodo.children.length; i++) {
+        recorrerArbol(oNodo.children[i]);
     }
+}   
 
-    const contenedorSalida = document.getElementById('resultado');
-    const ficha = document.createElement('div');
-    ficha.style.marginBottom = "20px"; // Un poco de aire visual
+function procesarNodo(oNodo) {
+    let oResultado = document.querySelector("#resultado");
 
-    // --- CONSTRUCCIÓN DE LA FICHA ---
-    
-    // A. La línea separadora [cite: 30]
-    const separador = document.createElement('div');
-    separador.textContent = "-------------------------";
-    ficha.appendChild(separador);
+    let oNodoTexto = document.createTextNode("-------------------------");
+    let oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
 
-    // B. Los datos pedidos (Usa la función auxiliar de arriba)
-    // NodeType [cite: 31]
-    ficha.appendChild(crearLineaInfo("NodeType", nodo.nodeType));
-    
-    // Nombre de la clase (constructor.name)
-    ficha.appendChild(crearLineaInfo("Nombre de la clase", nodo.constructor.name));
-    
-    // NodeName [cite: 33]
-    ficha.appendChild(crearLineaInfo("NodeName", nodo.nodeName));
-    
-    // NodeValue (Para elementos suele ser null, pero hay que mostrarlo) [cite: 34]
-    ficha.appendChild(crearLineaInfo("NodeValue", nodo.nodeValue));
-    
-    // innerHTML [cite: 35]
-    // AQUÍ ESTÁ LA CLAVE: Leemos nodo.innerHTML (permitido para LEER), 
-    // pero lo pasamos a nuestra función que usa textContent (permitido para ESCRIBIR).
-    ficha.appendChild(crearLineaInfo("innerHTML", nodo.innerHTML));
+    oNodoTexto = document.createTextNode("NodeType = " + oNodo.nodeType);
+    oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
 
-    // C. Pegamos la ficha completa en el resultado
-    contenedorSalida.appendChild(ficha);
+    oNodoTexto = document.createTextNode(
+        "Nombre de la clase = " + oNodo.constructor.name
+    );
+    oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
 
-    // --- RECURSIVIDAD ---
-    // Ahora busca a los hijos de este elemento para seguir bajando
-    for (let i = 0; i < nodo.children.length; i++) {
-        procesarElemento(nodo.children[i]);
-    }
+    oNodoTexto = document.createTextNode("NodeName = " + oNodo.nodeName);
+    oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
+
+    oNodoTexto = document.createTextNode("NodeValue = " + oNodo.nodeValue);
+    oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
+
+    oNodoTexto = document.createTextNode("innerHTML = " + oNodo.innerHTML);
+    oNodoParrafo = document.createElement("P");
+    oNodoParrafo.append(oNodoTexto);
+    oResultado.append(oNodoParrafo);
 }
-
-// Lanza el proceso
-const capa = document.getElementById('capa');
-procesarElemento(capa);
