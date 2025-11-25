@@ -27,6 +27,7 @@ def ingredientes_list(request):
     return render(request, 'recetasApp/ingredientes_list.html',{'ingredientes':ingredientes, 'categorias': categorias,'lactosa_filtro': lactosa_filtro, 'cantidad_filtro': cantidad_filtro, 'formulario_filtro': formulario_filtro}) 
 
 
+
 def crear_ingrediente(request):
     if request.method == 'POST':
         # Creamos el formulario con los datos enviados
