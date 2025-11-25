@@ -1,0 +1,24 @@
+{% extends 'ErasmusApp/base.html' %}
+{% block title %}<h1>Eliminar Ficha Alumno</h1>{% endblock %}
+<hr>
+<br>
+{% block content %}
+    <div class="alert-danger">
+    <h2 style="color: #d32f2f;">⚠️ ¿Estás seguro?</h2>
+    
+    <p>Vas a eliminar permanentemente la ficha de : <strong>{{ persona.nombre }}</strong></p>
+    <p>Esta acción no se puede deshacer.</p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" style="background-color: #d32f2f; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Sí, eliminar definitivamente
+        </button>
+
+        <a href="{% url 'ficha_lista' %}" style="margin-left: 15px;">
+        No, cancelar
+        </a>
+    </form>
+    </div>
+{% endblock %}

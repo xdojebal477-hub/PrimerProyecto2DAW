@@ -1,0 +1,46 @@
+{% extends 'ErasmusApp/base.html' %}
+
+{% block title %}<h1>Detalle Ficha Alumno</h1>{% endblock %}
+<hr>
+<br>
+{% block content %}
+    <h2>Información de la Ficha de <strong>{{ persona.nombre }} {{ persona.apellidos }}</strong></h2>
+    <ul>
+        <li><strong>Nombre:</strong> {{ persona.nombre }}</li>
+        <li><strong>Apellidos:</strong> {{ persona.apellidos }}</li>
+        <li><strong>Clase:</strong> {{ persona.clase }}</li>
+        <li><strong>Sexo:</strong> {{ persona.get_sexo_display }}</li>
+        <li><strong>Fecha de nacimiento:</strong> {{ persona.fecha_nacimiento }}</li>
+        <li><strong>Nº Pasaporte/DNI:</strong> {{ persona.numero_pasaporte }}</li>
+        <li><strong>Dirección:</strong> {{ persona.direccion }}</li>
+
+        <br><strong>--- Contacto ---</strong>
+        <li><strong>Teléfono Privado:</strong> {{ persona.telefono_privado|default:"-" }}</li>
+        <li><strong>Móvil:</strong> {{ persona.movil }}</li>
+        <li><strong>Email Alumno:</strong> {{ persona.email_alumno }}</li>
+        <li><strong>Email Padres:</strong> {{ persona.email_padres }}</li>
+
+        <br><strong>--- Familia ---</strong>
+        <li><strong>Profesión Padre:</strong> {{ persona.profesion_padre|default:"-" }}</li>
+        <li><strong>Profesión Madre:</strong> {{ persona.profesion_madre|default:"-" }}</li>
+        <li><strong>Edad Hermanos:</strong> {{ persona.edad_hermanos|default:"-" }}</li>
+        <li><strong>Edad Hermanas:</strong> {{ persona.edad_hermanas|default:"-" }}</li>
+        <li><strong>Mascotas:</strong> {{ persona.mascotas|default:"-" }}</li>
+
+        <br><strong>--- Salud y Otros ---</strong>
+        <li><strong>Problemas de Salud:</strong> {{ persona.problemas_salud|default:"Ninguno" }}</li>
+        <li><strong>Es Vegetarian@:</strong> {{ persona.es_vegetariano|yesno:"Sí,No" }}</li>
+        <li><strong>Preferencia Intercambio:</strong> {{ persona.get_preferencia_intercambio_display }}</li>
+        <li><strong>Puedo alojar a dos:</strong> {{ persona.puedo_alojar_dos|yesno:"Sí,No" }}</li>
+        <li><strong>Interés Larga Duración:</strong> {{ persona.interes_larga_duracion|yesno:"Sí,No" }}</li>
+
+        <br><strong>--- Perfil ---</strong>
+        <li><strong>Carácter:</strong> {{ persona.caracter|default:"-" }}</li>
+        <li><strong>Deportes:</strong> {{ persona.deportes|default:"-" }}</li>
+        <li><strong>Música:</strong> {{ persona.musica|default:"-" }}</li>
+        <li><strong>Otros Hobbies:</strong> {{ persona.otros_hobbies|default:"-" }}</li>
+    </ul>
+    <a href="{% url 'ficha_editar' persona.pk %}">Editar Ficha</a> |
+    <a href="{% url 'ficha_eliminar' persona.pk %}">Eliminar Ficha</a> |
+    <a href="{% url 'ficha_lista' %}">Volver a la Lista</a>
+{% endblock %}

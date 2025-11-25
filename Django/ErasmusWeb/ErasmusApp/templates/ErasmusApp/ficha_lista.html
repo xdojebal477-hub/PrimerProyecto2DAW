@@ -1,0 +1,89 @@
+{% extends 'ErasmusApp/base.html'%}
+{% block title %}<h1>Lista de Fichas Erasmus</h1>{% endblock %}
+<hr>
+<br>
+{% block content %}
+    <table class="tabla-fichas" >
+            <thead>
+                <tr>
+                    <th>Alumno</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <div class="filtros-container">
+        <form method="get">
+            <div class="campo">
+                <label>Buscar Alumno:</label>
+                <input type="text" name="q" value="{{ busqueda|default:'' }}" placeholder="Nombre o Apellido...">
+            </div>
+
+            <div class="campo">
+                <label>Clase:</label>
+                <input type="text" name="clase" value="{{ filtro_clase|default:'' }}" placeholder="Ej: 3A" style="width: 80px;">
+            </div>
+
+            <div class="campo">
+                <label>Prefiere pareja:</label>
+                <select name="preferencia">
+                    <option value="">--- Cualquiera ---</option>
+                    {% for valor, etiqueta in opciones_preferencia %}
+                        <option value="{{ valor }}" {% if filtro_preferencia == valor %}selected{% endif %}>
+                            {{ etiqueta }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="check-item" style="margin-top: 25px;">
+                <input type="checkbox" name="alojar_dos" id="chk_dos" {% if filtro_alojar_dos %}checked{% endif %}>
+                <label for="chk_dos">Puede alojar a 2</label>
+            </div>
+
+            <div style="margin-top: 22px;">
+                <button type="submit">🔍 Filtrar</button>
+                <a href="{% url 'ficha_lista' %}" style="margin-left: 5px;">
+                    <button type="button" style="background-color: #7f8c8d;">Limpiar</button>
+                </a>
+            </div>
+        </form>
+    </div>
+        <hr>
+        <tbody>
+            {% for persona in personas %}
+                <tr>
+                    <td>
+                        <strong>{{ persona.nombre }}</strong>
+                        <small>({{ persona.apellidos }})</small>
+                    </td>
+                    
+                    <td>
+                        <a href="{% url 'ficha_detalle' pk=persona.pk %}">
+                            <button>Ver</button>
+                        </a>
+                        
+                        <a href="{% url 'ficha_editar' pk=persona.pk %}">
+                            <button>Editar</button>
+                        </a>
+                        
+                        <a href="{% url 'ficha_eliminar' pk=persona.pk %}">
+                            <button>Borrar</button>
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="2">
+                        No se encontraron alumnos con esos filtros.
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{% url 'ficha_crear' %}" style="text-decoration: none;">
+            <button >
+                ➕ Crear Nuevo Alumno
+            </button>
+        </a>
+    </div>
+{% endblock %}

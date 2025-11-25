@@ -1,0 +1,13 @@
+{% extends 'ErasmusApp/base.html'%}
+{% block title %}<h1>Crear Ficha Alumno</h1>{% endblock %}
+<hr>
+<br>
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <a href="{% url 'ficha_lista' %}">Cancelar</a>
+
+</form>
+{% endblock %}
