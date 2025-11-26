@@ -9,18 +9,18 @@ from django.db.models import Q # Importa esto para búsquedas avanzadas
 
 
 def ficha_lista(request):
-    # 1. Empezamos con TODOS
+    # Empezamos con TODOS
     personas = Persona.objects.all().order_by('apellidos', 'nombre')
     
-    # 2. Recogemos datos del formulario (si existen)
+    # Recogemos datos del formulario (si existen)
     busqueda = request.GET.get('q')
     filtro_clase = request.GET.get('clase')
     filtro_preferencia = request.GET.get('preferencia')
     filtro_alojar_dos = request.GET.get('alojar_dos')
 
-    # 3. Aplicamos filtros progresivamente
+    # filtros progresivamente
     if busqueda:
-        # Busca en nombre O apellidos (usando Q objects)
+        # Busca en nombre o apellidos (usando Q objects)
         personas = personas.filter(
             Q(nombre__icontains=busqueda) | Q(apellidos__icontains=busqueda)
         )
@@ -41,7 +41,7 @@ def ficha_lista(request):
         'filtro_clase': filtro_clase,
         'filtro_preferencia': filtro_preferencia,
         'filtro_alojar_dos': filtro_alojar_dos,
-        # Truco: Pasamos las opciones del modelo para el <select>
+        # opciones del modelo para el <select>
         'opciones_preferencia': Persona.PreferenciaGenero.choices,
     }
     

@@ -8,15 +8,14 @@ class PersonaForm(forms.ModelForm):
         
         
         widgets = {
-            # 1. Hacemos que salga un calendario real en el navegador
+            #  Hacemos que salga un calendario real en el navegador
             'fecha_nacimiento': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             
-            # 2. Convertimos los desplegables en "Bolitas" (Radio Buttons), 
-            # que se parecen más a la ficha de papel original.
+            #  Convertimos los desplegables en "Bolitas" (Radio Buttons), 
             'sexo': forms.RadioSelect(),
             'preferencia_intercambio': forms.RadioSelect(),
             
-            # 3. Ajustamos el tamaño de las cajas de texto grandes
+            #  Ajustamos el tamaño de las cajas de texto grandes
             'caracter': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Soy una persona...'}),
             'deportes': forms.Textarea(attrs={'rows': 2}),
             'musica': forms.Textarea(attrs={'rows': 2}),
@@ -24,3 +23,5 @@ class PersonaForm(forms.ModelForm):
             'problemas_salud': forms.Textarea(attrs={'rows': 2}),
         }
         
+
+

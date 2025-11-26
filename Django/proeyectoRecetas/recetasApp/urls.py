@@ -9,4 +9,5 @@ urlpatterns = [
     path('ingredientes/<int:pk>/editar',views.ingrediente_editar,name='ingrediente_editar'),
     path('ingredientes/<int:pk>/eliminar',views.ingrediente_eliminar,name='ingrediente_eliminar'),
     path('ingredientes/crear/',views.crear_ingrediente,name='crear_ingrediente'),
+    path('ingredientes/creacion_masiva/',views.creacion_masiva_ingredientes,name='creacion_masiva_ingredientes'),
     ]

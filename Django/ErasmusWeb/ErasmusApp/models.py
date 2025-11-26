@@ -4,7 +4,7 @@ from django.db import models
 class Sexo(models.TextChoices):
     MASCULINO = 'M', 'Masculino'
     FEMENINO = 'F', 'Femenino'
-    OTRO = 'O', 'Otro'  # Opcional, por si acaso
+    OTRO = 'O', 'Otro'  
 
     
 class Persona(models.Model):
@@ -12,7 +12,7 @@ class Persona(models.Model):
     apellidos = models.CharField(max_length=100, verbose_name="Apellidos")
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
     clase = models.CharField(max_length=50, verbose_name="Clase")
-    # Opciones para sexo (según documento)
+    # Opciones para sexo
     sexo = models.CharField(
             max_length=1, 
             choices=Sexo.choices, 
@@ -39,7 +39,9 @@ class Persona(models.Model):
     # --- 4. SALUD Y OTROS ---
     problemas_salud = models.TextField(blank=True, null=True, verbose_name="Problemas de salud (alergias, etc.)")
     es_vegetariano = models.BooleanField(default=False, verbose_name="Soy vegetarian@")
-        # Preferencias de intercambio (Radio Buttons en el word)
+    
+    
+        # Preferencias de intercambio 
     
     class PreferenciaGenero(models.TextChoices):
         CHICO = 'CHICO', 'Un chico'

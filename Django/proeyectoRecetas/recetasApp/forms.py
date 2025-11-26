@@ -5,3 +5,5 @@ class FiltroIngredienteForm(forms.ModelForm):
     class Meta:
         model = Ingrediente
         fields = ['nombre','categoria', 'lactosa', 'cantidad']
+
+
