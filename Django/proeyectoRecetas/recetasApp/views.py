@@ -1,18 +1,13 @@
 from django.shortcuts import redirect, render,get_object_or_404
-from .forms import FiltroIngredienteForm
+from .forms import FiltroIngredienteForm, IngredientesForm
 from .models import Ingrediente,CategoriaIngrediente
 from django.forms import modelformset_factory
 # Create your views here.
 
 
-
-
-
-
 def inicio(request):
 
     return render(request, 'recetasApp/inicio.html')
-
 
 def ingredientes_list(request):
     ingredientes=Ingrediente.objects.all()
@@ -32,13 +27,17 @@ def ingredientes_list(request):
     return render(request, 'recetasApp/ingredientes_list.html',{'ingredientes':ingredientes, 'categorias': categorias,'lactosa_filtro': lactosa_filtro, 'cantidad_filtro': cantidad_filtro, 'formulario_filtro': formulario_filtro}) 
 
 def creacion_masiva_ingredientes(request):
-    IngredienteFormSet = modelformset_factory(Ingrediente, form=FiltroIngredienteForm, extra=5)
+    IngredienteFormSet = modelformset_factory(Ingrediente, form=IngredientesForm, extra=5)
     
     if request.method == 'POST':
-        formset = IngredienteFormSet(request.POST)
+        formset = IngredienteFormSet(request.POST, queryset=Ingrediente.objects.none())
         if formset.is_valid():
-            formset.save()
+            for form in formset:
+                print(form.cleaned_data)
+                form.save()
             return redirect('ingredientes_list')
+        else:
+            print(formset.errors)
     else:
         formset = IngredienteFormSet(queryset=Ingrediente.objects.none())
     

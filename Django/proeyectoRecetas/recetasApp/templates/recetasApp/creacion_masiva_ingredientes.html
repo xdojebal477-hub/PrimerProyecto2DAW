@@ -1,0 +1,22 @@
+{% extends 'recetasApp/base.html' %}
+
+{% block content %}
+    <h1>Creación Masiva de Ingredientes</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table>
+            {% for form in formset %}
+                <tr>
+                    <td>{{ form.as_p }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Guardar Ingredientes</button>
+    </form>
+    
+    <a href="{% url 'ingredientes_list' %}">
+        <button>Volver a la lista de ingredientes</button>
+    </a>
+{% endblock %}
