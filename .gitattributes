@@ -1,3 +1,0 @@
-*.png !filter !diff !merge
-*.jpg !filter !diff !merge
-*.mp3 !filter !diff !merge
