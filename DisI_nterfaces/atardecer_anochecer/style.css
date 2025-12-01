@@ -1,19 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #333; /* Fondo fuera del ejercicio */
+    background-color: #333; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-#ej2 {
-    width: 800px;
-    height: 500px;
-    border: 5px solid #fff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
+
 
 #animacion-cielo {
     width: 100%;
@@ -21,8 +16,7 @@ body {
     position: relative;
     overflow: hidden;
     background-color: #DBFEFE;
-    /* Ciclo total de 50s: 20s Sol + 5s Pausa + 20s Luna + 5s Pausa */
-    animation: ciclo-cielo 50s linear infinite;
+    animation: ciclo-cielo 10s linear infinite;
 }
 
 #agua {
@@ -30,75 +24,64 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 15%; /* Ocupa la parte baja */
+    height: 15%; 
     background: linear-gradient(to bottom, #006994, #00334e);
-    z-index: 20; /* Por encima de todo */
+    z-index: 20; 
 }
 
-/* Elementos comunes */
 #animacion-cielo img {
     position: absolute;
 }
 
-/* --- NUBES --- */
-/* Las nubes van por delante del sol/luna pero detrás del agua si bajaran mucho */
 [id^="nube"] {
     z-index: 10;
-    left: -200px; /* Empiezan fuera a la izquierda */
+    left: -200px; 
 }
 
 #nube1 {
     top: 50px;
     width: 120px;
-    animation: mover-nube 32s linear infinite;
+    animation: mover-nube 45s linear infinite;
     animation-delay: 0s;
 }
 
 #nube2 {
     top: 120px;
     width: 100px;
-    animation: mover-nube 38s linear infinite;
-    animation-delay: -10s; /* Empieza ya avanzada */
+    animation: mover-nube 55s linear infinite;
+    animation-delay: -2s; 
 }
 
 #nube3 {
     top: 80px;
     width: 140px;
-    animation: mover-nube 35s linear infinite;
-    animation-delay: -20s;
+    animation: mover-nube 50s linear infinite;
+    animation-delay: -4s;
 }
 
 #nube4 {
     top: 180px;
     width: 90px;
-    animation: mover-nube 30s linear infinite;
-    animation-delay: -5s;
+    animation: mover-nube 40s linear infinite;
+    animation-delay: -1s;
 }
 
-/* --- SOL Y LUNA --- */
 #sol, #luna {
     z-index: 5;
     width: 80px;
-    /* Posición inicial oculta */
     top: 100%; 
     left: -15%;
 }
 
 #sol {
-    /* El sol tarda 20s en cruzar, dentro de un ciclo de 50s */
-    animation: ruta-astro 50s linear infinite;
+    animation: ruta-x 20s linear infinite, ruta-y 20s infinite;
 }
 
 #luna {
-    /* La luna usa la misma ruta pero con delay para salir cuando el sol se ha ido */
-    /* Delay de 25s (mitad del ciclo) para que salgan opuestos */
-    animation: ruta-astro 50s linear infinite;
-    animation-delay: -25s; /* Negativo para que empiece coordinado con el color del cielo */
+    animation: ruta-x 20s linear infinite, ruta-y 20s infinite;
+    animation-delay: -5s; 
 }
 
-/* --- KEYFRAMES --- */
-
-/* Movimiento de nubes: Izquierda a Derecha constante */
 @keyframes mover-nube {
     from {
         left: -20%;
@@ -108,67 +91,25 @@ body {
     }
 }
 
-/* Ruta Elíptica para Sol y Luna */
-/* El ciclo es de 50s. El astro debe cruzar en 20s (40% del tiempo) */
-@keyframes ruta-astro {
-    0% {
-        left: -15%;
-        top: 100%; /* Abajo a la izquierda */
-    }
-    10% {
-        top: 10%; /* Punto más alto (mitad del recorrido visible) */
-    }
-    20% {
-        top: 100%; /* Abajo a la derecha */
-    }
-    40% {
-        left: 115%; /* Ya ha salido completamente por la derecha */
-        top: 100%;
-    }
-    100% {
-        left: 115%; /* Se mantiene oculto el resto del ciclo */
-        top: 100%;
-    }
+
+
+@keyframes ruta-x {
+    0% { left: -15%; }
+    50% { left: 115%; }
+    100% { left: 115%; }
 }
 
-/* Cambio de color del cielo */
-/* 
-   0s - 20s: Sol visible (Pico a los 10s) -> Color #DBFEFE
-   25s - 45s: Luna visible (Pico a los 35s) -> Color #00112B
-*/
+@keyframes ruta-y {
+    0% { top: 100%; animation-timing-function: ease-out; }
+    25% { top: 10%; animation-timing-function: ease-in; }
+    50% { top: 100%; }
+    100% { top: 100%; }
+}
+
 @keyframes ciclo-cielo {
-    0% {
-        background-color: #ff9a9e; /* Amanecer */
-    }
-    10% {
-        background-color: #DBFEFE; /* Mediodía (Sol arriba) */
-    }
-    20% {
-        background-color: #ff9a9e; /* Atardecer */
-    }
-    25% {
-        background-color: #2c3e50; /* Anochecer */
-    }
-    35% {
-        background-color: #00112B; /* Medianoche (Luna arriba) */
-    }
-    45% {
-        background-color: #2c3e50; /* Amanecer oscuro */
-    }
-    50% {
-        background-color: #ff9a9e; /* Vuelta a empezar ciclo (si fuera simétrico) */
-    }
-    /* Ajustamos para el ciclo completo de 50s con la luna desfasada */
-    /* 
-        Sol: 0-20s. 
-        Pausa: 20-25s. 
-        Luna: 25-45s. 
-        Pausa: 45-50s.
-    */
-    60% {
-        background-color: #00112B; /* Mantenemos oscuro */
-    }
-    100% {
-        background-color: #ff9a9e; /* Reinicio */
-    }
+    0% { background-color: #ff9a9e; } 
+    25% { background-color: #DBFEFE; } 
+    50% { background-color: #2c3e50; } 
+    75% { background-color: #00112B; } 
+    100% { background-color: #ff9a9e; } 
 }
