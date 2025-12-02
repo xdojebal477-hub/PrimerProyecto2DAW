@@ -1,13 +1,31 @@
 from django.shortcuts import redirect, render,get_object_or_404
 from .forms import FiltroIngredienteForm, IngredientesForm
-from .models import Ingrediente,CategoriaIngrediente
+from .models import Ingrediente,CategoriaIngrediente, Recetas
 from django.forms import modelformset_factory
 # Create your views here.
 
 
 def inicio(request):
-
     return render(request, 'recetasApp/inicio.html')
+
+
+
+def relaciones(request):
+    
+    if request.method == 'POST':
+        receta_id = request.POST.get('receta_id')
+        ingrediente_id = request.POST.get('ingrediente_id')
+        # Obtenemos los objetos
+        receta = Recetas.objects.get(pk=receta_id)
+        ingrediente = Ingrediente.objects.get(pk=ingrediente_id)
+        #  MANY-TO-MANY
+        receta.ingredientes.add(ingrediente)
+        return redirect('relaciones')
+    
+    recetas = Recetas.objects.all()
+    ingredientes = Ingrediente.objects.all()
+    return render(request, 'recetasApp/relaciones.html', {'recetas': recetas, 'ingredientes': ingredientes})
+
 
 def ingredientes_list(request):
     ingredientes=Ingrediente.objects.all()

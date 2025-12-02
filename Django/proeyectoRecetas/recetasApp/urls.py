@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.inicio, name='inicio'),
+    path('relaciones', views.relaciones, name='relaciones'),#vamosa ver las relaciones entre tablas many to many y foreign key
     path('ingredientes/', views.ingredientes_list, name='ingredientes_list'),
 
     path('ingredientes/<int:pk>', views.ingrediente_detalle, name='ingrediente_detalle'),

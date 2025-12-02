@@ -1,0 +1,58 @@
+{% extends "recetasApp/base.html" %}
+{% block content %}
+<h1>Relaciones entre tablas</h1>
+
+{% for receta in recetas %}
+    <div>
+        <h2>Receta: {{ receta.nombre }}</h2>
+        <p>{{ receta.descripcion }}</p>
+        <h3>Ingredientes:</h3>
+        <ul>
+            {% for ingrediente in receta.ingredientes.all %}
+                <a href="{% url 'ingrediente_detalle' pk=ingrediente.pk %}"><li>{{ ingrediente.nombre }} - {{ ingrediente.categoria.nombre }}|| Cantidad ingrediente:{{ingrediente.cantidad}}</li></a>
+                <!-- añadimos para cada ingrediente un boton para poder elminar el ingrediente de la receta -->
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="receta_id" value="{{ receta.id }}">
+                    <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+                    <button type="submit">❌ Eliminar</button>
+                </form>
+            {% endfor %}
+        </ul>
+        <h3>Añadir Ingrediente a la receta</h3>
+    
+    <form method="post" action="">
+        {% csrf_token %}
+        
+        <input type="hidden" name="receta_id" value="{{ receta.id }}">
+        
+        <select name="ingrediente_id">
+            <option value="" selected disabled>-- Elige un ingrediente --</option>
+            {% for ingrediente in ingredientes %}
+                <option value="{{ ingrediente.id }}">
+                    {{ ingrediente.nombre }} ({{ ingrediente.categoria.nombre }})
+                </option>
+            {% endfor %}
+        </select>
+        
+        <button type="submit">➕ Añadir</button>
+    </form>
+    </div>
+    <h3>Añadir Ingrediente a la receta</h3><!-- formulario para añadir ingredientes a la receta -->
+    <!-- {% for ingrediente in ingredientes %}
+        {{ ingrediente.nombre }}
+        <form method="post" action="">
+        {% csrf_token %}
+        
+        <input type="hidden" name="ingrediente_id" value="{{ ingrediente.id }}">
+        
+        <input type="hidden" name="receta_id" value="{{ receta.id }}">
+        
+        <button type="submit">Añadir a {{ receta.nombre }}</button>
+    </form>
+    {% endfor %} -->
+{% endfor %}
+<hr>
+<br>
+
+{% endblock %}
