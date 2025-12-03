@@ -1,0 +1,53 @@
+    {% extends "recetasApp/base.html" %}
+{% block content %}
+    <h1>Gestión de Receta: {{ receta.nombre }}</h1>
+
+    <div>
+        <h2>{{ receta.nombre }}</h2>
+        <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+        
+        <h3>Ingredientes actuales:</h3>
+        <ul>
+            {% for relacion in receta.ingredientereceta_set.all %}
+                <li>
+                    <strong>{{ relacion.ingrediente.nombre }}</strong>: 
+                    {{ relacion.cantidad }} {{ relacion.get_unidad_medida_display }}
+                    
+                    <form method="post" action="" style="display:inline; margin-left: 10px;">
+                        {% csrf_token %}
+                        <input type="hidden" name="ingrediente_id" value="{{ relacion.ingrediente.id }}">
+                        <input type="hidden" name="accion" value="eliminar">
+                        <button type="submit" style="color:red; border:none; background:none; cursor:pointer;">❌Eliminar</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>No hay ingredientes en esta receta.</li>
+            {% endfor %}
+        </ul>
+        <h3>Añadir Ingrediente a la receta</h3>
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="hidden" name="accion" value="añadir">
+            
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <select name="ingrediente_id" required>
+                    <option value="" selected disabled>-- Ingrediente --</option>
+                    {% for ingrediente in ingredientes %}
+                        <option value="{{ ingrediente.id }}">{{ ingrediente.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" name="cantidad" placeholder="Cant." step="0.1" required style="width: 80px;">
+                <select name="unidad_medida" required>
+                    <option value="GR">Gramos</option>
+                    <option value="LI">Litros</option>
+                    <option value="UN">Unidades</option>
+                </select>
+                
+                <button type="submit" style="background-color: #28a745; color: white;">➕ Añadir</button>
+            </div>
+        </form>
+    </div>
+    
+    <br>
+    <a href="{% url 'ver_recetas' %}">⬅ Volver a la lista de recetas</a>
+{% endblock %}

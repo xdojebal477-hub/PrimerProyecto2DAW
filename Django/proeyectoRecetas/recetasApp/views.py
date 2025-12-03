@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render,get_object_or_404
-from .forms import FiltroIngredienteForm, IngredientesForm
-from .models import Ingrediente,CategoriaIngrediente, Recetas
+from .forms import FiltroIngredienteForm, IngredientesForm, RecetaForm
+from .models import Ingrediente,CategoriaIngrediente, Recetas,IngredienteReceta
 from django.forms import modelformset_factory
 # Create your views here.
 
@@ -9,17 +9,57 @@ def inicio(request):
     return render(request, 'recetasApp/inicio.html')
 
 
+def ver_recetas(request):
+    recetas=Recetas.objects.all()
+    return render(request, 'recetasApp/ver_recetas.html', {'recetas': recetas})
+
+def crear_receta(request):
+    if request.method=='POST':
+        form=RecetaForm(request.POST)
+        if form.is_valid():
+            receta=form.save()
+            return redirect('ver_recetas')
+        else:
+            print(form.errors)
+    else:
+        form=RecetaForm()
+    return render(request,'recetasApp/crear_receta.html',{'form':form})
+def receta_descripcion(request, pk):
+    receta = get_object_or_404(Recetas, pk=pk)
+    
+    if request.method == 'POST':
+        ingrediente_id = request.POST.get('ingrediente_id')
+        accion = request.POST.get('accion')
+        if ingrediente_id:
+            ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
+            
+            if accion == 'añadir':
+                cantidad = request.POST.get('cantidad')
+                unidad = request.POST.get('unidad_medida')
+                IngredienteReceta.objects.create(receta=receta,ingrediente=ingrediente,cantidad=cantidad,unidad_medida=unidad)
+            elif accion == 'eliminar':
+                IngredienteReceta.objects.filter(receta=receta,ingrediente=ingrediente).delete()
+                
+            return redirect('receta_descripcion', pk=pk)
+    
+    return render(request, 'recetasApp/receta_descripcion.html', {'receta': receta, 'ingredientes': Ingrediente.objects.all()})
+
+
 
 def relaciones(request):
     
     if request.method == 'POST':
         receta_id = request.POST.get('receta_id')
         ingrediente_id = request.POST.get('ingrediente_id')
+        accion = request.POST.get('accion')
         # Obtenemos los objetos
         receta = Recetas.objects.get(pk=receta_id)
         ingrediente = Ingrediente.objects.get(pk=ingrediente_id)
         #  MANY-TO-MANY
-        receta.ingredientes.add(ingrediente)
+        if accion=='añadir':
+            receta.ingredientes.add(ingrediente)
+        else:
+            receta.ingredientes.remove(ingrediente)
         return redirect('relaciones')
     
     recetas = Recetas.objects.all()

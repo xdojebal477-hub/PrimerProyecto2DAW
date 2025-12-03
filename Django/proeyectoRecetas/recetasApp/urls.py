@@ -3,9 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.inicio, name='inicio'),
+    path('ver_recetas/', views.ver_recetas, name='ver_recetas'),    
+    path('receta/<int:pk>/descripcion/', views.receta_descripcion, name='receta_descripcion'),
+    path('receta/crear/',views.crear_receta,name='crear_receta'),
     path('relaciones', views.relaciones, name='relaciones'),#vamosa ver las relaciones entre tablas many to many y foreign key
+    
     path('ingredientes/', views.ingredientes_list, name='ingredientes_list'),
-
     path('ingredientes/<int:pk>', views.ingrediente_detalle, name='ingrediente_detalle'),
     path('ingredientes/<int:pk>/editar',views.ingrediente_editar,name='ingrediente_editar'),
     path('ingredientes/<int:pk>/eliminar',views.ingrediente_eliminar,name='ingrediente_eliminar'),

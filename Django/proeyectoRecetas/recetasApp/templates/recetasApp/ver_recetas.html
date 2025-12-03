@@ -1,0 +1,28 @@
+{% extends "recetasApp/base.html" %}
+{% block content %}
+    <h1>Lista de Recetas</h1>
+    <ul>
+        {% for receta in recetas %}
+            <li style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                <h2>{{ receta.nombre }}</h2>
+                <p><strong>Descripción:</strong> {{ receta.descripcion }}</p>
+                
+                <p><strong>Ingredientes:</strong>
+                    {% for ingrediente in receta.ingredientes.all %}
+                        {{ ingrediente.nombre }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        <span style="color: gray;">Sin ingredientes asignados</span>
+                    {% endfor %}
+                </p>
+
+                <a href="{% url 'receta_descripcion' pk=receta.pk %}">
+                    <button>Gestionar Ingredientes</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'crear_receta' %}">Crear Nueva Receta
+        <button>➕</button>
+    </a>
+    <a href="{% url 'inicio' %}">⬅ Volver al Inicio</a>
+{% endblock %}

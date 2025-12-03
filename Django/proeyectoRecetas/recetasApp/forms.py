@@ -12,3 +12,7 @@ class IngredientesForm(forms.ModelForm):
         model = Ingrediente
         fields = ['nombre','categoria', 'lactosa', 'cantidad']
 
+class RecetaForm(forms.ModelForm):
+    class Meta:
+        model = Recetas
+        fields = ['nombre', 'descripcion']

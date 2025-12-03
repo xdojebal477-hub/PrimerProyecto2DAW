@@ -35,7 +35,22 @@ class Ingrediente(models.Model):
 class Recetas(models.Model):
     nombre=models.CharField(max_length=100)
     descripcion=models.CharField(max_length=500)
-    ingredientes=models.ManyToManyField(Ingrediente,related_name='recetas')
+    ingredientes=models.ManyToManyField(Ingrediente,related_name='Ingredientes',through='IngredienteReceta')
 
     def __str__(self):
         return f"{self.nombre} : {self.descripcion} "
+    
+
+class MedidaChoices(models.TextChoices):
+    GRAMOS = 'GR', 'Gramos'
+    LITROS = 'LI', 'Litros'
+    UNIDADES = 'UN', 'Unidades'
+
+class IngredienteReceta(models.Model):
+    receta=models.ForeignKey(Recetas, on_delete=models.CASCADE)
+    ingrediente=models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
+    cantidad=models.FloatField()
+    unidad_medida=models.CharField(max_length=2, choices=MedidaChoices.choices)
+
+    def __str__(self):
+        return f"{self.receta} - {self.ingrediente} - {self.cantidad} "
