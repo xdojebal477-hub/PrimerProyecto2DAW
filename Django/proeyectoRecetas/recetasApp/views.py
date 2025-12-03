@@ -17,13 +17,14 @@ def crear_receta(request):
     if request.method=='POST':
         form=RecetaForm(request.POST)
         if form.is_valid():
-            receta=form.save()
+            form.save()
             return redirect('ver_recetas')
         else:
             print(form.errors)
     else:
         form=RecetaForm()
     return render(request,'recetasApp/crear_receta.html',{'form':form})
+
 def receta_descripcion(request, pk):
     receta = get_object_or_404(Recetas, pk=pk)
     
