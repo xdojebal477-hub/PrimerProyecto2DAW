@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap – Espaciado y Utilidades</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding-bottom: 4rem;
+    }
+    pre {
+      background: #222;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .demo-box {
+      border: 1px dashed #0d6efd;
+      background: #0d6efd11;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .demo-height {
+      min-height: 110px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">
+        Bootstrap – Espaciado y Utilidades (web autoexplicativa)
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INTRO -->
+    <section class="mb-5">
+      <h1 class="h3">1. Espaciado y utilidades en Bootstrap</h1>
+      <p class="lead">
+        En esta página vas a ver cómo controlar el “aire” entre los elementos usando:
+        <strong>m-*, p-*, g-*, text-center/text-start/text-end y utilidades flex</strong>.
+      </p>
+      <p>
+        Se asume que ya conoces la rejilla básica (<code>.container</code>, <code>.row</code>, <code>.col-*</code>)
+        y quieres mejorar el aspecto visual de tus layouts.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- MARGIN / PADDING -->
+    <section class="mb-5">
+      <h2 class="h4">2. Márgenes y padding: <code>m-*</code> y <code>p-*</code></h2>
+      <p>
+        Bootstrap usa una escala de espaciado numérico: <code>0</code> a <code>5</code> (y a veces más).
+        Las clases siguen esta estructura:
+      </p>
+      <ul>
+        <li><code>m</code> = margin (margen exterior)</li>
+        <li><code>p</code> = padding (margen interior)</li>
+        <li>Direcciones: <code>t</code> (top), <code>b</code> (bottom), <code>s</code> (start), <code>e</code> (end), <code>x</code> (horizontal), <code>y</code> (vertical)</li>
+      </ul>
+      <p>
+        Ejemplos:
+      </p>
+      <pre><code>&lt;div class="m-3"&gt;Margin en todos los lados&lt;/div&gt;
+&lt;div class="mt-4"&gt;Margin solo arriba (top)&lt;/div&gt;
+&lt;div class="px-5"&gt;Padding en horizontal (izquierda y derecha)&lt;/div&gt;
+&lt;div class="py-2"&gt;Padding en vertical (arriba y abajo)&lt;/div&gt;
+</code></pre>
+
+      <div class="bg-light p-3">
+        <div class="bg-white border m-3 p-2">
+          <strong>Ejemplo visual:</strong> este bloque tiene <code>m-3 p-2</code>.
+        </div>
+        <div class="bg-white border mt-4 p-3">
+          <strong>Ejemplo visual:</strong> este tiene <code>mt-4 p-3</code>.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- GAP -->
+    <section class="mb-5">
+      <h2 class="h4">3. Separación entre columnas: <code>g-*</code> en filas</h2>
+      <p>
+        Dentro de una <code>.row</code>, puedes controlar el espacio entre columnas usando la clase
+        <code>g-*</code> (gap). Esto afecta a la separación horizontal y vertical entre las columnas.
+      </p>
+
+      <pre><code>&lt;div class="row g-0"&gt;  &lt;!-- sin espacio entre columnas --&gt;
+&lt;div class="row g-3"&gt;  &lt;!-- espacio medio --&gt;
+&lt;div class="row g-5"&gt;  &lt;!-- espacio grande --&gt;
+</code></pre>
+
+      <p class="mb-2"><strong>Ejemplo con <code>g-0</code>, <code>g-3</code> y <code>g-5</code>:</strong></p>
+
+      <div class="row g-0 mb-3">
+        <div class="col demo-box">g-0</div>
+        <div class="col demo-box">g-0</div>
+        <div class="col demo-box">g-0</div>
+      </div>
+
+      <div class="row g-3 mb-3">
+        <div class="col demo-box">g-3</div>
+        <div class="col demo-box">g-3</div>
+        <div class="col demo-box">g-3</div>
+      </div>
+
+      <div class="row g-5 mb-3">
+        <div class="col demo-box">g-5</div>
+        <div class="col demo-box">g-5</div>
+        <div class="col demo-box">g-5</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- TEXT ALIGN -->
+    <section class="mb-5">
+      <h2 class="h4">4. Alineación de texto: <code>text-start</code>, <code>text-center</code>, <code>text-end</code></h2>
+      <p>
+        Estas clases alinean el texto dentro del elemento:
+      </p>
+      <ul>
+        <li><code>text-start</code> → alineado a la izquierda (en lenguas LTR)</li>
+        <li><code>text-center</code> → centrado</li>
+        <li><code>text-end</code> → alineado a la derecha</li>
+      </ul>
+
+      <pre><code>&lt;p class="text-start"&gt;Texto alineado a la izquierda&lt;/p&gt;
+&lt;p class="text-center"&gt;Texto centrado&lt;/p&gt;
+&lt;p class="text-end"&gt;Texto alineado a la derecha&lt;/p&gt;
+</code></pre>
+
+      <div class="border p-3 mb-2">
+        <p class="text-start mb-1">.text-start</p>
+        <p class="text-center mb-1">.text-center</p>
+        <p class="text-end mb-0">.text-end</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- FLEX -->
+    <section class="mb-5">
+      <h2 class="h4">5. Flexbox rápido: <code>d-flex</code>, <code>justify-content-*</code>, <code>align-items-*</code></h2>
+      <p>
+        Bootstrap encapsula las propiedades de Flexbox en clases muy cortas.  
+        Primero activas Flexbox con <code>d-flex</code> y luego ajustas alineación:
+      </p>
+
+      <ul>
+        <li><code>justify-content-start | center | end | between | around</code> → horizontal</li>
+        <li><code>align-items-start | center | end</code> → vertical</li>
+      </ul>
+
+      <pre><code>&lt;div class="d-flex justify-content-center align-items-center"&gt;
+  &lt;div&gt;Elemento 1&lt;/div&gt;
+  &lt;div&gt;Elemento 2&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <p><strong>Ejemplos visuales:</strong></p>
+
+      <!-- justify-content-center -->
+      <div class="border mb-3 p-2">
+        <p class="small text-muted mb-1">.d-flex .justify-content-center</p>
+        <div class="d-flex justify-content-center">
+          <div class="demo-box me-2">A</div>
+          <div class="demo-box">B</div>
+        </div>
+      </div>
+
+      <!-- justify-content-between -->
+      <div class="border mb-3 p-2">
+        <p class="small text-muted mb-1">.d-flex .justify-content-between</p>
+        <div class="d-flex justify-content-between">
+          <div class="demo-box">A</div>
+          <div class="demo-box">B</div>
+          <div class="demo-box">C</div>
+        </div>
+      </div>
+
+      <!-- align-items-center -->
+      <div class="border mb-3 p-2">
+        <p class="small text-muted mb-1">.d-flex .align-items-center (altura fija)</p>
+        <div class="d-flex align-items-center demo-height">
+          <div class="demo-box me-2">Alto 1</div>
+          <div class="demo-box">Alto 2<br>con varias líneas<br>de texto</div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- MINI EJERCICIO RESUELTO -->
+    <section class="mb-5">
+      <h2 class="h4">6. Mini ejercicio (resuelto)</h2>
+      <p>
+        <strong>Enunciado:</strong> Maquetar tres cajas con espacios y centrados distintos usando:
+        <code>m-*</code>, <code>p-*</code>, <code>g-*</code>, <code>text-*</code> y utilidades flex.
+      </p>
+      <p>
+        <strong>Objetivo didáctico:</strong> que el alumnado pruebe combinaciones de márgenes, padding,
+        alineación de texto y Flexbox para ver cómo cambia el layout.
+      </p>
+
+      <h3 class="h5 mt-3">Solución de ejemplo</h3>
+      <p class="small text-muted">
+        En este ejemplo usamos un <code>.row g-4</code> y cada caja tiene sus propias clases de espaciado/alineación.
+      </p>
+
+      <!-- FILA DE LAS 3 CAJAS -->
+      <div class="row g-4">
+
+        <!-- Caja 1 -->
+        <div class="col-12 col-md-4">
+          <div class="bg-light border rounded p-3">
+            <h4 class="h6 text-start mb-2">Caja 1: texto a la izquierda</h4>
+            <div class="demo-box text-start p-3 mb-2">
+              <p class="mb-1"><strong>Clases usadas:</strong></p>
+              <ul class="mb-0">
+                <li><code>p-3</code> (padding interno)</li>
+                <li><code>text-start</code> (texto a la izquierda)</li>
+                <li><code>mb-2</code> en el título</li>
+              </ul>
+            </div>
+            <p class="small mb-0">
+              Esta caja está pensada para texto tipo párrafo justificado a la izquierda.
+            </p>
+          </div>
+        </div>
+
+        <!-- Caja 2 -->
+        <div class="col-12 col-md-4">
+          <div class="bg-light border rounded p-3">
+            <h4 class="h6 text-center mb-2">Caja 2: contenido centrado</h4>
+            <div class="demo-box d-flex flex-column justify-content-center align-items-center p-4 mb-2">
+              <p class="mb-1"><strong>Clases usadas:</strong></p>
+              <ul class="mb-0 text-center list-unstyled">
+                <li><code>d-flex</code></li>
+                <li><code>justify-content-center</code></li>
+                <li><code>align-items-center</code></li>
+                <li><code>text-center</code></li>
+              </ul>
+            </div>
+            <p class="small mb-0 text-center">
+              Ideal para un mensaje principal o un “call to action” centrado.
+            </p>
+          </div>
+        </div>
+
+        <!-- Caja 3 -->
+        <div class="col-12 col-md-4">
+          <div class="bg-light border rounded p-3">
+            <h4 class="h6 text-end mb-2">Caja 3: elementos separados</h4>
+            <div class="demo-box d-flex justify-content-between align-items-center px-3 py-2 mb-2">
+              <span class="badge bg-primary">Etiqueta</span>
+              <span>Texto en el centro</span>
+              <button class="btn btn-sm btn-outline-primary">Acción</button>
+            </div>
+            <p class="small mb-0 text-end">
+              Aquí combinamos <code>d-flex</code> + <code>justify-content-between</code>
+              para separar los elementos.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="h6 mt-4">Código usado para la fila de las 3 cajas</h3>
+      <pre><code>&lt;div class="row g-4"&gt;
+
+  &lt;!-- Caja 1 --&gt;
+  &lt;div class="col-12 col-md-4"&gt;
+    &lt;div class="bg-light border rounded p-3"&gt;
+      &lt;h4 class="h6 text-start mb-2"&gt;Caja 1: texto a la izquierda&lt;/h4&gt;
+      &lt;div class="demo-box text-start p-3 mb-2"&gt;
+        &lt;p class="mb-1"&gt;&lt;strong&gt;Clases usadas:&lt;/strong&gt;&lt;/p&gt;
+        &lt;ul class="mb-0"&gt;
+          &lt;li&gt;&lt;code&gt;p-3&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;text-start&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Caja 2 --&gt;
+  &lt;div class="col-12 col-md-4"&gt;
+    &lt;div class="bg-light border rounded p-3"&gt;
+      &lt;h4 class="h6 text-center mb-2"&gt;Caja 2: contenido centrado&lt;/h4&gt;
+      &lt;div class="demo-box d-flex flex-column justify-content-center align-items-center p-4 mb-2"&gt;
+        ...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Caja 3 --&gt;
+  &lt;div class="col-12 col-md-4"&gt;
+    &lt;div class="bg-light border rounded p-3"&gt;
+      &lt;h4 class="h6 text-end mb-2"&gt;Caja 3: elementos separados&lt;/h4&gt;
+      &lt;div class="demo-box d-flex justify-content-between align-items-center px-3 py-2 mb-2"&gt;
+        &lt;span class="badge bg-primary"&gt;Etiqueta&lt;/span&gt;
+        &lt;span&gt;Texto en el centro&lt;/span&gt;
+        &lt;button class="btn btn-sm btn-outline-primary"&gt;Acción&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+
+      <p class="mt-3">
+        Puedes modificar valores de <code>m-*</code>, <code>p-*</code>,
+        cambiar <code>text-center</code> por <code>text-end</code> o jugar con
+        <code>justify-content-*</code> y <code>align-items-*</code> para ver rápidamente el efecto.
+      </p>
+    </section>
+
+    <hr>
+
+    <footer class="text-center text-muted mt-4">
+      <p class="mb-0">Bootstrap – Espaciado y utilidades &middot; preparado para clase</p>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap JS (para componentes interactivos, aunque aquí casi no se usan) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap – Formularios modernos</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding-bottom: 4rem;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .demo-card {
+      border-left: 4px solid #0d6efd;
+      background: #f8f9fa;
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">
+        Bootstrap – Formularios modernos (Web autoexplicativa)
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INTRO -->
+    <section class="mb-5">
+      <h1 class="h3">1. Formularios con Bootstrap</h1>
+      <p class="lead">
+        Los formularios son uno de los elementos más usados en desarrollo web.  
+        Bootstrap ofrece clases simples para crear entradas limpias, accesibles y responsivas.
+      </p>
+      <p>
+        Veremos <code>.form-control</code>, <code>.form-label</code>, 
+        <code>.input-group</code>, <code>.form-select</code> y <code>.form-check</code>.
+      </p>
+      <hr>
+    </section>
+
+    <!-- FORM CONTROL -->
+    <section class="mb-5">
+      <h2 class="h4">2. Campos básicos: <code>.form-control</code></h2>
+      <p>
+        La clase <code>.form-control</code> convierte inputs y textareas en elementos estilizados automáticamente.
+      </p>
+
+      <pre><code>&lt;label class="form-label"&gt;Nombre&lt;/label&gt;
+&lt;input type="text" class="form-control" /&gt;
+</code></pre>
+
+      <div class="demo-card mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Escribe tu nombre" />
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- FORM SELECT -->
+    <section class="mb-5">
+      <h2 class="h4">3. Listas desplegables: <code>.form-select</code></h2>
+      <p>
+        Para selects más limpios y accesibles:
+      </p>
+
+      <pre><code>&lt;label class="form-label"&gt;Curso&lt;/label&gt;
+&lt;select class="form-select"&gt;
+  &lt;option&gt;DAW&lt;/option&gt;
+  &lt;option&gt;DAM&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+      <div class="demo-card mb-3">
+        <label class="form-label">Curso</label>
+        <select class="form-select">
+          <option>DAW</option>
+          <option>DAM</option>
+        </select>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- INPUT GROUP -->
+    <section class="mb-5">
+      <h2 class="h4">4. Agrupar elementos: <code>.input-group</code></h2>
+      <p>
+        Sirve para añadir prefijos/sufijos como iconos, unidades, @usuario, etc.
+      </p>
+
+      <pre><code>&lt;div class="input-group"&gt;
+  &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="form-control" placeholder="usuario"&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="demo-card mb-3">
+        <label class="form-label">Nombre de usuario</label>
+        <div class="input-group">
+          <span class="input-group-text">@</span>
+          <input type="text" class="form-control" placeholder="usuario" />
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- CHECKBOX -->
+    <section class="mb-5">
+      <h2 class="h4">5. Checkboxes y radios: <code>.form-check</code></h2>
+      <p>
+        Usados para términos, preferencias, etc.
+      </p>
+
+      <pre><code>&lt;div class="form-check"&gt;
+  &lt;input class="form-check-input" type="checkbox"&gt;
+  &lt;label class="form-check-label"&gt;Acepto los términos&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="demo-card mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="terminos" />
+          <label class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- EJERCICIO -->
+    <section class="mb-5">
+      <h2 class="h4">6. Ejercicio — Formulario responsivo con validación visual</h2>
+
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Crea un formulario de registro que incluya:
+      </p>
+      <ul>
+        <li>Nombre y apellidos</li>
+        <li>Email</li>
+        <li>Contraseña</li>
+        <li>Curso (select)</li>
+        <li>Aceptación de términos</li>
+        <li>Botón de envío</li>
+      </ul>
+
+      <p>
+        Debe ser <strong>responsivo</strong> (2 columnas en pantallas medianas) y tener validación visual básica
+        con <code>.is-valid</code> y <code>.is-invalid</code>.
+      </p>
+
+      <h4 class="h6 mt-4">Texto plano (sin formato):</h4>
+
+      <div class="border p-3 mb-4">
+        <p>
+          formulario registro  
+          nombre  
+          apellidos  
+          email  
+          contraseña  
+          curso daw dam asir  
+          aceptar términos  
+          enviar
+        </p>
+      </div>
+
+      <hr class="my-4">
+
+      <h3 class="h5">Solución de ejemplo:</h3>
+
+      <form class="p-4 bg-light rounded mb-3">
+
+        <div class="row g-3">
+
+          <!-- Nombre -->
+          <div class="col-12 col-md-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control is-valid" placeholder="Tu nombre" />
+          </div>
+
+          <!-- Apellidos -->
+          <div class="col-12 col-md-6">
+            <label class="form-label">Apellidos</label>
+            <input type="text" class="form-control is-invalid" placeholder="Tus apellidos" />
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-12">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="ejemplo@mail.com" />
+          </div>
+
+          <!-- Contraseña -->
+          <div class="col-12">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" />
+          </div>
+
+          <!-- Curso -->
+          <div class="col-12 col-md-6">
+            <label class="form-label">Curso</label>
+            <select class="form-select">
+              <option>DAW</option>
+              <option>DAM</option>
+              <option>ASIR</option>
+            </select>
+          </div>
+
+          <!-- Check -->
+          <div class="col-12 col-md-6 d-flex align-items-end">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terminos2" />
+              <label class="form-check-label" for="terminos2">
+                Acepto los términos
+              </label>
+            </div>
+          </div>
+
+          <!-- Botón -->
+          <div class="col-12 mt-3">
+            <button class="btn btn-primary w-100">
+              Enviar
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+      <h4 class="h6 mt-3">Código usado:</h4>
+      <pre><code>&lt;form class="p-4 bg-light rounded"&gt;
+  &lt;div class="row g-3"&gt;
+
+    &lt;div class="col-12 col-md-6"&gt;
+      &lt;label class="form-label"&gt;Nombre&lt;/label&gt;
+      &lt;input type="text" class="form-control is-valid"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12 col-md-6"&gt;
+      &lt;label class="form-label"&gt;Apellidos&lt;/label&gt;
+      &lt;input type="text" class="form-control is-invalid"&gt;
+      &lt;div class="invalid-feedback"&gt;Este campo es obligatorio.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12"&gt;
+      &lt;label class="form-label"&gt;Email&lt;/label&gt;
+      &lt;input type="email" class="form-control"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12"&gt;
+      &lt;label class="form-label"&gt;Contraseña&lt;/label&gt;
+      &lt;input type="password" class="form-control"&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12 col-md-6"&gt;
+      &lt;label class="form-label"&gt;Curso&lt;/label&gt;
+      &lt;select class="form-select"&gt;
+        &lt;option&gt;DAW&lt;/option&gt;
+        &lt;option&gt;DAM&lt;/option&gt;
+        &lt;option&gt;ASIR&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12 col-md-6 d-flex align-items-end"&gt;
+      &lt;div class="form-check"&gt;
+        &lt;input class="form-check-input" type="checkbox"&gt;
+        &lt;label class="form-check-label"&gt;Acepto los términos&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="col-12 mt-3"&gt;
+      &lt;button class="btn btn-primary w-100"&gt;Enviar&lt;/button&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+    </section>
+
+    <hr>
+
+    <footer class="text-center text-muted mt-4">
+      <p class="mb-0">Bootstrap – Formularios modernos · preparado para clase</p>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

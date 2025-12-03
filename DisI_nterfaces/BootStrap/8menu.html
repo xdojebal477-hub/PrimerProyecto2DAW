@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap – Navbar y menús responsivos</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding-bottom: 4rem;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .demo-box {
+      border-left: 4px solid #0d6efd;
+      background: #f8f9fa;
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+    }
+    .demo-page {
+      border: 1px solid #dee2e6;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    .demo-header {
+      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #0d6efd, #6f42c1);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA (fuera del ejemplo principal) -->
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">
+        Bootstrap – Navbar y menús responsivos (Web autoexplicativa)
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INTRO -->
+    <section class="mb-5">
+      <h1 class="h3">1. Navbar y menús responsivos</h1>
+      <p class="lead">
+        La <strong>navbar</strong> de Bootstrap es uno de los componentes más útiles:
+        crea menús de navegación responsivos con muy poco código.
+      </p>
+      <p>
+        Veremos:
+        <code>.navbar</code>, <code>.navbar-expand-*</code>, <code>.navbar-brand</code>,
+        <code>.navbar-toggler</code>, <code>.collapse</code> y <code>.nav-link</code>.
+      </p>
+      <hr>
+    </section>
+
+    <!-- NAVBAR BASICA -->
+    <section class="mb-5">
+      <h2 class="h4">2. Estructura básica de una navbar</h2>
+      <p>
+        La estructura mínima usa <code>.navbar</code> y un <code>.container</code> dentro:
+      </p>
+
+      <pre><code>&lt;nav class="navbar bg-light"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Mi Web&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+
+      <div class="demo-box mb-3">
+        <nav class="navbar bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="#">Mi Web</a>
+          </div>
+        </nav>
+      </div>
+
+      <ul>
+        <li><code>.navbar</code> → activa estilos de barra de navegación.</li>
+        <li><code>.navbar-brand</code> → logo o nombre de la web.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- NAVBAR EXPAND -->
+    <section class="mb-5">
+      <h2 class="h4">3. Hacerla responsiva: <code>.navbar-expand-*</code></h2>
+      <p>
+        Con <code>.navbar-expand-*</code> indicas a partir de qué tamaño de pantalla
+        la navbar se muestra expandida (horizontal).  
+        Por debajo de ese tamaño, el menú se colapsa.
+      </p>
+
+      <ul>
+        <li><code>.navbar-expand-sm</code> → expandida desde ≥ 576px.</li>
+        <li><code>.navbar-expand-md</code> → desde ≥ 768px.</li>
+        <li><code>.navbar-expand-lg</code> → desde ≥ 992px (muy común).</li>
+      </ul>
+
+      <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  ...
+&lt;/nav&gt;
+</code></pre>
+    </section>
+
+    <hr>
+
+    <!-- TOGGLER + COLLAPSE -->
+    <section class="mb-5">
+      <h2 class="h4">4. Botón hamburguesa y menú colapsable</h2>
+      <p>
+        Para que el menú se oculte en móvil, se usa:
+      </p>
+      <ul>
+        <li><code>.navbar-toggler</code> → botón tipo “hamburguesa”.</li>
+        <li><code>.navbar-toggler-icon</code> → icono dentro del botón.</li>
+        <li><code>.collapse .navbar-collapse</code> → contenedor que se abre/cierra.</li>
+      </ul>
+
+      <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+  &lt;div class="container"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;Mi Web&lt;/a&gt;
+
+    &lt;button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#menuPrincipal"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;div class="collapse navbar-collapse" id="menuPrincipal"&gt;
+      &lt;ul class="navbar-nav ms-auto"&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link active" href="#"&gt;Inicio&lt;/a&gt;
+        &lt;/li&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+
+      <p class="small text-muted">
+        Fíjate en que el <code>data-bs-target</code> del botón coincide con el <code>id</code> 
+        del bloque <code>.collapse</code>.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- NAV-LINK -->
+    <section class="mb-5">
+      <h2 class="h4">5. Enlaces de navegación: <code>.nav-link</code></h2>
+      <p>
+        Dentro de <code>.navbar-nav</code>, cada elemento suele tener:
+      </p>
+
+      <ul>
+        <li><code>.nav-item</code> en el <code>&lt;li&gt;</code></li>
+        <li><code>.nav-link</code> en el <code>&lt;a&gt;</code></li>
+      </ul>
+
+      <pre><code>&lt;ul class="navbar-nav"&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link active" href="#"&gt;Inicio&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link" href="#"&gt;Cursos&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+      <div class="demo-box">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <a class="navbar-brand" href="#">Ejemplo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#demoNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="demoNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cursos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- EJERCICIO -->
+    <section class="mb-5">
+      <h2 class="h4">6. Ejercicio – Navbar colapsable en móvil</h2>
+
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Crea una navbar que:
+      </p>
+      <ul>
+        <li>Tenga una marca (<code>.navbar-brand</code>) con el texto “Academia Web”.</li>
+        <li>Tenga enlaces: Inicio, Cursos, Blog, Contacto.</li>
+        <li>Se colapse en móvil (menú hamburguesa).</li>
+        <li>Se vea horizontal en pantallas grandes.</li>
+      </ul>
+
+      <h4 class="h6 mt-4">Texto plano (sin formato):</h4>
+
+      <div class="border p-3 mb-4">
+        <p>
+          academia web  
+          inicio  
+          cursos  
+          blog  
+          contacto  
+          en movil menu hamburguesa  
+          en escritorio menu horizontal
+        </p>
+      </div>
+
+      <hr class="my-4">
+
+      <h3 class="h5">Solución de ejemplo:</h3>
+
+      <div class="demo-page mb-3">
+        <!-- NAVBAR DEL EJERCICIO -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Academia Web</a>
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarAcademia"
+                    aria-controls="navbarAcademia" aria-expanded="false"
+                    aria-label="Alternar navegación">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarAcademia">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Cursos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Un pequeño contenido para ver el contexto -->
+        <header class="demo-header text-center">
+          <h1 class="h2 fw-bold mb-2">Aprende desarrollo web paso a paso</h1>
+          <p class="lead mb-0">
+            Cursos prácticos de HTML, CSS, JavaScript y frameworks modernos.
+          </p>
+        </header>
+
+        <section class="p-4">
+          <p class="mb-0">
+            Aquí iría el contenido de la página: listado de cursos, descripción de la academia, etc.
+          </p>
+        </section>
+      </div>
+
+      <h4 class="h6 mt-4">Código usado para la navbar:</h4>
+
+      <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-dark bg-primary"&gt;
+  &lt;div class="container"&gt;
+
+    &lt;a class="navbar-brand fw-bold" href="#"&gt;Academia Web&lt;/a&gt;
+
+    &lt;button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarAcademia"
+            aria-controls="navbarAcademia" aria-expanded="false"
+            aria-label="Alternar navegación"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+    &lt;div class="collapse navbar-collapse" id="navbarAcademia"&gt;
+      &lt;ul class="navbar-nav ms-auto"&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link active" aria-current="page" href="#"&gt;Inicio&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;Cursos&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;Blog&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="nav-item"&gt;
+          &lt;a class="nav-link" href="#"&gt;Contacto&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+
+      <p class="mt-3">
+        El alumnado puede probar a cambiar <code>.navbar-expand-lg</code> por 
+        <code>.navbar-expand-md</code> o <code>.navbar-expand-sm</code> para ver
+        cómo cambia el punto en el que se colapsa el menú.
+      </p>
+    </section>
+
+    <hr>
+
+    <footer class="text-center text-muted mt-4">
+      <p class="mb-0">Bootstrap – Navbar y menús responsivos · preparado para clase</p>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap JS (necesario para navbar-toggler y collapse) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

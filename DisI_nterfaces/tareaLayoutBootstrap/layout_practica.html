@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Layout Bootstrap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos para visualizar las cajas */
+        .caja-demo {
+            background-color: #e0e7ff;
+            border: 1px solid #4f46e5;
+            color: #3730a3;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .caja-oscura {
+            background-color: #3730a3;
+            color: white;
+            border: 1px solid #e0e7ff;
+        }
+        .contenedor-seccion {
+            margin-bottom: 3rem;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 2rem;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Encabezado centrado -->
+    <div class="contenedor-seccion mt-4">
+        <h2>1. Encabezado Centrado</h2>
+        <div class="row">
+            <!-- 
+                col-12: Ancho completo en móviles
+                col-md-10: Un poco más estrecho en tablets
+                col-lg-8: Más estrecho en escritorio
+                col-xl-6: El más estrecho en pantallas muy grandes
+                mx-auto: Centra la columna horizontalmente
+            -->
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
+                <div class="caja-demo caja-oscura">
+                    <h1>Encabezado Responsive</h1>
+                    <p>Este bloque se centra y cambia de ancho según el dispositivo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Sección de tres bloques responsive -->
+    <div class="container contenedor-seccion">
+        <h2>2. Tres bloques responsive</h2>
+        <div class="row g-3">
+            <!-- 
+                col-12: 1 por fila en pequeños
+                col-md-6: 2 por fila en medianos (el tercero bajará)
+                col-lg-4: 3 por fila en grandes
+            -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="caja-demo">Bloque 1</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="caja-demo">Bloque 2</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="caja-demo">Bloque 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Sección con columnas de tamaños diferentes -->
+    <div class="container contenedor-seccion">
+        <h2>3. Columnas de tamaños diferentes (Fijo)</h2>
+        <div class="row g-3">
+            <!-- Tamaños fijos sin breakpoints, suman 12 -->
+            <div class="col-3">
+                <div class="caja-demo">Lateral (3)</div>
+            </div>
+            <div class="col-6">
+                <div class="caja-demo caja-oscura">Central (6)</div>
+            </div>
+            <div class="col-3">
+                <div class="caja-demo">Lateral (3)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Sección alineada verticalmente -->
+    <div class="container contenedor-seccion">
+        <h2>4. Alineación Vertical</h2>
+        <!-- align-items-center alinea verticalmente dentro de la fila -->
+        <div class="row align-items-center bg-light border" style="height: 200px;">
+            <div class="col-6">
+                <div class="caja-demo">Centrado Vert. 1</div>
+            </div>
+            <div class="col-6">
+                <div class="caja-demo">Centrado Vert. 2</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Sección con contenido flexible y contenido ajustado -->
+    <div class="container contenedor-seccion">
+        <h2>5. Contenido Flexible vs Ajustado</h2>
+        <div class="row g-3">
+            <!-- col-auto: Ocupa solo lo que necesita el texto -->
+            <div class="col-auto">
+                <div class="caja-demo caja-oscura">
+                    Soy col-auto (ajustado)
+                </div>
+            </div>
+            <!-- col: Ocupa todo el espacio restante -->
+            <div class="col">
+                <div class="caja-demo">
+                    Soy .col (ocupo el resto del espacio disponible)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Rejilla final de cuatro elementos -->
+    <div class="container contenedor-seccion">
+        <h2>6. Rejilla final (4 elementos)</h2>
+        <div class="row g-4"> <!-- g-4 para separación uniforme -->
+            <!-- 
+                col-12: 1 por fila (pequeño)
+                col-md-6: 2 por fila (mediano)
+                col-lg-3: 4 por fila (grande)
+            -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="caja-demo">Elemento 1</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="caja-demo">Elemento 2</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="caja-demo">Elemento 3</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="caja-demo">Elemento 4</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

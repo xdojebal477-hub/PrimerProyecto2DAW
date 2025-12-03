@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap – Tipografía y Colores</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding-bottom: 4rem;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .demo-block {
+      border-left: 4px solid #0d6efd;
+      padding-left: 1rem;
+      background: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">
+        Bootstrap – Tipografía y Colores (Web autoexplicativa)
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INTRO -->
+    <section class="mb-5">
+      <h1 class="h3">1. Tipografía y colores en Bootstrap</h1>
+      <p class="lead">
+        Bootstrap incluye clases tipográficas y de color que permiten crear jerarquía visual
+        sin escribir CSS.
+      </p>
+      <p>
+        Esto es clave ahora que el alumnado empieza a maquetar páginas reales con secciones
+        diferenciadas, títulos claros y texto agradable de leer.
+      </p>
+      <hr>
+    </section>
+
+    <!-- TITULOS -->
+    <section class="mb-5">
+      <h2 class="h4">2. Clases tipográficas básicas</h2>
+
+      <h3 class="h5 mt-3">2.1. Títulos: <code>.h1</code>…<code>.h6</code></h3>
+      <p>
+        Puedes aplicar niveles de título a cualquier elemento (no solo <code>&lt;h1&gt;</code>)
+        usando clases como <code>.h1</code> a <code>.h6</code>.
+      </p>
+
+      <pre><code>&lt;p class="h1"&gt;Título principal&lt;/p&gt;
+&lt;p class="h4"&gt;Subtítulo&lt;/p&gt;
+&lt;p class="h6"&gt;Texto pequeño&lt;/p&gt;
+</code></pre>
+
+      <div class="demo-block mb-3">
+        <p class="h1 mb-0">Ejemplo de Título .h1</p>
+        <p class="h4 mb-0">Ejemplo de Subtítulo .h4</p>
+        <p class="h6 mb-0">Texto pequeño .h6</p>
+      </div>
+
+      <h3 class="h5 mt-4">2.2. Texto destacado: <code>.lead</code></h3>
+      <p>Se usa para párrafos introductorios más grandes y legibles.</p>
+
+      <pre><code>&lt;p class="lead"&gt;Este es un párrafo destacado.&lt;/p&gt;</code></pre>
+
+      <div class="demo-block mb-3">
+        <p class="lead mb-0">
+          Este es un párrafo destacado usando <code>.lead</code>.
+        </p>
+      </div>
+
+      <h3 class="h5 mt-4">2.3. Grosor del texto: <code>.fw-bold</code>, <code>.fw-light</code></h3>
+      <p>
+        Controla el grosor del texto sin usar CSS adicional.
+      </p>
+
+      <pre><code>&lt;p class="fw-bold"&gt;Texto en negrita&lt;/p&gt;
+&lt;p class="fw-light"&gt;Texto fino&lt;/p&gt;
+</code></pre>
+
+      <div class="demo-block">
+        <p class="fw-bold mb-1">Texto en negrita (.fw-bold)</p>
+        <p class="fw-light mb-0">Texto fino (.fw-light)</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- COLORES -->
+    <section class="mb-5">
+      <h2 class="h4">3. Colores de texto y fondo</h2>
+
+      <h3 class="h5 mt-3">3.1. Colores de texto: <code>.text-primary</code>, <code>.text-muted</code></h3>
+      <p>
+        Los colores ayudan a marcar jerarquía, distinguir categorías o atenuar fragmentos.
+      </p>
+
+      <pre><code>&lt;p class="text-primary"&gt;Texto importante&lt;/p&gt;
+&lt;p class="text-muted"&gt;Información secundaria&lt;/p&gt;
+</code></pre>
+
+      <div class="demo-block mb-3">
+        <p class="text-primary mb-1">Texto importante (.text-primary)</p>
+        <p class="text-muted mb-0">Información secundaria (.text-muted)</p>
+      </div>
+
+      <h3 class="h5 mt-4">3.2. Colores de fondo: <code>.bg-light</code></h3>
+      <p><code>.bg-light</code> añade un fondo gris muy suave, útil para separar secciones.</p>
+
+      <pre><code>&lt;div class="bg-light p-3"&gt;
+  Contenido con fondo claro
+&lt;/div&gt;
+</code></pre>
+
+      <div class="bg-light p-3 border rounded">
+        Contenido con <code>.bg-light</code> y padding.
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- EJERCICIO -->
+    <section class="mb-5">
+      <h2 class="h4">4. Ejercicio</h2>
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Convierte el siguiente bloque de texto plano en contenido con estructura visual usando:
+      </p>
+      <ul>
+        <li><code>.h1</code>…<code>.h6</code></li>
+        <li><code>.lead</code></li>
+        <li><code>.fw-bold</code></li>
+        <li><code>.text-primary</code>, <code>.text-muted</code></li>
+        <li><code>.bg-light</code></li>
+      </ul>
+
+      <h4 class="h5 mt-3">Texto plano (sin formato):</h4>
+
+      <div class="border p-3 mb-4">
+        <p>
+          guia de productividad 2025  
+          trucos para mejorar tu organizacion diaria  
+          estos consejos estan pensados para estudiantes de daw y dam  
+          incluye uso de atajos de teclado planificacion semanal y reducir distracciones  
+          actualizacion 2025 version revisada
+        </p>
+      </div>
+
+      <hr class="my-4">
+
+      <h3 class="h5">Solución de ejemplo:</h3>
+
+      <div class="bg-light p-4 rounded mb-3">
+        <p class="h1 text-primary fw-bold mb-3">Guía de productividad 2025</p>
+
+        <p class="lead">
+          Trucos para mejorar tu organización diaria.
+        </p>
+
+        <p>
+          Estos consejos están pensados para estudiantes de
+          <span class="fw-bold">DAW y DAM</span>.
+        </p>
+
+        <p>
+          Incluye uso de atajos de teclado, planificación semanal
+          y reducción de distracciones.
+        </p>
+
+        <p class="text-muted mt-3">
+          Actualización 2025 · versión revisada
+        </p>
+      </div>
+
+      <h4 class="h6 mt-3">Código usado:</h4>
+      <pre><code>&lt;div class="bg-light p-4 rounded"&gt;
+
+  &lt;p class="h1 text-primary fw-bold mb-3"&gt;
+    Guía de productividad 2025
+  &lt;/p&gt;
+
+  &lt;p class="lead"&gt;
+    Trucos para mejorar tu organización diaria.
+  &lt;/p&gt;
+
+  &lt;p&gt;
+    Estos consejos están pensados para estudiantes de
+    &lt;span class="fw-bold"&gt;DAW y DAM&lt;/span&gt;.
+  &lt;/p&gt;
+
+  &lt;p&gt;
+    Incluye uso de atajos de teclado, planificación semanal
+    y reducción de distracciones.
+  &lt;/p&gt;
+
+  &lt;p class="text-muted mt-3"&gt;
+    Actualización 2025 · versión revisada
+  &lt;/p&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </section>
+
+    <hr>
+
+    <footer class="text-center text-muted mt-4">
+      <p class="mb-0">Bootstrap – Tipografía y colores · preparado para clase</p>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

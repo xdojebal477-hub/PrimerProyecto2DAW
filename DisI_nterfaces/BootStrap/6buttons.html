@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap – Botones y Call To Action</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      padding-bottom: 4rem;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .hero-demo {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">
+        Bootstrap – Botones y Call To Action (Web autoexplicativa)
+      </span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- INTRO -->
+    <section class="mb-5">
+      <h1 class="h3">1. Botones y Call To Action (CTA)</h1>
+      <p class="lead">
+        Los botones son esenciales en interfaces reales. Bootstrap ofrece clases para estilos,
+        tamaños y comportamiento responsivo sin necesidad de CSS.
+      </p>
+      <p>
+        Aquí veremos <code>.btn</code>, variantes como <code>.btn-primary</code>,
+        versiones <code>.btn-outline-*</code>, tamaños (<code>.btn-sm</code>,
+        <code>.btn-lg</code>) y utilidades como <code>.d-block</code> y <code>w-100</code> para móvil.
+      </p>
+      <hr>
+    </section>
+
+    <!-- BTN BASICO -->
+    <section class="mb-5">
+      <h2 class="h4">2. Estructura básica de un botón: <code>.btn</code></h2>
+      <p>
+        Para convertir cualquier enlace o botón en un botón con estilo, usa <code>.btn</code>.
+        Después añade una variante de color.
+      </p>
+
+      <pre><code>&lt;a href="#" class="btn btn-primary"&gt;Botón principal&lt;/a&gt;
+&lt;button class="btn btn-secondary"&gt;Botón secundario&lt;/button&gt;
+</code></pre>
+
+      <div class="p-3 border rounded mb-3">
+        <a href="#" class="btn btn-primary me-2">Botón principal</a>
+        <button class="btn btn-secondary">Botón secundario</button>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- VARIANTES OUTLINE -->
+    <section class="mb-5">
+      <h2 class="h4">3. Botones outline (<code>.btn-outline-*</code>)</h2>
+      <p>
+        Estos botones muestran solo el borde. Son muy útiles para acciones secundarias.
+      </p>
+
+      <pre><code>&lt;button class="btn btn-outline-primary"&gt;Ver más&lt;/button&gt;
+&lt;button class="btn btn-outline-danger"&gt;Eliminar&lt;/button&gt;
+</code></pre>
+
+      <div class="p-3 border rounded mb-3">
+        <button class="btn btn-outline-primary me-2">Ver más</button>
+        <button class="btn btn-outline-danger">Eliminar</button>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- TAMAÑOS -->
+    <section class="mb-5">
+      <h2 class="h4">4. Tamaños: <code>.btn-sm</code> y <code>.btn-lg</code></h2>
+      <p>
+        Bootstrap permite variar el tamaño de los botones fácilmente:
+      </p>
+
+      <pre><code>&lt;button class="btn btn-primary btn-lg"&gt;Grande&lt;/button&gt;
+&lt;button class="btn btn-secondary btn-sm"&gt;Pequeño&lt;/button&gt;
+</code></pre>
+
+      <div class="p-3 border rounded mb-3">
+        <button class="btn btn-primary btn-lg me-2">Grande</button>
+        <button class="btn btn-secondary btn-sm">Pequeño</button>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- FULL WIDTH MOBILE -->
+    <section class="mb-5">
+      <h2 class="h4">5. Botones de ancho completo para móvil: <code>.d-block</code> + <code>w-100</code></h2>
+
+      <pre><code>&lt;button class="btn btn-primary d-block w-100"&gt;
+  Botón ancho completo
+&lt;/button&gt;
+</code></pre>
+
+      <div class="p-3 border rounded mb-3">
+        <button class="btn btn-primary d-block w-100">
+          Botón ancho completo (ideal para móvil)
+        </button>
+      </div>
+
+      <p class="small text-muted">
+        En móvil los botones horizontales pueden quedar estrechos, por eso usar <code>w-100</code> crea CTAs más accesibles.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- HERO CTA -->
+    <section class="mb-5">
+      <h2 class="h4">6. Ejercicio: sección Hero con CTA</h2>
+
+      <p><strong>Enunciado:</strong></p>
+      <p>
+        Crea una sección tipo "hero" con:
+      </p>
+      <ul>
+        <li>Un título destacado (<code>.h1</code>)</li>
+        <li>Un subtítulo (<code>.lead</code>)</li>
+        <li>Un botón grande principal (<code>.btn-lg .btn-primary</code>)</li>
+        <li>Un botón secundario (<code>.btn-outline-light</code>)</li>
+      </ul>
+
+      <h4 class="h6 mt-4">Texto plano (sin formato):</h4>
+
+      <div class="border p-3 mb-4">
+        <p>
+          Bienvenido a la plataforma definitiva  
+          aprende desarrollo web desde cero  
+          cursos prácticos y proyectos reales  
+          empieza hoy mismo  
+          más información
+        </p>
+      </div>
+
+      <hr class="my-4">
+
+      <h3 class="h5">Solución de ejemplo:</h3>
+
+      <div class="hero-demo mb-3 text-center">
+        <p class="h1 fw-bold mb-3">Bienvenido a la plataforma definitiva</p>
+
+        <p class="lead mb-4">
+          Aprende desarrollo web desde cero con cursos prácticos y proyectos reales.
+        </p>
+
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+          <a href="#" class="btn btn-light btn-lg fw-bold px-4">
+            Empieza hoy mismo
+          </a>
+          <a href="#" class="btn btn-outline-light btn-lg px-4">
+            Más información
+          </a>
+        </div>
+      </div>
+
+      <h4 class="h6 mt-4">Código usado:</h4>
+      <pre><code>&lt;div class="hero-demo text-center"&gt;
+
+  &lt;p class="h1 fw-bold mb-3"&gt;
+    Bienvenido a la plataforma definitiva
+  &lt;/p&gt;
+
+  &lt;p class="lead mb-4"&gt;
+    Aprende desarrollo web desde cero con cursos prácticos y proyectos reales.
+  &lt;/p&gt;
+
+  &lt;div class="d-flex flex-column flex-sm-row gap-3 justify-content-center"&gt;
+    &lt;a href="#" class="btn btn-light btn-lg fw-bold px-4"&gt;
+      Empieza hoy mismo
+    &lt;/a&gt;
+
+    &lt;a href="#" class="btn btn-outline-light btn-lg px-4"&gt;
+      Más información
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+    </section>
+
+    <hr>
+
+    <footer class="text-center text-muted mt-4">
+      <p class="mb-0">Bootstrap – Botones y CTA · preparado para clase</p>
+    </footer>
+
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap Layout explicado</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    pre {
+      background: #222;
+      color: #eee;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    .demo-box {
+      background: #0d6efd22;
+      border: 1px dashed #0d6efd;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="pb-5">
+
+  <div class="container my-4">
+    <h1 class="mb-4 text-center">Bootstrap: Guía autoexplicativa del Layout</h1>
+    <p class="lead">
+      Esta página explica únicamente lo que tus estudiantes necesitan para entender
+      <strong>cómo funciona el layout en Bootstrap</strong>: filas, columnas, breakpoints y tamaños.
+    </p>
+
+    <hr class="my-4">
+
+    <!-- SECCIÓN 1 -->
+    <section class="mb-5">
+      <h2 class="h4">1. El sistema de rejilla (Grid)</h2>
+      <p>
+        Bootstrap organiza la pantalla dividiéndola en <strong>12 columnas</strong>.  
+        Toda fila se crea con <code>.row</code> y dentro se colocan elementos con la clase <code>.col</code> o variantes como <code>.col-6</code>.
+      </p>
+
+      <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col"&gt;A&lt;/div&gt;
+  &lt;div class="col"&gt;B&lt;/div&gt;
+  &lt;div class="col"&gt;C&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <p class="mt-3">
+        Las columnas con <code>.col</code> se reparten el espacio <strong>a partes iguales</strong>:
+      </p>
+
+      <div class="row text-center mb-3">
+        <div class="col demo-box">col</div>
+        <div class="col demo-box">col</div>
+        <div class="col demo-box">col</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 2 -->
+    <section class="mb-5">
+      <h2 class="h4">2. Columnas con tamaño fijo: <code>.col-*</code></h2>
+      <p>
+        Si quieres que una columna ocupe un número concreto de columnas (de las 12),
+        usas <code>.col-4</code>, <code>.col-6</code>, etc.
+      </p>
+
+      <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+  &lt;div class="col-8"&gt;col-8&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row text-center mb-3">
+        <div class="col-4 demo-box">col-4</div>
+        <div class="col-8 demo-box">col-8</div>
+      </div>
+
+      <p class="small text-muted">
+        Recuerda: la suma debe dar ≤ 12. Si no llega a 12, el espacio restante se queda vacío.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 3 -->
+    <section class="mb-5">
+      <h2 class="h4">3. Breakpoints: diseño responsive</h2>
+      <p>
+        Bootstrap adapta el layout según el tamaño de pantalla usando <strong>breakpoints</strong>.  
+        Se combinan con las clases <code>.col-sm-*</code>, <code>.col-md-*</code>, <code>.col-lg-*</code>,
+        etc.
+      </p>
+
+      <ul>
+        <li><strong>sm</strong> → ≥ 576px</li>
+        <li><strong>md</strong> → ≥ 768px</li>
+        <li><strong>lg</strong> → ≥ 992px</li>
+        <li><strong>xl</strong> → ≥ 1200px</li>
+        <li><strong>xxl</strong> → ≥ 1400px</li>
+      </ul>
+
+      <p>
+        Si no especificas un tamaño para pantallas pequeñas, las columnas se apilan.
+      </p>
+
+      <pre><code>&lt;!-- En móvil: columnas apiladas
+En escritorio (md+): 4 + 8 --&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-12 col-md-4"&gt;4 en md+&lt;/div&gt;
+  &lt;div class="col-12 col-md-8"&gt;8 en md+&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row text-center mb-3">
+        <div class="col-12 col-md-4 demo-box">col-12 col-md-4</div>
+        <div class="col-12 col-md-8 demo-box">col-12 col-md-8</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 4 -->
+    <section class="mb-5">
+      <h2 class="h4">4. Combinar breakpoints (muy común en DAW/DAM)</h2>
+      <p>
+        Puedes definir diferentes tamaños de columna para cada breakpoint.
+        Ejemplo:  
+        <strong>móvil → 12</strong>,  
+        <strong>tablet → 6</strong>,  
+        <strong>escritorio → 3</strong>.
+      </p>
+
+      <pre><code>&lt;div class="col-12 col-sm-6 col-lg-3"&gt;...&lt;/div&gt;
+</code></pre>
+
+      <div class="row text-center mb-3">
+        <div class="col-12 col-sm-6 col-lg-3 demo-box">A</div>
+        <div class="col-12 col-sm-6 col-lg-3 demo-box">B</div>
+        <div class="col-12 col-sm-6 col-lg-3 demo-box">C</div>
+        <div class="col-12 col-sm-6 col-lg-3 demo-box">D</div>
+      </div>
+
+      <p class="small text-muted">
+        En móvil → 4 filas.  
+        En tablet (sm) → 2 columnas por fila.  
+        En escritorio (lg) → 4 columnas en una sola fila.
+      </p>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 5 -->
+    <section class="mb-5">
+      <h2 class="h4">5. Col auto y col-auto</h2>
+      <p>
+        <code>.col-auto</code> hace que la columna ocupe solo el espacio necesario
+        según su contenido. El resto del espacio lo ocupan los <code>.col</code> normales.
+      </p>
+
+      <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-auto"&gt;Auto (según contenido)&lt;/div&gt;
+  &lt;div class="col"&gt;Resto del ancho&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row text-center mb-3">
+        <div class="col-auto demo-box">col-auto</div>
+        <div class="col demo-box">col</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 6 -->
+    <section class="mb-5">
+      <h2 class="h4">6. Alineación dentro de filas</h2>
+
+      <h5 class="mt-3">Horizontal: justify-content-*</h5>
+      <pre><code>&lt;div class="row justify-content-center"&gt;
+  &lt;div class="col-3"&gt;...&lt;/div&gt;
+  &lt;div class="col-3"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row justify-content-center text-center mb-3">
+        <div class="col-3 demo-box">A</div>
+        <div class="col-3 demo-box">B</div>
+      </div>
+
+      <h5 class="mt-3">Vertical: align-items-*</h5>
+      <pre><code>&lt;div class="row align-items-center" style="height:120px"&gt;
+  &lt;div class="col-4"&gt;...&lt;/div&gt;
+  &lt;div class="col-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row align-items-center mb-3" style="height:120px;">
+        <div class="col-4 demo-box">A</div>
+        <div class="col-4 demo-box">B</div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- SECCIÓN 7 -->
+    <section class="mb-5">
+      <h2 class="h4">7. Ejemplo final combinando todo</h2>
+      <p>Layout típico de tarjetas responsive:</p>
+
+      <pre><code>&lt;div class="row g-3"&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-4"&gt;Tarjeta&lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-4"&gt;Tarjeta&lt;/div&gt;
+  &lt;div class="col-12 col-sm-6 col-lg-4"&gt;Tarjeta&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+      <div class="row g-3 text-center">
+        <div class="col-12 col-sm-6 col-lg-4 demo-box">Tarjeta 1</div>
+        <div class="col-12 col-sm-6 col-lg-4 demo-box">Tarjeta 2</div>
+        <div class="col-12 col-sm-6 col-lg-4 demo-box">Tarjeta 3</div>
+      </div>
+
+      <p class="mt-3">
+        ✔ Móvil → 1 por fila  
+        ✔ Tablet → 2 por fila  
+        ✔ Escritorio → 3 por fila
+      </p>
+    </section>
+
+    <hr>
+
+    <footer class="text-center mt-5 text-muted">
+      <p>Bootstrap Layout explicado — hecho para clase</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
