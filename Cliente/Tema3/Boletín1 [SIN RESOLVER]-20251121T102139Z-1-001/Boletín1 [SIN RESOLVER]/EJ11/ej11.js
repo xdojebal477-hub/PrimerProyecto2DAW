@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
     // 3. Funcionalidad de borrar tablas
-    btnBorrarTablas.addEventListener('click', () => {
+    btnBorrarTablas.addEventListener('click', () => {z
         contenedorTablas.innerHTML = '';
     });
 
