@@ -1,27 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("btnBorrar").onclick = borrarSeleccionados;
-    document.getElementById("btnAplicar").onclick = aplicarSeleccion;
-    let imagenes = document.getElementsByTagName("img");
-    for (let i = 0; i < imagenes.length; i++)
-        imagenes[i].onclick = function () {
-        permutarSeleccion(this);
-        };
+    document.getElementById("btnBorrar").addEventListener("click",borrarSeleccionados);
+    document.getElementById("btnAplicar").addEventListener("click",aplicarSeleccion);
+    
+    document.addEventListener("click",(e)=>{
+        if(e.target.tagName.toLowerCase()==="img")
+            permutarSeleccion(e.target);
+    })
 })  ;
 
 function borrarSeleccionados() {
-    const seleccionados = document.getElementsByClassName("seleccionado");
+    const seleccionados = document.querySelector(".seleccionado");
     for (let i = seleccionados.length - 1; i >= 0; i--) {
         seleccionados[i].remove();
     }
 }   
     
-function permutarSeleccion(img) {
-    if (img.classList.contains("seleccionado")) {
-        img.classList.remove("seleccionado");
-    } else {
-        img.classList.add("seleccionado");
-    }
-}   
+function permutarSeleccion(img) {img.classList.toggle("seleccionado")}//con esto sabemos si esta pulsado o no
     
 function aplicarSeleccion() {
     const destino = document.querySelector("[name='sitio']:checked").value;
@@ -47,7 +41,7 @@ function aplicarSeleccion() {
         }
         quitarSeleccion();
     }
-}   
+}
     
 function quitarSeleccion() {
     let seleccionados = document.querySelectorAll(".seleccionado");
