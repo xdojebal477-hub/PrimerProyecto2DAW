@@ -92,7 +92,3 @@ function agregarTarea() {
 
 // Asignar el evento click al botón
 btnAgregar.addEventListener('click', agregarTarea);
-
-inputTarea.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') agregarTarea();
-});
