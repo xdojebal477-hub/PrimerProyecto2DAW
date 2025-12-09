@@ -109,6 +109,92 @@ function cargaDatosIniciales() {
   gestor.comercialActual=0;
   gestor.clienteActual=0;
   console.log(`Datos cargados correctamente: ${gestor.clientes[0][0].nombre} es cliente de ${gestor.comerciales[0]}`);//clog para ver si carga bien
+  
 }
+// "Main" del programa
+document.addEventListener('DOMContentLoaded', () => {
+  cargaDatosIniciales();
+  rellenarComerciales();
+  rellenarSelects();
+});
 
-document.addEventListener('DOMContentLoaded', cargaDatosIniciales);
+function rellenarSelects() {
+  //aqui rellenamos el select de categorias con gestor.categorias
+  const selectCategorias = document.getElementsByName('categorias')[0];//seleccionamos el select de categorias
+  selectCategorias.innerHTML = '';
+  gestor.categorias.forEach((categoria,indice) => {
+    const option = document.createElement('option');
+    option.value = indice ;
+    option.textContent = categoria;
+    selectCategorias.appendChild(option);
+  });
+  selectCategorias.addEventListener('change', (event) => {
+    rellenarProductos(parseInt(event.target.value));
+  });
+  rellenarProductos(0);//inicializamos el select de productos con la primera categoria
+};
+function rellenarProductos(indiceCategoria) {
+  //filtramos los productos del catalogo por la categoria seleccionada
+  const selectProductos=document.getElementsByName('productos')[0];
+  selectProductos.innerHTML='';
+  const productosFiltrados=catalogo.productos.filter(producto => producto.idCategoria === indiceCategoria);
+  productosFiltrados.forEach(producto => {
+        const option = document.createElement("option");
+        option.value = producto.idProducto; // Guardamos el ID para saber cuál es luego
+        option.textContent = producto.nombreProducto;
+        selectProductos.appendChild(option);
+    });
+};
+
+function rellenarComerciales() {
+  const selectComerciales = document.getElementsByName('comerciales')[0];//seleccionamos el select de comerciales
+  selectComerciales.innerHTML = '';
+  gestor.comerciales.forEach((comercial,indice) => {
+    const option = document.createElement('option');
+    option.value = indice;
+    option.textContent = comercial;
+    selectComerciales.appendChild(option);
+  });
+  selectComerciales.addEventListener('change',(e)=>{
+    rellenarClientes(e.target.value);
+  });
+  rellenarClientes(0)
+};
+
+function rellenarClientes(indiceComercial) {
+    gestor.comercialActual = parseInt(indiceComercial);
+    gestor.clienteActual = 0; 
+
+    // Buscamos solo los elementos que tengan la clase .cliente y los eliminamos.
+    const contenedor = document.getElementById('clientes');
+    const clientesAntiguos = contenedor.querySelectorAll('.cliente');
+    clientesAntiguos.forEach(caja => caja.remove());
+
+    // buscamos el array de clientes de ese comercial
+    const clientesComercialActual = gestor.clientes[indiceComercial];
+
+    // Recorremos los clientes de este comercial y los añadimos al contenedor
+    clientesComercialActual.forEach((cliente, indiceCliente) => {
+        const div = document.createElement('div');
+        div.className = 'cliente'; 
+        div.textContent = cliente.nombre; 
+
+        
+        // comprobamos si esta en cuenta pendiente(rojo) o pagado(azul)
+        if (cliente.cuentaAbierta) {
+            div.classList.add('pendiente');
+        } else {
+            div.classList.add('pagado');
+        }
+
+        div.addEventListener('click', () => {
+            gestor.clienteActual = indiceCliente;
+            // Aquí llamaremos a pintarPanelPedido() en el futuro
+            console.log("Cliente seleccionado:", cliente.nombre); 
+            // Opcional: Repintar el pedido actual
+            // pintarPanelPedido(); 
+        });
+        // Añadimos el div del cliente al contenedor principal  
+        contenedor.appendChild(div);
+    });
+}
