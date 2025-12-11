@@ -116,6 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
   cargaDatosIniciales();
   rellenarComerciales();
   rellenarSelects();
+  document.getElementById('teclado').addEventListener('click',(e)=>{
+    if(e.target.classList.contains('tecla')){
+      const unidades=parseInt(e.target.value);
+      añadirUnidadesPedido(unidades);
+    }
+  });
 });
 
 function rellenarSelects() {
@@ -187,7 +193,7 @@ function rellenarClientes(indiceComercial) {
             div.classList.add('pagado');
         }
 
-        div.addEventListener('click', () => {
+        div.addEventListener('click', () => {//aqui manejamos el evento click para seleccionar el cliente
             gestor.clienteActual = indiceCliente;
             // Aquí llamaremos a pintarPanelPedido() en el futuro
             console.log("Cliente seleccionado:", cliente.nombre); 
@@ -197,4 +203,102 @@ function rellenarClientes(indiceComercial) {
         // Añadimos el div del cliente al contenedor principal  
         contenedor.appendChild(div);
     });
+}
+function añadirUnidadesPedido(unidades) {
+  //obtenemos el id del producto seleccionado
+  const selectProductos=document.getElementsByName('productos')[0];
+  const idProductoSeleccionado=parseInt(selectProductos.value);
+  //ahora el array de pedidos del cliente actual
+  const pedidosCliente=gestor.pedidos[gestor.comercialActual][gestor.clienteActual];
+  //buscamos si el producto ya existe en el pedido
+  let pedidoExistente = pedidosCliente.find(pedido => pedido.idProducto === idProductoSeleccionado);
+  if(pedidoExistente){
+    //si existe, aumentamos las unidades
+    alert("El producto ya está en el pedido. Para modificar unidades utilice los botones de + y - en el panel de pedidos.");
+    return;
+  }
+  //si no existe, creamos una nueva linea de pedido
+  const nuevaLinea=new LineaPedido(unidades,idProductoSeleccionado);
+  pedidosCliente.push(nuevaLinea);
+  gestor.clientes[gestor.comercialActual][gestor.clienteActual].cuentaAbierta=true;
+  rellenarClientes(gestor.comercialActual);
+  pintarPanelPedido();
+};
+
+function pintarPanelPedido() {
+  
+  //limpiamos el panel de pedidos
+  const panelPedidos=document.getElementById('pedido');
+  panelPedidos.innerHTML='';
+  //sacamos array de lineas de pedido del cliente actual
+  const pedidosCliente=gestor.pedidos[gestor.comercialActual][gestor.clienteActual];
+  if(pedidosCliente.length===0){
+    panelPedidos.textContent="No hay productos en el pedido.";//lo hacemo con textcontent para interactuar con el dom y creamomos el nodo de texto
+    return;
+  }
+  let totalPedido=0;
+  //hacemos la cabecera de la tabla
+  const tabla=document.createElement('table');
+  const filaCabecera=document.createElement('tr');
+  ['Modificar','Uds','Id','Producto','Precio'].forEach(titulo=>{
+    const th=document.createElement('th');
+    th.textContent=titulo;
+    filaCabecera.appendChild(th);
+  });
+  tabla.appendChild(filaCabecera);
+  //recorremos las lineas de pedido, buscamos el producto en el catalogo usando linea.idProducto y pintamos la fila
+  pedidosCliente.forEach((lineaPedido,indice)=>{
+    const producto=catalogo.productos.find(prod=>prod.idProducto===lineaPedido.idProducto);
+    const fila=document.createElement('tr');
+    //columna modificar
+    const tdModificar=document.createElement('td');
+    const btnMas=document.createElement('button');
+    btnMas.textContent='+';
+    btnMas.addEventListener('click',()=>{
+      lineaPedido.unidades+=1;
+      pintarPanelPedido();
+    });
+    const btnMenos=document.createElement('button');
+    btnMenos.textContent='-';
+    btnMenos.addEventListener('click',()=>{
+      if(lineaPedido.unidades>1){
+        lineaPedido.unidades-=1;
+      }else{
+        //eliminar la linea de pedido
+        pedidosCliente.splice(indice,1);
+      }
+      pintarPanelPedido();
+    });
+    tdModificar.appendChild(btnMas);
+    tdModificar.appendChild(btnMenos);
+    fila.appendChild(tdModificar);
+    //columna unidades
+    const tdUnidades=document.createElement('td');
+    tdUnidades.textContent=lineaPedido.unidades;
+    fila.appendChild(tdUnidades);
+    //columna id
+    const tdId=document.createElement('td');
+    tdId.textContent=producto.idProducto;
+    fila.appendChild(tdId);
+    //columna producto
+    const tdProducto=document.createElement('td');
+    tdProducto.textContent=producto.nombreProducto;
+    fila.appendChild(tdProducto);
+    //columna precio
+    const tdPrecio=document.createElement('td');
+    const precioLinea=lineaPedido.unidades*producto.precioUnitario;
+    tdPrecio.textContent=precioLinea.toFixed(2)+' €';
+    fila.appendChild(tdPrecio);
+    //añadimos la fila a la tabla
+    tabla.appendChild(fila);
+    totalPedido+=precioLinea;
+  }
+  );
+  //añadimos la tabla al panel de pedidos
+  panelPedidos.appendChild(tabla);
+  //mostramos el total del pedido
+  const divTotal=document.createElement('div');
+  divTotal.textContent=`Total Pedido: ${totalPedido.toFixed(2)} €`;
+  panelPedidos.appendChild(divTotal);
+
 }
