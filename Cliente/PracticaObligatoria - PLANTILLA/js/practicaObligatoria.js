@@ -162,6 +162,7 @@ function rellenarComerciales() {
     selectComerciales.appendChild(option);
   });
   selectComerciales.addEventListener('change',(e)=>{
+    gestor.clienteActual = 0; // Reiniciamos el cliente actual al cambiar de comercial
     rellenarClientes(e.target.value);
   });
   rellenarClientes(0)
@@ -169,7 +170,6 @@ function rellenarComerciales() {
 
 function rellenarClientes(indiceComercial) {
     gestor.comercialActual = parseInt(indiceComercial);
-    gestor.clienteActual = 0; 
 
     // Buscamos solo los elementos que tengan la clase .cliente y los eliminamos.
     const contenedor = document.getElementById('clientes');
@@ -198,7 +198,7 @@ function rellenarClientes(indiceComercial) {
             // Aquí llamaremos a pintarPanelPedido() en el futuro
             console.log("Cliente seleccionado:", cliente.nombre); 
             // Opcional: Repintar el pedido actual
-            // pintarPanelPedido(); 
+            pintarPanelPedido(); 
         });
         // Añadimos el div del cliente al contenedor principal  
         contenedor.appendChild(div);
@@ -226,79 +226,116 @@ function añadirUnidadesPedido(unidades) {
 };
 
 function pintarPanelPedido() {
-  
-  //limpiamos el panel de pedidos
-  const panelPedidos=document.getElementById('pedido');
-  panelPedidos.innerHTML='';
-  //sacamos array de lineas de pedido del cliente actual
-  const pedidosCliente=gestor.pedidos[gestor.comercialActual][gestor.clienteActual];
-  if(pedidosCliente.length===0){
-    panelPedidos.textContent="No hay productos en el pedido.";//lo hacemo con textcontent para interactuar con el dom y creamomos el nodo de texto
-    return;
-  }
-  let totalPedido=0;
-  //hacemos la cabecera de la tabla
-  const tabla=document.createElement('table');
-  const filaCabecera=document.createElement('tr');
-  ['Modificar','Uds','Id','Producto','Precio'].forEach(titulo=>{
-    const th=document.createElement('th');
-    th.textContent=titulo;
+
+  const panelPedidos = document.getElementById('pedido');
+  panelPedidos.innerHTML = '';
+
+  const clienteActual = gestor.clientes?.[gestor.comercialActual]?.[gestor.clienteActual];//con el ? comprobamos que el cliente actual existe , y sino se mete en el []
+  const pedidosCliente = gestor.pedidos?.[gestor.comercialActual]?.[gestor.clienteActual] ?? [];
+
+  let totalPedido = 0;
+
+  // Tabla (si hay líneas)
+  const tabla = document.createElement('table');
+  const filaCabecera = document.createElement('tr');
+  ['Modificar', 'Uds', 'Id', 'Producto', 'Precio'].forEach(titulo => {
+    const th = document.createElement('th');
+    th.textContent = titulo;
     filaCabecera.appendChild(th);
   });
   tabla.appendChild(filaCabecera);
-  //recorremos las lineas de pedido, buscamos el producto en el catalogo usando linea.idProducto y pintamos la fila
-  pedidosCliente.forEach((lineaPedido,indice)=>{
-    const producto=catalogo.productos.find(prod=>prod.idProducto===lineaPedido.idProducto);
-    const fila=document.createElement('tr');
-    //columna modificar
-    const tdModificar=document.createElement('td');
-    const btnMas=document.createElement('button');
-    btnMas.textContent='+';
-    btnMas.addEventListener('click',()=>{
-      lineaPedido.unidades+=1;
+
+  pedidosCliente.forEach((lineaPedido, indice) => {
+    const producto = catalogo.productos.find(prod => prod.idProducto === lineaPedido.idProducto);
+    if (!producto) return;
+
+    const fila = document.createElement('tr');
+
+    // columna modificar
+    const tdModificar = document.createElement('td');
+    const btnMas = document.createElement('button');
+    btnMas.textContent = '+';
+    btnMas.addEventListener('click', () => {
+      lineaPedido.unidades += 1;
       pintarPanelPedido();
     });
-    const btnMenos=document.createElement('button');
-    btnMenos.textContent='-';
-    btnMenos.addEventListener('click',()=>{
-      if(lineaPedido.unidades>1){
-        lineaPedido.unidades-=1;
-      }else{
-        //eliminar la linea de pedido
-        pedidosCliente.splice(indice,1);
+
+    const btnMenos = document.createElement('button');
+    btnMenos.textContent = '-';
+    btnMenos.addEventListener('click', () => {
+      if (lineaPedido.unidades > 1) {
+        lineaPedido.unidades -= 1;
+      } else {
+        pedidosCliente.splice(indice, 1);
+      }
+      if (pedidosCliente.length === 0 && clienteActual) {
+        clienteActual.cuentaAbierta = false;
+        rellenarClientes(gestor.comercialActual);
       }
       pintarPanelPedido();
     });
+
     tdModificar.appendChild(btnMas);
     tdModificar.appendChild(btnMenos);
     fila.appendChild(tdModificar);
-    //columna unidades
-    const tdUnidades=document.createElement('td');
-    tdUnidades.textContent=lineaPedido.unidades;
-    fila.appendChild(tdUnidades);
-    //columna id
-    const tdId=document.createElement('td');
-    tdId.textContent=producto.idProducto;
-    fila.appendChild(tdId);
-    //columna producto
-    const tdProducto=document.createElement('td');
-    tdProducto.textContent=producto.nombreProducto;
-    fila.appendChild(tdProducto);
-    //columna precio
-    const tdPrecio=document.createElement('td');
-    const precioLinea=lineaPedido.unidades*producto.precioUnitario;
-    tdPrecio.textContent=precioLinea.toFixed(2)+' €';
-    fila.appendChild(tdPrecio);
-    //añadimos la fila a la tabla
-    tabla.appendChild(fila);
-    totalPedido+=precioLinea;
-  }
-  );
-  //añadimos la tabla al panel de pedidos
-  panelPedidos.appendChild(tabla);
-  //mostramos el total del pedido
-  const divTotal=document.createElement('div');
-  divTotal.textContent=`Total Pedido: ${totalPedido.toFixed(2)} €`;
-  panelPedidos.appendChild(divTotal);
 
+    // columna unidades
+    const tdUnidades = document.createElement('td');
+    tdUnidades.textContent = lineaPedido.unidades;
+    fila.appendChild(tdUnidades);
+
+    // columna id
+    const tdId = document.createElement('td');
+    tdId.textContent = producto.idProducto;
+    fila.appendChild(tdId);
+
+    // columna producto
+    const tdProducto = document.createElement('td');
+    tdProducto.textContent = producto.nombreProducto;
+    fila.appendChild(tdProducto);
+
+    // columna precio
+    const tdPrecio = document.createElement('td');
+    const precioLinea = lineaPedido.unidades * producto.precioUnidad;
+    tdPrecio.textContent = precioLinea.toFixed(2) + ' €';
+    fila.appendChild(tdPrecio);
+
+    tabla.appendChild(fila);
+    totalPedido += precioLinea;
+  });
+
+  // Cabecera: título, cliente, total, botón
+  const titulo = document.createElement('h1');
+  titulo.textContent = 'Pedido';
+
+  const subtituloCliente = document.createElement('h2');
+  subtituloCliente.textContent = `Cliente ${clienteActual ? clienteActual.nombre : ''}`;
+
+  const total = document.createElement('h3');
+  total.textContent = `TOTAL: ${totalPedido.toFixed(2)}€`;
+
+  const btnCobrar = document.createElement('button');
+  btnCobrar.textContent = 'PEDIDO ENVIADO Y COBRADO';
+  btnCobrar.disabled = pedidosCliente.length === 0;
+  btnCobrar.addEventListener('click', () => {
+    if (!clienteActual) return;
+    gestor.pedidos[gestor.comercialActual][gestor.clienteActual] = [];
+    clienteActual.cuentaAbierta = false;
+    rellenarClientes(gestor.comercialActual);
+    pintarPanelPedido();
+  });
+
+  panelPedidos.appendChild(titulo);
+  panelPedidos.appendChild(subtituloCliente);
+  panelPedidos.appendChild(total);
+  panelPedidos.appendChild(btnCobrar);
+
+  if (pedidosCliente.length === 0) {
+    const vacio = document.createElement('div');
+    vacio.textContent = 'No hay productos en el pedido.';
+    panelPedidos.appendChild(vacio);
+    return;
+  }
+
+  panelPedidos.appendChild(tabla);
 }
