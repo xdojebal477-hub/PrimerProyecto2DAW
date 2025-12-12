@@ -316,6 +316,7 @@ function pintarPanelPedido() {
 
   const btnCobrar = document.createElement('button');
   btnCobrar.textContent = 'PEDIDO ENVIADO Y COBRADO';
+  btnCobrar.style='background-color: lightblue';
   btnCobrar.disabled = pedidosCliente.length === 0;
   btnCobrar.addEventListener('click', () => {
     if (!clienteActual) return;
