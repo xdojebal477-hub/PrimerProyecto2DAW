@@ -13,7 +13,7 @@ function borrarSeleccionados() {
     for (let i = seleccionados.length - 1; i >= 0; i--) {
         seleccionados[i].remove();
     }
-}   
+}
     
 function permutarSeleccion(img) {img.classList.toggle("seleccionado")}//con esto sabemos si esta pulsado o no
     
