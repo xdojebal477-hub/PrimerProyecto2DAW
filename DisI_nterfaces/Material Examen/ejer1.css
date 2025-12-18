@@ -1,0 +1,34 @@
+
+:root {
+	--left-width: 50px;
+	--left-width-grande: 40vw;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+}
+
+#contenedor {
+	min-height: 100vh;
+	width: 100vw;
+
+	display: grid;
+	grid-template-columns: var(--left-width) 1fr;
+
+	transition: grid-template-columns 1s ease;
+}
+
+
+#contenedor:has(#left:hover) {
+	grid-template-columns: var(--left-width-grande) 1fr;
+}
+
+
+#left {
+	background: #962884;
+}
+
+#right {
+	background: #ecf0f1;
+}
