@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function MOdoEntrvista() {
         //devuelve true si el modo entrevista está activado o false si no lo está
-		return !!(interviewModeCheckbox && interviewModeCheckbox.checked);
+		return (interviewModeCheckbox && interviewModeCheckbox.checked);
 	}
 
 	for (const card of profileCards) {   // Recorre todas las tarjetas de perfil
