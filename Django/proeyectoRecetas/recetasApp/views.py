@@ -161,6 +161,37 @@ class IngredienteListView(ListView):
     model = Ingrediente
     template_name = 'recetasApp/ingredientes_list.html'
     context_object_name = 'ingredientes'# esto es lo mismo que poner en el render {'ingredientes':ingredientes} en las FBV  
+    
+    def get_queryset(self):
+        
+        queryset = super().get_queryset()
+        
+        
+        categoria_filtro = self.request.GET.get('categoria')
+        lactosa_filtro = self.request.GET.get('lactosa')
+        cantidad_filtro = self.request.GET.get('cantidad')
+        
+        
+        if categoria_filtro:
+            queryset = queryset.filter(categoria__pk=categoria_filtro)
+        if lactosa_filtro:        
+            queryset = queryset.filter(lactosa__lactosa=True)
+        if cantidad_filtro:
+            queryset = queryset.filter(cantidad__cantidad=cantidad_filtro)
+        
+        return queryset
+    
+    def get_context_data(self, **kwargs):
+        #contexto base
+        context = super().get_context_data(**kwargs)
+        # datos adicionales para el template
+        context['categorias'] = CategoriaIngrediente.objects.all()
+        
+        # Mantener los filtros en el template
+        context['lactosa_filtro'] = self.request.GET.get('lactosa')
+        context['cantidad_filtro'] = self.request.GET.get('cantidad')
+        
+        return context
 
 class IngredienteDetailView(DetailView):
     model = Ingrediente
