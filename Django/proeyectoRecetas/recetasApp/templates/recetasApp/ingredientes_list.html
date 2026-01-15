@@ -1,89 +1,129 @@
 {% extends 'recetasApp/base.html' %}
 
 {% block content %}
-    <h1>Bienvenido a la página de inicio de RecetasApp</h1>
+    <h1>Gestión de Ingredientes</h1>
     
+    <!-- SECCIÓN DE FILTROS -->
     <div class="filtros-container">
         <form action="" method="get">
             <label for="categoria">Categoría:</label>
             <select name="categoria" id="categoria">
                 <option value="">--- Todas ---</option>
                 {% for categoria in categorias %}
-                <option value="{{ categoria.pk }}" {% if request.GET.categoria|stringformat:'s' == categoria.pk|stringformat:'s' %}selected{% endif %}>
-                    {{ categoria.nombre }}
-                </option>
+                    <option value="{{ categoria.pk }}" 
+                        {% if request.GET.categoria|stringformat:'s' == categoria.pk|stringformat:'s' %}selected{% endif %}>
+                        {{ categoria.nombre }}
+                    </option>
                 {% endfor %}
             </select>
 
-            <label for="lactosa">Lactosa:</label>
+            <label for="lactosa" style="margin-left: 10px;">Lactosa:</label>
             <input type="checkbox" name="lactosa" id="lactosa" {% if lactosa_filtro %}checked{% endif %}>
 
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro|default:'' }}">
+            <label for="cantidad" style="margin-left: 10px;">Cantidad:</label>
+            <input type="number" name="cantidad" id="cantidad" value="{{ cantidad_filtro|default:'' }}" style="width: 80px;">
 
-            <input type="submit" value="Filtrar">
+            <button type="submit" style="margin-left: 10px;">🔍 Filtrar</button>
             
-            <a href="{% url 'ingredientes_list' %}">
-                <button type="button">Borrar filtros</button>
+            <a href="{% url 'ingredientes_list' %}" style="text-decoration: none; margin-left: 5px;">
+                <button type="button" style="background-color: #7f8c8d;">Limpiar</button>
             </a>
         </form>
     </div>
 
     <hr>
 
-    <table class="tabla-ingredientes" >
+    <!-- TABLA DE RESULTADOS -->
+    <table class="tabla-ingredientes">
         <thead>
             <tr>
                 <th>Ingrediente</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        
         <tbody>
             {% for ingrediente in ingredientes %}
                 <tr>
                     <td>
                         <strong>{{ ingrediente.nombre }}</strong>
-                        <small>({{ ingrediente.categoria.nombre }})</small>
+                        <br>
+                        <small style="color: gray;">
+                            {{ ingrediente.categoria.nombre }} 
+                            {% if ingrediente.lactosa.lactosa %} | 🥛 Con Lactosa{% endif %}
+                            | {{ ingrediente.cantidad }}
+                        </small>
                     </td>
                     
-                    <td>
+                    <td style="text-align: center;">
                         <a href="{% url 'ingrediente_detalle' pk=ingrediente.pk %}">
-                            <button>Ver</button>
+                            <button title="Ver detalles">👁️</button>
                         </a>
                         
                         <a href="{% url 'ingrediente_editar' pk=ingrediente.pk %}">
-                            <button>Editar</button>
+                            <button title="Editar">✏️</button>
                         </a>
                         
                         <a href="{% url 'ingrediente_eliminar' pk=ingrediente.pk %}">
-                            <button>Borrar</button>
+                            <button title="Borrar" style="background-color: #e74c3c;">🗑️</button>
                         </a>
                     </td>
                 </tr>
             {% empty %}
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" style="text-align: center; padding: 20px;">
                         No se encontraron ingredientes con esos filtros.
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    <div style="margin-top: 20px; text-align: center;">
+
+        
+    {% if is_paginated %}
+        <div style="margin-top: 20px; text-align: center; font-size: 1.1em;">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1&categoria={{ request.GET.categoria }}&lactosa={{ request.GET.lactosa }}&cantidad={{ request.GET.cantidad }}">
+                        &laquo; Primera
+                    </a>
+                    <a href="?page={{ page_obj.previous_page_number }}&categoria={{ request.GET.categoria }}&lactosa={{ request.GET.lactosa }}&cantidad={{ request.GET.cantidad }}" style="margin-left: 10px;">
+                        Anterior
+                    </a>
+                {% endif %}
+
+                <span class="current" style="margin: 0 15px; font-weight: bold;">
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}&categoria={{ request.GET.categoria }}&lactosa={{ request.GET.lactosa }}&cantidad={{ request.GET.cantidad }}" style="margin-right: 10px;">
+                        Siguiente
+                    </a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}&categoria={{ request.GET.categoria }}&lactosa={{ request.GET.lactosa }}&cantidad={{ request.GET.cantidad }}">
+                        Última &raquo;
+                    </a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+    
+    <div style="margin-top: 30px; display: flex; gap: 10px; justify-content: flex-end;">
         <a href="{% url 'crear_ingrediente' %}" style="text-decoration: none;">
-            <button >
-                ➕ Crear Nuevo Ingrediente
+            <button style="background-color: #28a745; font-size: 1.1em;">
+                ➕ Nuevo Ingrediente
             </button>
         </a>
+        
         <a href="{% url 'creacion_masiva_ingredientes' %}" style="text-decoration: none;">
-            <button >
-                ➕ Crear Varios Ingredientes
+            <button style="background-color: #f39c12; font-size: 1.1em;">
+                📚 Creacion Masiva
             </button>
-        </a>    
-        <a href="{% url 'inicio' %}" style="text-decoration: none; margin-left: 20px;">
-            <button>
-                ⬅ Volver al Inicio
+        </a>
+
+        <a href="{% url 'inicio' %}" style="text-decoration: none;">
+            <button style="background-color: #34495e;">
+                🏠 Inicio
             </button>   
         </a>
     </div>

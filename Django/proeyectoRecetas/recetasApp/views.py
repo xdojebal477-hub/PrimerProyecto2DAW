@@ -161,7 +161,9 @@ class IngredienteListView(ListView):
     model = Ingrediente
     template_name = 'recetasApp/ingredientes_list.html'
     context_object_name = 'ingredientes'# esto es lo mismo que poner en el render {'ingredientes':ingredientes} en las FBV  
-    
+    paginate_by=5
+
+
     def get_queryset(self):
         
         queryset = super().get_queryset()
