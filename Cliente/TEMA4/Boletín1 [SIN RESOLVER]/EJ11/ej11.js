@@ -5,11 +5,11 @@ let promesaFinalizada;
 
 function iniciaPromesa() {
     promesaFinalizada = false;
-    let promise = new Promise(function (resolve, reject) {
+    let promise = new Promise(function (resolve, reject) {//creamos el objeto promejo y le mandamos al ejecutor las funciones resolve y reject
         setTimeout(gestionarPromesa, 2000, resolve, reject);
     });
 
-    promise.then(
+    promise.then(//cuando la promesa se resuelva o rechace, se ejecutan las funciones correspondientes, pero solo una de ellas
         (result) => mostrarResultado(result),
         (error) => mostrarResultado(error)
     );
