@@ -1,8 +1,8 @@
-document.getElementById/("addJSON").addEventListener("click", atacarAPIRest);
+document.getElementById("addJSON").addEventListener("click", atacarAPIRest);
 
 function atacarAPIRest() {
-    fetch('')
-    .then((responese)=>responese.json())
+    fetch('https://picsum.photos/list')
+    .then((response)=>response.json())
     .then(generarLista)
     .catch(console.log)
 }
@@ -10,5 +10,8 @@ function atacarAPIRest() {
 function generarLista(imagenes){
     let lista="<ul>";
     for(let imagen of imagenes){
-        lista+=`<li><a ta`
-    }}
+        lista+=`<li><a target="_blank" href="${imagen.post_url}">IMAGEN</a> ${imagen.author}</li>`;
+    }   
+    lista+="</ul>";
+    document.getElementById("salida").innerHTML=lista;
+    }

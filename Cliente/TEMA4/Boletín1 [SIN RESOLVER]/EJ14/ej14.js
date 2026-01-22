@@ -1,4 +1,4 @@
-document.getElementById/("addJSON").addEventListener("click", procesarFichero);
+document.getElementById("addJSON").addEventListener("click", procesarFichero);
 
 function procesarFichero() {
     const url=formulario.url.value.trim();
