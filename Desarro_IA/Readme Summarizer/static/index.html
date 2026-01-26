@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README Summarizer | IA Local</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>README Summarizer</h1>
+            <p class="subtitle">Optimiza tu tiempo de lectura de documentación técnica con IA</p>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <textarea id="inputText" placeholder="Pega aquí el contenido extenso de un README o archivo de texto técnico..."></textarea>
+                <button id="btnSummarize" onclick="resumir()">
+                    <span id="btnText">GENERAR RESUMEN</span>
+                </button>
+            </div>
+
+            <div id="resultGroup" class="result-group">
+                <h3>Resumen Generado:</h3>
+                <p id="summaryText"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>
