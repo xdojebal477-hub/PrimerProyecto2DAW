@@ -41,6 +41,8 @@ const renderCart = (cartArray) => {
 // --- 3. LÓGICA DE LOCALSTORAGE (SOLUCIÓN) ---
 // TU CÓDIGO AQUÍ
 
+
+
 // --- 4. INICIALIZACIÓN ---
 // Al abrir la página, leemos lo que hay y lo pintamos
 const initialCart = getCart();
